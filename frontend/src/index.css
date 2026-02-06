@@ -17,4 +17,15 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
+
+  .card-shadow {
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #4f46e5, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
