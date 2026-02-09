@@ -49,4 +49,9 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
+
+  .code-window {
+    background: #1e1e1e;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }  
 }
