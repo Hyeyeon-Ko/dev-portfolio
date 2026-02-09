@@ -1,5 +1,5 @@
 import React from "react";
-import { KEY_IMPACTS } from "../../constants/mockProfile";
+import { KEY_IMPACTS } from "../../constants/profile/mockProfile";
 
 const toneClass = (tone?: "primary" | "accent" | "dark") => {
   switch (tone) {

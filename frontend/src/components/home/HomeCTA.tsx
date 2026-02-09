@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const ContactCTA: React.FC = () => {
+const HomeCTA: React.FC = () => {
   return (
     <section id="contact" className="max-w-7xl mx-auto px-6 mb-20">
       <div className="relative bg-slate-900 rounded-[60px] p-12 md:p-24 text-center overflow-hidden">
@@ -35,4 +35,4 @@ const ContactCTA: React.FC = () => {
   );
 };
 
-export default ContactCTA;
+export default HomeCTA;

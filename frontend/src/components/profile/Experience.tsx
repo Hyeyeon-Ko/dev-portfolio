@@ -1,5 +1,5 @@
 import React from "react";
-import { EXPERIENCES } from "../../constants/mockProfile";
+import { EXPERIENCES } from "../../constants/profile/mockProfile";
 
 const Experience: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { EDUCATION, AWARDS_CERTS } from "../../constants/mockProfile";
+import { EDUCATION, AWARDS_CERTS } from "../../constants/profile/mockProfile";
 
 const EducationAwards: React.FC = () => {
   return (

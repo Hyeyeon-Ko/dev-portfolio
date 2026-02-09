@@ -1,5 +1,5 @@
 import React from "react";
-import { PROFILE } from "../../constants/mockProfile";
+import { PROFILE } from "../../constants/profile/mockProfile";
 
 const ProfileHero: React.FC = () => {
   return (

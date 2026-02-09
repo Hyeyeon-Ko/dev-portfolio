@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Icons, LIVE_ACTIVITY } from "../constants";
+import { Icons, LIVE_ACTIVITY } from "../../constants";
 
 const LiveActivity: React.FC = () => {
   const [backendOk, setBackendOk] = useState<boolean | null>(null);

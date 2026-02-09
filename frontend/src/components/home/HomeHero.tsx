@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Hero: React.FC = () => {
+const HomeHero: React.FC = () => {
   return (
     <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
       <div className="space-y-8">
@@ -70,4 +70,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default HomeHero;

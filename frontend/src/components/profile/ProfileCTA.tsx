@@ -1,5 +1,5 @@
 import React from "react";
-import { PROFILE_CTA } from "../../constants/mockProfile";
+import { PROFILE_CTA } from "../../constants/profile/mockProfile";
 
 const ProfileCTA: React.FC = () => {
   return (

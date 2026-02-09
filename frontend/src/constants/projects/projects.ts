@@ -1,5 +1,5 @@
-import type { Project } from "../types/project";
-import { Category } from "../types/project";
+import type { Project } from "../../types/project";
+import { Category } from "../../types/project";
 
 const PLACEHOLDER =
   "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1400&auto=format&fit=crop";

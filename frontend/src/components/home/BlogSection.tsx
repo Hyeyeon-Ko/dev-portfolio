@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BLOG_POSTS } from '../constants';
+import { BLOG_POSTS } from '../../constants';
 
 const BlogSection: React.FC = () => {
   return (

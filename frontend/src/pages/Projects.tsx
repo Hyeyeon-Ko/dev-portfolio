@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import ProjectCard from "../components/projects/ProjectCard";
 import CategoryFilter from "../components/projects/CategoryFilter";
-import { PROJECTS } from "../constants/projects";
+import { PROJECTS } from "../constants/projects/projects";
 import { Category } from "../types/project";
 
 export default function Projects() {
