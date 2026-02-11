@@ -41,3 +41,6 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+#backend secrets
+backend/src/main/resources/application.yaml
