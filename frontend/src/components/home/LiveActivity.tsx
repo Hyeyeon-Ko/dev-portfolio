@@ -2,15 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Icons, LIVE_ACTIVITY } from "../../constants";
 
 const LiveActivity: React.FC = () => {
-  const [backendOk, setBackendOk] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    fetch("/api/health")
-      .then((res) => res.json())
-      .then((data) => setBackendOk(Boolean(data?.ok)))
-      .catch(() => setBackendOk(false));
-  }, []);
-
   return (
     <section className="max-w-7xl mx-auto px-6 mb-20">
       <div className="flex items-center justify-between mb-8">
@@ -18,17 +9,6 @@ const LiveActivity: React.FC = () => {
           <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
           <h2 className="text-xl font-bold text-slate-800">Live Activity</h2>
         </div>
-
-        <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
-          Backend:{" "}
-          {backendOk === null ? (
-            "CHECKING"
-          ) : backendOk ? (
-            <span className="text-emerald-600">OK</span>
-          ) : (
-            <span className="text-red-500">DOWN</span>
-          )}
-        </span>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">

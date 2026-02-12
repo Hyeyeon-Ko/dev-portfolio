@@ -32,7 +32,7 @@ export default function ContactHero() {
         {CONTACT_HERO.badge}
       </div>
 
-      <h1 className="text-5xl lg:text-6xl font-serif font-black leading-[1.1] text-slate-900">
+      <h1 className="text-5xl lg:text-5xl font-serif font-black leading-[1.1] text-slate-900">
         {CONTACT_HERO.titleLine1} <br />
         <span className="text-gradient">{CONTACT_HERO.titleLine2}</span>
       </h1>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomeHero: React.FC = () => {
   return (
-    <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section className="py-16 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
       <div className="space-y-8">
         <div className="inline-flex items-center space-x-2 px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-semibold">
           <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
