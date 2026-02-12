@@ -7,7 +7,6 @@ export default function BlogHero() {
           </h1>
           <p className="text-lg text-slate-600 max-w-[720px] font-medium leading-relaxed">
             매일의 삽질과 깨달음, 기술적 고민들을 기록하는 개인적인 공간입니다.
-            배움은 공유될 때 비로소 완성된다고 믿습니다.
           </p>
         </div>
       </section>
