@@ -1,11 +1,11 @@
 import type { ContactHeroCopy, SocialItem } from "../../types/contact";
 
 export const CONTACT_HERO: ContactHeroCopy = {
-  badge: "GET IN TOUCH",
+  badge: "NETWORKING",
   titleLine1: "함께 만들고",
   titleLine2: "함께 성장하고 싶습니다.",
   description:
-    "프로젝트/협업 제안, 기술적인 질문, 간단한 인사까지 편하게 보내주세요. 최대한 빠르게 확인하고 답장드릴게요.",
+    "프로젝트/협업 제안, 기술적인 질문, 간단한 인사까지 편하게 보내주세요.\n최대한 빠르게 확인하고 답장 드리겠습니다:)",
 };
 
 export const SOCIALS: SocialItem[] = [

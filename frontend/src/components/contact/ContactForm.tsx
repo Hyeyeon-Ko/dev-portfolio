@@ -37,7 +37,7 @@ export default function ContactForm() {
       <form onSubmit={onSubmit} className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-2.5">
-            <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">
+            <label className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-1">
               성함
             </label>
             <input
@@ -52,7 +52,7 @@ export default function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-2.5">
-            <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">
+            <label className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-1">
               이메일 주소
             </label>
             <input
@@ -68,7 +68,7 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2.5">
-          <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">
+          <label className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-1">
             주제
           </label>
           <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2.5">
-          <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">
+          <label className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-1">
             내용
           </label>
           <textarea

@@ -29,7 +29,6 @@ export default function ContactHero() {
   return (
     <section className="mb-16 lg:mb-24">
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-primary text-xs font-bold uppercase tracking-widest mb-6">
-        <span className="material-symbols-outlined text-sm">sparkles</span>
         {CONTACT_HERO.badge}
       </div>
 
@@ -40,7 +39,12 @@ export default function ContactHero() {
 
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
         <p className="text-lg lg:text-xl text-slate-500 max-w-2xl leading-relaxed">
-          {CONTACT_HERO.description}
+          {CONTACT_HERO.description.split("\n").map((line, i) => (
+            <span key={i}>
+              {i > 0 && <br />}
+              {line}
+            </span>
+          ))}
         </p>
 
         {/* AI Tip */}
