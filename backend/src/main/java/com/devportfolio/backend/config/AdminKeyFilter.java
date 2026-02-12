@@ -32,7 +32,7 @@ public class AdminKeyFilter extends OncePerRequestFilter {
         if (key == null || !key.equals(adminKey)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setContentType("application/json; charset=UTF-8");
-            response.getWriter().write("{\"message\":\"Unauthorized\"}");
+            response.getWriter().write("{\"success\":false,\"message\":\"Unauthorized\"}");
             return;
         }
         filterChain.doFilter(request, response);
