@@ -19,14 +19,14 @@
 
 @layer components {
   .glass-nav {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
   /* 레퍼런스에서 쓰던 glass-card */
   .glass-card {
-    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm;
+    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 shadow-[0_18px_50px_rgba(15,23,42,0.08)];
   }
 
   .section-divider {

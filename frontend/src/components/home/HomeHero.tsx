@@ -11,7 +11,7 @@ const HomeHero: React.FC = () => {
           <span>현재 새로운 도전을 준비 중입니다</span>
         </div>
         
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 break-keep">
+        <h1 className="text-5xl md:text-5xl font-serif font-black text-slate-900 break-keep">
             <span className="block leading-[1.10]">
                 기술과 감성을 <span className="gradient-text">연결하며,</span>
             </span>
@@ -43,7 +43,7 @@ const HomeHero: React.FC = () => {
 
       <div className="relative">
         <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-50 rounded-full blur-3xl opacity-50"></div>
-        <div className="relative bg-white rounded-[40px] p-8 card-shadow border border-slate-100 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-700">
+        <div className="relative glass-card rounded-[40px] p-8 card-shadow overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-700">
           <div className="flex items-center space-x-2 mb-6">
             <div className="w-3 h-3 rounded-full bg-red-400"></div>
             <div className="w-3 h-3 rounded-full bg-amber-400"></div>

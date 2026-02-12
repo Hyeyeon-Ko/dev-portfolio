@@ -9,28 +9,30 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-slate-200/60">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand */}
         <NavLink to="/" className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
             D
           </div>
-          <span className="font-bold text-xl tracking-tight text-slate-800 uppercase">
+          <span className="font-black text-[20px] tracking-tight text-slate-900 uppercase">
             DEV.PORTFOLIO
           </span>
         </NavLink>
 
         {/* Nav */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+        <nav className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-slate-700">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
                 [
-                  "transition-colors",
-                  isActive ? "text-indigo-600" : "hover:text-indigo-600",
+                  "px-3 py-1.5 rounded-full transition-colors",
+                  isActive
+                    ? "text-slate-900 bg-slate-900/5"
+                    : "hover:text-slate-900 hover:bg-slate-900/5",
                 ].join(" ")
               }
             >

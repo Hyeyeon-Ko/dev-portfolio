@@ -2,6 +2,8 @@ import React from "react";
 import { BLOG_POSTS } from "../../constants/blog/mockBlog";
 import { Link } from "react-router-dom";
 
+import PostCard from "../blog/PostCard";
+
 function parseBlogDateToNumber(date: string): number {
   // Expected format: YYYY.MM.DD
   return Number(date.replaceAll(".", ""));
@@ -29,33 +31,7 @@ const BlogSection: React.FC = () => {
 
       <div className="grid md:grid-cols-3 gap-8">
         {latestPosts.map((post) => (
-          <Link
-            key={post.id}
-            to={`/blog/${post.id}`}
-            className="bg-white rounded-3xl p-8 border border-slate-100 card-shadow flex flex-col hover:-translate-y-2 transition-all group"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <span
-                className={`px-3 py-1 rounded-lg text-[10px] font-black tracking-widest ${
-                  post.category === "TIL"
-                    ? "bg-indigo-50 text-indigo-500"
-                    : post.category === "Retrospective"
-                      ? "bg-purple-50 text-purple-500"
-                      : "bg-emerald-50 text-emerald-500"
-                }`}
-              >
-                {post.category}
-              </span>
-              <span className="text-xs text-slate-300 font-medium">{post.date}</span>
-            </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-4 group-hover:text-indigo-600 transition-colors">
-              {post.title}
-            </h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-              {post.excerpt}
-            </p>
-            <div className="h-0.5 w-8 bg-slate-100 group-hover:w-full transition-all duration-300" />
-          </Link>
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
     </section>

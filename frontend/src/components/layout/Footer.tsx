@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-slate-100 pt-20 pb-10 px-6">
+    <footer className="bg-transparent border-t border-slate-200/60 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           {/* Brand */}
@@ -22,7 +22,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
                 D
               </div>
-              <span className="font-bold text-xl tracking-tight text-slate-800 uppercase">
+              <span className="font-black text-[20px] tracking-tight text-slate-900 uppercase">
                 DEV.PORTFOLIO
               </span>
             </div>
@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a
                 href="mailto:khy33355@gmail.com"
-                className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
+                className="w-10 h-10 border border-slate-200/70 rounded-xl flex items-center justify-center text-slate-400 hover:bg-white/60 transition-colors"
                 aria-label="Email"
                 title="Email"
               >
@@ -43,7 +43,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://github.com/Hyeyeon-Ko"
-                className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
+                className="w-10 h-10 border border-slate-200/70 rounded-xl flex items-center justify-center text-slate-400 hover:bg-white/60 transition-colors"
                 aria-label="GitHub"
                 title="GitHub"
               >
@@ -51,7 +51,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://linkedin.com"
-                className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
+                className="w-10 h-10 border border-slate-200/70 rounded-xl flex items-center justify-center text-slate-400 hover:bg-white/60 transition-colors"
                 aria-label="LinkedIn"
                 title="LinkedIn"
               >
@@ -62,10 +62,10 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="font-bold text-slate-800 mb-6 uppercase tracking-wider text-xs">
+            <h4 className="text-slate-900 mb-6 text-sm font-bold">
               Navigation
             </h4>
-            <ul className="space-y-4 text-sm font-medium text-slate-500">
+            <ul className="space-y-4 text-[15px] font-medium text-slate-600">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <NavLink
@@ -74,7 +74,7 @@ export default function Footer() {
                     className={({ isActive }) =>
                       [
                         "transition-colors",
-                        isActive ? "text-indigo-600" : "hover:text-indigo-600",
+                        isActive ? "text-slate-900" : "hover:text-slate-900",
                       ].join(" ")
                     }
                   >
@@ -87,22 +87,32 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 className="font-bold text-slate-800 mb-6 uppercase tracking-wider text-xs">
+            <h4 className="text-slate-900 mb-6 text-sm font-bold">
               Socials
             </h4>
-            <ul className="space-y-4 text-sm font-medium text-slate-500">
+            <ul className="space-y-4 text-[15px] font-medium text-slate-600">
               <li>
-                <a href="https://github.com/Hyeyeon-Ko" className="hover:text-indigo-600" target="_blank" rel="noreferrer">
+                <a
+                  href="https://github.com/Hyeyeon-Ko"
+                  className="hover:text-slate-900"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   GitHub
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com" className="hover:text-indigo-600" target="_blank" rel="noreferrer">
+                <a
+                  href="https://linkedin.com"
+                  className="hover:text-slate-900"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-600">
+                <a href="#" className="hover:text-slate-900">
                   Instagram
                 </a>
               </li>

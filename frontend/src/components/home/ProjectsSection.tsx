@@ -26,14 +26,14 @@ const ProjectsSection: React.FC = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {latestProjects.map((project) => (
-          <div key={project.id} className="group bg-white rounded-[40px] border border-slate-100 card-shadow overflow-hidden hover:-translate-y-2 transition-all duration-300">
-            <div className="h-72 overflow-hidden relative">
+          <div key={project.id} className="group glass-card rounded-[40px] card-shadow overflow-hidden hover:-translate-y-2 transition-all duration-300">
+            <div className="relative aspect-[16/10] overflow-hidden">
               <img 
                 src={project.imageUrl} 
                 alt={project.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
             <div className="p-8 space-y-6">
               <div className="flex gap-2">

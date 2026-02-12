@@ -2,7 +2,6 @@ import ProfileHero from "../components/profile/ProfileHero";
 import KeyImpact from "../components/profile/KeyImpact";
 import Experience from "../components/profile/Experience";
 import EducationAwards from "../components/profile/EducationAwards";
-import ProfileCTA from "../components/profile/ProfileCTA.tsx";
 
 export default function Profile() {
   return (
@@ -11,7 +10,6 @@ export default function Profile() {
       <KeyImpact />
       <Experience />
       <EducationAwards />
-      <ProfileCTA />
     </div>
   );
 }

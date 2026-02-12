@@ -11,7 +11,7 @@ export default function MainLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fcfcfd]">
+    <div className="min-h-screen flex flex-col bg-white/50 backdrop-blur-xl">
       <Header />
       <main className="flex-grow pt-16">
         <Outlet />

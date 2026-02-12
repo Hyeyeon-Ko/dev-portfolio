@@ -32,7 +32,7 @@ const LiveActivity: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 bg-white rounded-3xl p-6 border border-slate-100 card-shadow flex items-start space-x-6">
+        <div className="md:col-span-2 glass-card rounded-3xl p-6 card-shadow flex items-start space-x-6">
           <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0">
             <Icons.Project />
           </div>
@@ -70,7 +70,7 @@ const LiveActivity: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 border border-slate-100 card-shadow flex items-center space-x-4">
+        <div className="glass-card rounded-3xl p-6 card-shadow flex items-center space-x-4">
           <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600">
             <Icons.Reading />
           </div>
