@@ -1,9 +1,6 @@
 import type { Project } from "../../types/project";
 import { Category } from "../../types/project";
 
-const PLACEHOLDER =
-  "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1400&auto=format&fit=crop";
-
 export const PROJECTS: Project[] = [
   {
     id: 1,
@@ -11,9 +8,9 @@ export const PROJECTS: Project[] = [
     oneLine: "코로나로 인해 질문할 곳이 없는 신입생들을 위한 멘토-멘티 서비스",
     description:
       "멘토와 멘티가 실시간 채팅으로 소통할 수 있는 매칭 서비스. Spring 기반 백엔드와 React Native 모바일 앱으로 구성된 하이브리드 프로젝트.",
-    category: Category.HYBRID,
+    category: [Category.BACKEND, Category.MOBILE],
     tags: ["Spring Boot", "React Native", "MySQL"],
-    imageUrl: PLACEHOLDER,
+    imageUrl: "/images/projects/jjakhung.png",
     primaryLink: {
       label: "GitHub",
       icon: "code",
@@ -34,9 +31,9 @@ export const PROJECTS: Project[] = [
     oneLine: "클라우드 기반 파일 업로드/다운로드 서비스",
     description:
       "클라우드 기반 파일 관리 시스템. 팀 협업을 위한 파일 업로드/다운로드 기능 구현. Frontend 전체 UI/UX와 Backend 파일/폴더 시스템 로직을 담당.",
-    category: Category.WEB,
+    category: [Category.FULLSTACK, Category.WEB],
     tags: ["Python", "Django", "HTML", "CSS", "MySQL", "AWS"],
-    imageUrl: PLACEHOLDER, // 실제 스크린샷 4개 있으면 나중에 교체
+    imageUrl: "/images/projects/devbox.jpg",
     primaryLink: {
       label: "GitHub",
       icon: "code",
@@ -57,19 +54,15 @@ export const PROJECTS: Project[] = [
     oneLine: "유명 빵을 타임딜로 예약하는 웹 플랫폼",
     description:
       "유명한 빵집 빵을 타임딜로 예약하고, 리뷰 작성 및 알림을 받을 수 있는 플랫폼. 팀 프로젝트로 웹 기능을 구현.",
-    category: Category.WEB,
+    category: [Category.BACKEND, Category.WEB],
     tags: ["Spring Boot", "React", "MySQL"],
-    imageUrl: PLACEHOLDER,
+    imageUrl: "/images/projects/bbangting.jpg",
     primaryLink: {
-      label: "Docs",
-      icon: "description",
-      url: "https://www.notion.so/BBangting-2f60686cea8a81049657eefede69d82f?pvs=21",
-    },
-    secondaryLink: {
-      label: "Repo",
+      label: "Github",
       icon: "code",
-      url: "https://www.notion.so/2f60686cea8a81a1b8bbeaa6f3ad472f?pvs=21",
+      url: "https://github.com/BBANGting/bbangting",
     },
+    secondaryLink: { label: "Report", icon: "description", url: "#" },
     hoverText:
       "타임딜 예약 + 리뷰 + 알림. Backend 2 / Frontend 1 팀 프로젝트.",
     accentColor: "primary",
@@ -82,15 +75,19 @@ export const PROJECTS: Project[] = [
     oneLine: "일기 기록 및 공유 모바일 앱",
     description:
       "소셜 로그인 기반 일기 작성 및 편지 공유 기능을 제공하는 모바일 앱. 개인화 알림, 월별 감정 분석, 댓글 등 기능을 구현.",
-    category: Category.MOBILE,
+    category: [Category.BACKEND, Category.MOBILE],
     tags: ["Spring Boot", "React Native", "MySQL", "OAuth", "Spring Security", "JPA"],
-    imageUrl: PLACEHOLDER,
+    imageUrl: "/images/projects/postpost.jpg",
     primaryLink: {
-      label: "GitHub",
+      label: "GitHub-Frontend",
       icon: "code",
-      url: "https://www.notion.so/24PostPost-2f60686cea8a817c888bded02becc0e3?pvs=21",
+      url: "https://github.com/24PostPost/FE-PostPost",
     },
-    secondaryLink: { label: "Details", icon: "info", url: "#" },
+    secondaryLink: { 
+      label: "GitHub-Backend", 
+      icon: "code", 
+      url: "https://github.com/24PostPost/BE-PostPost" 
+    },
     hoverText:
       "OAuth 소셜 로그인 + 일기/공유 + 개인화 알림 + 감정 분석 + 댓글 기능.",
     accentColor: "accent",
@@ -104,15 +101,19 @@ export const PROJECTS: Project[] = [
     oneLine: "총무/구매 업무를 디지털화한 내부 관리 시스템",
     description:
       "총무팀과 구매팀의 업무 프로세스를 디지털화/자동화하여 효율을 개선한 내부 관리 시스템. 2인 팀으로 기획~배포까지 풀스택으로 진행.",
-    category: Category.FULLSTACK,
+    category: [Category.FULLSTACK, Category.WEB],
     tags: ["Spring Boot", "React", "MariaDB", "REST API", "업무 자동화"],
-    imageUrl: PLACEHOLDER,
+    imageUrl: "/images/projects/kmi-mis.jpg",
     primaryLink: {
-      label: "Notion",
-      icon: "description",
-      url: "https://www.notion.so/KMI-MIS-2f60686cea8a8137904cdc43b5082e92?pvs=21",
+      label: "Github-Frontend",
+      icon: "code",
+      url: "https://github.com/Hyeyeon-Ko/mis-ui2",
     },
-    secondaryLink: { label: "Case Study", icon: "open_in_new", url: "#" },
+    secondaryLink: { 
+      label: "Github-Backend",
+      icon: "code",
+      url: "https://github.com/Hyeyeon-Ko/mis-api2",
+    },
     hoverText:
       "업무 프로세스를 웹에서 전부 처리 가능하게 개선. 2인 팀으로 전 과정을 담당.",
     accentColor: "primary",
@@ -126,15 +127,37 @@ export const PROJECTS: Project[] = [
     oneLine: "재해발생 보고서 조회/작성 및 감염검사항목 관리 시스템",
     description:
       "재해발생 보고서 조회/작성, 감염검사항목(HBV/HCV/HIV/매독) 관리, 로그인 사용자 정보 조회, 재해자 검사결과 관리 기능을 포함한 시스템.",
-    category: Category.BACKEND,
+    category: [Category.FULLSTACK, Category.WEB],
     tags: ["SVN", "Java", "XPlatform", "Oracle"],
-    imageUrl: PLACEHOLDER,
-    primaryLink: { label: "Case Study", icon: "description", url: "#" },
+    imageUrl: "/images/projects/kmi-kics.jpg",
+    primaryLink: { label: "Case Study", icon: "description", url: "https://simplistic-manta-075.notion.site/KMI-KICS-2f60686cea8a811babdaf0f0195332ed?pvs=73" },
     secondaryLink: { label: "Details", icon: "info", url: "#" },
     hoverText:
       "업무 시스템 기능 개발(조회/작성/관리) + Oracle 기반 데이터 조인 및 처리 경험.",
     accentColor: "accent",
     period: "2024.12.03 ~ 2024.12.21",
     team: "2명 (plan/design/frontend/backend)",
+  },
+
+  {
+    id: 7,
+    title: "Dev Portfolio",
+    oneLine: "개인 포트폴리오 웹사이트",
+    description:
+      "React + Vite + TypeScript 프론트엔드와 Spring Boot 백엔드로 구성된 풀스택 포트폴리오. 프로필, 프로젝트, 스택, 블로그(글 CRUD·댓글·좋아요), 연락처 페이지를 제공.",
+    category: [Category.FULLSTACK, Category.WEB],
+    tags: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Spring Boot", "Java"],
+    imageUrl: "/images/projects/portfolio.png",
+    primaryLink: {
+      label: "GitHub",
+      icon: "code",
+      url: "https://github.com/Hyeyeon-Ko/dev-portfolio",
+    },
+    secondaryLink: { label: "Details", icon: "info", url: "#" },
+    hoverText:
+      "풀스택 개인 프로젝트. 프론트 전 페이지 + 블로그 API(게시글·댓글·좋아요) 직접 설계·구현.",
+    accentColor: "accent",
+    team: "1명",
+    highlights: ["React 19 · Vite", "Spring Boot REST API", "블로그 CRUD·댓글·좋아요", "반응형 UI"],
   },
 ];

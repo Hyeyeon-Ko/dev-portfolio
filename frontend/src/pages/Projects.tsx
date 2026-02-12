@@ -11,20 +11,19 @@ export default function Projects() {
     Category.ALL,
     Category.WEB,
     Category.MOBILE,
-    Category.HYBRID,
-    Category.FULLSTACK,
     Category.BACKEND,
+    Category.FULLSTACK,
   ];
 
   const filteredProjects = useMemo(() => {
     if (selectedCategory === Category.ALL) return PROJECTS;
-    return PROJECTS.filter((p) => p.category === selectedCategory);
+    return PROJECTS.filter((p) => p.category.includes(selectedCategory));
   }, [selectedCategory]);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+    <div className="max-w-5xl mx-auto px-6 py-16 lg:py-24">
       <section className="mb-20 text-center lg:text-left">
-        <h1 className="text-6xl lg:text-8xl font-serif font-black mb-4">
+        <h1 className="text-5xl lg:text-6xl font-serif font-black mb-4">
           <span className="text-gradient">Projects</span>
         </h1>
         <p className="text-xl text-slate-500 font-medium">

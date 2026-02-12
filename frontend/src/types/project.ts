@@ -20,7 +20,7 @@ export type Project = {
   title: string;
   oneLine: string;
   description: string;
-  category: Exclude<Category, typeof Category.ALL>;
+  category: (Exclude<Category, typeof Category.ALL>)[];
   tags: string[];
   imageUrl: string;
 
