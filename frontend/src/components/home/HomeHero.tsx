@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const HomeHero: React.FC = () => {
   return (
@@ -25,12 +26,18 @@ const HomeHero: React.FC = () => {
         </p>
 
         <div className="flex flex-wrap gap-4">
-          <button className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:-translate-y-1 transition-all">
+          <Link
+            to="/projects"
+            className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:-translate-y-1 transition-all"
+          >
             Projects 보기 →
-          </button>
-          <button className="px-8 py-4 bg-white text-slate-800 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 hover:-translate-y-1 transition-all">
+          </Link>
+          <Link
+            to="/blog"
+            className="px-8 py-4 bg-white text-slate-800 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 hover:-translate-y-1 transition-all"
+          >
             Dev-Log 읽기
-          </button>
+          </Link>
         </div>
       </div>
 

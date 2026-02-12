@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const HomeCTA: React.FC = () => {
   return (
@@ -19,15 +20,31 @@ const HomeCTA: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold flex items-center justify-center hover:bg-slate-50 transition-all group">
-              <span>메일 보내기</span>
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold flex items-center justify-center hover:bg-slate-50 transition-all group"
+            >
+              <span>연락하기</span>
+              <svg
+                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
               </svg>
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white rounded-2xl font-bold flex items-center justify-center hover:bg-slate-700 transition-all">
-              LinkedIn 메시지
-            </button>
+            </Link>
+            <Link
+              to="/blog"
+              className="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white rounded-2xl font-bold flex items-center justify-center hover:bg-slate-700 transition-all"
+            >
+              글 더 보기
+            </Link>
           </div>
         </div>
       </div>
