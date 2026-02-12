@@ -1,7 +1,6 @@
 package com.devportfolio.backend.blog.controller;
 
 import com.devportfolio.backend.blog.dto.common.ApiResponse;
-import com.devportfolio.backend.blog.dto.common.IdResponse;
 import com.devportfolio.backend.blog.dto.common.PageResponse;
 import com.devportfolio.backend.blog.dto.post.*;
 import com.devportfolio.backend.blog.service.BlogService;
@@ -29,26 +28,6 @@ public class PostController {
     // 상세
     @GetMapping("/{id}")
     public ApiResponse<PostDetailResponse> detail(@PathVariable Long id) {
-        return ApiResponse.ok(blogService.getPost(id));
-    }
-
-    // 생성 (지금은 인증 없이 열려있음 -> 나중에 Admin Key 방식으로 막자)
-    @PostMapping
-    public ApiResponse<IdResponse> create(@RequestBody PostRequest req) {
-        return ApiResponse.ok(blogService.createPost(req));
-    }
-
-    // 수정
-    @PutMapping("/{id}")
-    public ApiResponse<Void> update(@PathVariable Long id, @RequestBody PostRequest req) {
-        blogService.updatePost(id, req);
-        return ApiResponse.ok(null);
-    }
-
-    // 삭제
-    @DeleteMapping("/{id}")
-    public ApiResponse<Void> delete(@PathVariable Long id) {
-        blogService.deletePost(id);
-        return ApiResponse.ok(null);
+        return ApiResponse.ok(blogService.getPublishedPost(id));
     }
 }
