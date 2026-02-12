@@ -1,4 +1,15 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+type NavItem = { to: string; label: string; end?: boolean };
+
+const navItems: NavItem[] = [
+  { to: "/", label: "Home", end: true },
+  { to: "/projects", label: "Projects" },
+  { to: "/stack", label: "Stack" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
+  { to: "/profile", label: "Profile" },
+];
 
 export default function Footer() {
   return (
@@ -23,7 +34,7 @@ export default function Footer() {
 
             <div className="flex space-x-4">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:khy33355@gmail.com"
                 className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
                 aria-label="Email"
                 title="Email"
@@ -31,18 +42,18 @@ export default function Footer() {
                 @
               </a>
               <a
-                href="#"
+                href="https://github.com/Hyeyeon-Ko"
                 className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
-                aria-label="Website"
-                title="Website"
+                aria-label="GitHub"
+                title="GitHub"
               >
                 🌐
               </a>
               <a
-                href="#"
+                href="https://linkedin.com"
                 className="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors"
-                aria-label="Resume"
-                title="Resume"
+                aria-label="LinkedIn"
+                title="LinkedIn"
               >
                 📄
               </a>
@@ -55,36 +66,22 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-4 text-sm font-medium text-slate-500">
-              <li>
-                <Link to="/" className="hover:text-indigo-600">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/projects" className="hover:text-indigo-600">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link to="/stack" className="hover:text-indigo-600">
-                  Stack
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-indigo-600">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-indigo-600">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/profile" className="hover:text-indigo-600">
-                  Profile
-                </Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    end={item.end ?? false}
+                    className={({ isActive }) =>
+                      [
+                        "transition-colors",
+                        isActive ? "text-indigo-600" : "hover:text-indigo-600",
+                      ].join(" ")
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -95,12 +92,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm font-medium text-slate-500">
               <li>
-                <a href="#" className="hover:text-indigo-600">
+                <a href="https://github.com/Hyeyeon-Ko" className="hover:text-indigo-600" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-600">
+                <a href="https://linkedin.com" className="hover:text-indigo-600" target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
               </li>
