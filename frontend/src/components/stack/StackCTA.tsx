@@ -21,7 +21,7 @@ export default function StackCTA() {
             <span className="material-symbols-outlined">download</span>
           </button>
 
-          <button className="bg-white/10 text-white backdrop-blur-md border border-white/20 px-12 py-5 rounded-2xl font-black hover:bg-white/20 transition-all">
+          <button className="bg-white/10 text-white backdrop-blur-md border border-white/20 px-12 py-5 rounded-2xl font-black hover:bg-white/20 transition-all" onClick={() => window.location.href = "/projects"}>
             {STACK_CTA.secondaryLabel}
           </button>
         </div>

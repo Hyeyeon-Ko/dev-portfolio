@@ -15,9 +15,9 @@ export const STACK_HERO = {
  * 전체 역량(임의 수치)
  */
 export const EXPERTISE: ExpertiseStats = {
-  frontend: 20, // React/TS/Tailwind/React Native 경험 반영
+  frontend: 35, // React/TS/Tailwind/React Native 경험 반영
   backend: 85, // Spring Boot 중심 경험 반영
-  devops: 65, // AWS/Docker/Git 기반
+  devops: 40, // Git/GitLab/Grafana 등 협업·모니터링 도구 기반
   levelLabel: "Practical",
 };
 
@@ -109,17 +109,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         color: "text-amber-700",
       },
       {
+        name: "MySQL",
+        fullName: "MySQL",
+        description: "웹/모바일 프로젝트에서 기본 DB로 사용하며 스키마 기반 기능 구현을 했습니다.",
+        color: "text-sky-700",
+      },
+      {
         name: "MariaDB",
         fullName: "MariaDB",
         description: "업무 자동화/내부 시스템 프로젝트에서 데이터 저장/조회에 활용했습니다.",
         color: "text-blue-700",
       },
       {
-        name: "MySQL",
-        fullName: "MySQL",
-        description: "웹/모바일 프로젝트에서 기본 DB로 사용하며 스키마 기반 기능 구현을 했습니다.",
-        color: "text-sky-700",
-      },
+        name: "Postgre",
+        fullName: "PostgreSQL",
+        description: "프로젝트에서 PostgreSQL을 사용하여 데이터베이스 설계 및 쿼리 작성을 경험했습니다.",
+        color: "text-amber-700",
+      }
     ],
   },
 
@@ -131,50 +137,32 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: "Git",
         fullName: "Git / GitHub",
-        description:
-          "팀 프로젝트에서 형상관리/협업을 수행하며, 기능 단위로 작업을 분리해 진행합니다.",
+        description: "형상관리·협업, 기능 단위 브랜치 전략으로 작업을 분리해 진행합니다.",
         color: "text-pink-600",
       },
       {
         name: "GitLab",
         fullName: "GitLab",
-        description:
-          "Merge Request 기반으로 변경사항을 리뷰/공유하고, 파이프라인 로그를 확인하며 빌드 흐름을 점검했습니다.",
+        description: "MR 기반 리뷰, CI 파이프라인(빌드/테스트) 확인 경험이 있습니다.",
         color: "text-orange-600",
       },
       {
         name: "SVN",
         fullName: "SVN",
-        description: "업무 시스템 개발 환경에서 SVN 기반 형상관리를 경험했습니다.",
+        description: "업무 시스템 개발 환경에서 SVN 형상관리를 경험했습니다.",
         color: "text-slate-700",
       },
       {
         name: "Docs",
-        fullName: "Notion / 문서화",
-        description:
-          "프로젝트 내용을 정리하고 공유 가능한 형태로 문서화하는 흐름을 선호합니다.",
+        fullName: "Notion / Confluence",
+        description: "기획·정책·개발 히스토리를 문서화해 팀 공유·인수인계에 활용합니다.",
         color: "text-violet-600",
       },
       {
         name: "Jira",
-        fullName: "Jira",
-        description:
-          "이슈/스프린트 단위로 작업을 쪼개고 진행 상황을 공유하며, 우선순위 기반으로 업무를 관리했습니다.",
+        fullName: "Jira / Slack",
+        description: "이슈·스프린트 단위 업무 관리, Slack으로 일상적인 팀 소통을 진행했습니다.",
         color: "text-blue-600",
-      },
-      {
-        name: "Confluence",
-        fullName: "Confluence",
-        description:
-          "기능 정의, 정책/가이드, 개발 히스토리를 문서화해 팀 내 공유와 인수인계를 쉽게 만들었습니다.",
-        color: "text-sky-700",
-      },
-      {
-        name: "Slack",
-        fullName: "Slack",
-        description:
-          "팀 커뮤니케이션과 빠른 피드백 루프를 위해 사용했으며, 공지/업무 공유 채널을 중심으로 협업했습니다.",
-        color: "text-violet-600",
       },
     ],
   },
@@ -184,21 +172,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
  * Infrastructure & Tools
  */
 export const INFRA_TOOLS: InfrastructureItem[] = [
-  {
-    name: "AWS",
-    description: "클라우드 기반 서비스 구성 경험(파일 관리/배포 등)에서 AWS를 활용했습니다.",
-    icon: "cloud",
-    iconColor: "text-orange-600",
-    bgColor: "bg-orange-100",
-  },
-  {
-    name: "Docker",
-    description:
-      "환경 차이를 줄이기 위해 컨테이너 기반 실행 환경을 구성하는 흐름을 이해하고 있습니다.",
-    icon: "terminal",
-    iconColor: "text-blue-600",
-    bgColor: "bg-blue-100",
-  },
   {
     name: "GitHub",
     description: "프로젝트 협업 및 리포지토리 운영 경험이 있으며, 링크 공유/정리 형태를 선호합니다.",

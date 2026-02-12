@@ -2,8 +2,8 @@ import { STACK_HERO } from "../../constants/stack/mockStack";
 
 export default function StackHero() {
   return (
-    <section className="mb-20 pt-12">
-      <div className="flex flex-col gap-6 max-w-3xl">
+    <section className="mb-20">
+      <div className="flex flex-col gap-6 max-w-4xl">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-primary text-xs font-bold uppercase tracking-widest w-fit">
           {STACK_HERO.badge}
         </div>
