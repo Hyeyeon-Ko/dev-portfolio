@@ -1,9 +1,14 @@
 
-import React from 'react';
-import { PROJECTS } from '../../constants';
+import React from "react";
 import { Link } from "react-router-dom";
 
+import { PROJECTS } from "../../constants/projects/mockProjects";
+
 const ProjectsSection: React.FC = () => {
+  const latestProjects = [...PROJECTS]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 2);
+
   return (
     <section id="projects" className="max-w-7xl mx-auto px-6 mb-32">
       <div className="flex items-end justify-between mb-12">
@@ -20,7 +25,7 @@ const ProjectsSection: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
-        {PROJECTS.map((project) => (
+        {latestProjects.map((project) => (
           <div key={project.id} className="group bg-white rounded-[40px] border border-slate-100 card-shadow overflow-hidden hover:-translate-y-2 transition-all duration-300">
             <div className="h-72 overflow-hidden relative">
               <img 

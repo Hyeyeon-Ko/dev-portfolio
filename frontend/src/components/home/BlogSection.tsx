@@ -1,9 +1,17 @@
-
-import React from 'react';
-import { BLOG_POSTS } from '../../constants';
+import React from "react";
+import { BLOG_POSTS } from "../../constants/blog/mockBlog";
 import { Link } from "react-router-dom";
 
+function parseBlogDateToNumber(date: string): number {
+  // Expected format: YYYY.MM.DD
+  return Number(date.replaceAll(".", ""));
+}
+
 const BlogSection: React.FC = () => {
+  const latestPosts = [...BLOG_POSTS]
+    .sort((a, b) => parseBlogDateToNumber(b.date) - parseBlogDateToNumber(a.date))
+    .slice(0, 3);
+
   return (
     <section id="blog" className="max-w-7xl mx-auto px-6 mb-32">
       <div className="flex items-end justify-between mb-12">
@@ -20,7 +28,7 @@ const BlogSection: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
-        {BLOG_POSTS.map((post) => (
+        {latestPosts.map((post) => (
           <Link
             key={post.id}
             to={`/blog/${post.id}`}
@@ -29,11 +37,11 @@ const BlogSection: React.FC = () => {
             <div className="flex items-center justify-between mb-6">
               <span
                 className={`px-3 py-1 rounded-lg text-[10px] font-black tracking-widest ${
-                  post.category === 'TIL'
-                    ? 'bg-indigo-50 text-indigo-500'
-                    : post.category === 'RETROSPECTIVE'
-                      ? 'bg-purple-50 text-purple-500'
-                      : 'bg-emerald-50 text-emerald-500'
+                  post.category === "TIL"
+                    ? "bg-indigo-50 text-indigo-500"
+                    : post.category === "Retrospective"
+                      ? "bg-purple-50 text-purple-500"
+                      : "bg-emerald-50 text-emerald-500"
                 }`}
               >
                 {post.category}
