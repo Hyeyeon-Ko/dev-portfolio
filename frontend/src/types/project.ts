@@ -1,11 +1,13 @@
-export enum Category {
-  ALL = "All Works",
-  WEB = "Web",
-  MOBILE = "Mobile",
-  FULLSTACK = "Full-Stack",
-  BACKEND = "Backend",
-  HYBRID = "Hybrid",
-}
+export const Category = {
+  ALL: "All Works",
+  WEB: "Web",
+  MOBILE: "Mobile",
+  FULLSTACK: "Full-Stack",
+  BACKEND: "Backend",
+  HYBRID: "Hybrid",
+} as const;
+
+export type Category = (typeof Category)[keyof typeof Category];
 
 export type ProjectLink = {
   label: string;
@@ -18,7 +20,7 @@ export type Project = {
   title: string;
   oneLine: string;
   description: string;
-  category: Exclude<Category, Category.ALL>;
+  category: Exclude<Category, typeof Category.ALL>;
   tags: string[];
   imageUrl: string;
 

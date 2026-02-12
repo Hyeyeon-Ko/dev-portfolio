@@ -1,4 +1,4 @@
-import type { Post, BlogCategory } from "../../types/blog";
+import type { Post, BlogCategory, PostDetail, Author, RelatedPost } from "../../types/blog";
 
 export const BLOG_CATEGORIES: { label: string; value: BlogCategory }[] = [
   { label: "All", value: "All" },
@@ -59,3 +59,51 @@ export const BLOG_POSTS: Post[] = [
     color: "primary",
   },
 ];
+
+export const BLOG_AUTHOR: Author = {
+  name: "Alex Kim",
+  title: "Frontend Architect & UI Designer",
+  bio: "아름다운 코드가 세상을 바꾼다고 믿는 프론트엔드 엔지니어입니다.",
+  avatar: "https://picsum.photos/id/64/200/200",
+};
+
+export const RELATED_POSTS: RelatedPost[] = [
+  {
+    category: "RETROSPECTIVE",
+    title: "첫 오픈소스 기여와 그 과정에서의 교훈",
+    date: "2024.05.18",
+    type: "Retrospective",
+  },
+  {
+    category: "THINKING",
+    title: "왜 '코드의 가독성'이 성능보다 중요한가",
+    date: "2024.05.10",
+    type: "Thinking",
+  },
+  {
+    category: "TIL",
+    title: "TypeScript 5.4의 새로운 기능들",
+    date: "2024.05.02",
+    type: "TIL",
+  },
+];
+
+/** 상세 페이지용 mock (id별로 나중에 API 연동 시 교체) */
+export function getPostDetailById(id: number): PostDetail | undefined {
+  const list = BLOG_POSTS.find((p) => p.id === id);
+  if (!list) return undefined;
+  return {
+    id: list.id,
+    category: list.category,
+    date: list.date,
+    readTime: list.readTime,
+    title: list.title,
+    subtitle: list.category === "TIL" ? "(React 19 스닉픽)" : undefined,
+    content: "",
+    author: BLOG_AUTHOR,
+    tags: ["React19", "WebDev", "Frontend", "JavaScript"],
+    likeCount: 124,
+    commentCount: 12,
+    relatedPosts: RELATED_POSTS,
+  };
+}

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 import BlogHero from "../components/blog/BlogHero";
 import BlogFilterBar from "../components/blog/BlogFilterBar";
@@ -32,6 +33,15 @@ export default function Blog() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
       <BlogHero />
+
+      <div className="flex justify-end mb-16">
+        <Link
+          to="/blog/write"
+          className="px-5 py-2.5 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary/90 transition-all"
+        >
+          글 쓰기
+        </Link>
+      </div>
 
       <div className="mb-16">
         <CodeSnippet />

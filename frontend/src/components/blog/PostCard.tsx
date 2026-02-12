@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Post } from "../../types/blog";
 
 type Props = {
@@ -11,7 +12,8 @@ export default function PostCard({ post }: Props) {
   const arrowColor = isAccent ? "text-accent" : "text-primary";
 
   return (
-    <article className="glass-card p-8 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 group cursor-pointer flex flex-col h-full">
+    <Link to={`/blog/${post.id}`}>
+      <article className="glass-card p-8 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 group cursor-pointer flex flex-col h-full">
       <div className="flex items-center justify-between mb-6">
         <span className={`text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest ${tagColor}`}>
           {post.category}
@@ -39,5 +41,6 @@ export default function PostCard({ post }: Props) {
         </span>
       </div>
     </article>
+    </Link>
   );
 }

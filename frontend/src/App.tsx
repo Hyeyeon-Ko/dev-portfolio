@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Stack from "./pages/Stack";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import BlogWrite from "./pages/BlogWrite";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/stack" element={<Stack />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/write" element={<BlogWrite />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
