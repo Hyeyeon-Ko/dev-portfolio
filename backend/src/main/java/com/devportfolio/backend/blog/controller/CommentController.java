@@ -5,6 +5,7 @@ import com.devportfolio.backend.blog.dto.comment.CommentItemResponse;
 import com.devportfolio.backend.blog.dto.common.ApiResponse;
 import com.devportfolio.backend.blog.dto.common.IdResponse;
 import com.devportfolio.backend.blog.service.BlogService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public ApiResponse<IdResponse> create(@PathVariable Long postId, @RequestBody CommentCreateRequest req) {
+    public ApiResponse<IdResponse> create(@PathVariable Long postId, @Valid @RequestBody CommentCreateRequest req) {
         return ApiResponse.ok(blogService.addComment(postId, req));
     }
 }
