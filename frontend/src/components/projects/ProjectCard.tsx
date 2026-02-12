@@ -67,7 +67,7 @@ export default function ProjectCard({ project }: Props) {
             </span>
           </a>
 
-          {project.secondaryLink && (
+          {project.secondaryLink && project.secondaryLink.url !== "#" && (
             <a
               className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
               href={project.secondaryLink.url}
