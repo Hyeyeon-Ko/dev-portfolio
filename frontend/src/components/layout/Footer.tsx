@@ -28,8 +28,8 @@ export default function Footer() {
             </div>
 
             <p className="text-slate-500 max-w-sm leading-relaxed">
-              매일의 기록과 코드로 나만의 브랜드를 쌓아갑니다. 기술로 문제를 해결하고,
-              더 나은 제품 경험을 만드는 개발자가 되고 싶습니다.
+              매일의 기록과 코드로 나만의 브랜드를 쌓아갑니다. 
+              <br/>기술로 문제를 해결하고, 더 나은 제품 경험을 만드는 개발자가 되고 싶습니다.
             </p>
 
             <div className="flex space-x-4">

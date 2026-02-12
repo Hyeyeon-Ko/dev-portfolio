@@ -134,7 +134,7 @@ export type SocialLinkItem = {
   
   export const PROFILE_CTA = {
     title: "함께 새로운 가치를 만들 준비가 되셨나요?",
-    description: "언제든 편하게 커피챗 혹은 협업 제안을 보내주세요.",
+    description: "언제든 편하게 연락주세요.",
     email: "khy33355@gmail.com",
   };
   

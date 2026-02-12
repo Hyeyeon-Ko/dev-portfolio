@@ -21,8 +21,8 @@ const HomeHero: React.FC = () => {
         </h1>
         
         <p className="text-lg text-slate-500 max-w-xl leading-relaxed">
-          복잡한 문제를 코드로 풀어내는 것을 즐깁니다. 단순한 구현을 넘어,
-          사용자의 일상에 녹아드는 견고한 서비스를 만듭니다.
+          복잡한 문제를 코드로 풀어내는 것을 즐깁니다. 
+          <br/>단순한 구현을 넘어, 사용자의 일상에 녹아드는 견고한 서비스를 만듭니다.
         </p>
 
         <div className="flex flex-wrap gap-4">

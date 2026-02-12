@@ -13,7 +13,7 @@ const ProfileCTA: React.FC = () => {
             함께 새로운 가치를 만들<br />준비가 되셨나요?
           </h2>
           <p className="text-slate-500 font-medium text-lg">
-            언제든 편안하게 커피챗 혹은 협업 제안을 보내주세요.
+            언제든 편하게 연락주세요.
           </p>
         </div>
 

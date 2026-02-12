@@ -15,7 +15,7 @@ const HomeCTA: React.FC = () => {
             함께 성장할 동료를<br />찾고 계신가요?
           </h2>
           <p className="text-slate-400 text-lg md:text-xl leading-relaxed">
-            새로운 프로젝트, 기술적인 논의, 혹은 가벼운 커피챗 모두 환영합니다.<br className="hidden md:block" />
+            새로운 프로젝트, 기술적인 논의, 혹은 가벼운 인사 모두 환영합니다.<br className="hidden md:block" />
             언제든 편하게 연락해 주세요.
           </p>
           
@@ -40,10 +40,10 @@ const HomeCTA: React.FC = () => {
               </svg>
             </Link>
             <Link
-              to="/blog"
+              to="/profile"
               className="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white rounded-2xl font-bold flex items-center justify-center hover:bg-slate-700 transition-all"
             >
-              글 더 보기
+              Profile 보기
             </Link>
           </div>
         </div>
