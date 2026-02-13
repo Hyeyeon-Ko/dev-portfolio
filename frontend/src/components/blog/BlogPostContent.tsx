@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { ShareIcon, BookmarkIcon, HeartIcon, MessageCircleIcon } from "./BlogIcons";
+import { HeartIcon, MessageCircleIcon } from "./BlogIcons";
 import CodeBlock from "./CodeBlock";
 import type { PostDetail } from "../../types/blog";
 
@@ -23,7 +23,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
         <span>{readTime}</span>
       </div>
 
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] mb-8">
+      <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold text-slate-900 leading-[1.15] mb-8">
         {title}
         {subtitle && (
           <>
@@ -45,7 +45,9 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
             <div className="text-sm text-gray-400">{author.title}</div>
           </div>
         </div>
-        <div className="flex gap-2">
+
+        {/* 다른 버튼으로 대체 예정 */}
+        {/* <div className="flex gap-2">
           <button
             type="button"
             className="p-2.5 rounded-full hover:bg-gray-100 text-gray-500 transition-colors border border-gray-100 shadow-sm"
@@ -60,7 +62,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
           >
             <BookmarkIcon />
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="max-w-none text-base">

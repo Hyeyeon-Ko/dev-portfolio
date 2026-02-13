@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Project } from "../../types/project";
 
 type Props = {
@@ -13,9 +14,19 @@ export default function ProjectCard({ project }: Props) {
   const linkTextClass =
     project.accentColor === "primary" ? "text-primary" : "text-accent";
 
+  const primaryIsExternal =
+    project.primaryLink.url.startsWith("http") ||
+    project.primaryLink.url.startsWith("//");
+  const secondaryIsExternal =
+    project.secondaryLink?.url?.startsWith("http") ||
+    project.secondaryLink?.url?.startsWith("//");
+
   return (
     <div className="group flex flex-col glass-card rounded-[2.5rem] overflow-hidden hover:-translate-y-3 transition-all duration-700">
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <Link
+        to={`/projects/${project.id}`}
+        className="relative aspect-[16/10] overflow-hidden block"
+      >
         <img
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -24,7 +35,7 @@ export default function ProjectCard({ project }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
           <p className="text-white text-sm font-medium">{project.hoverText}</p>
         </div>
-      </div>
+      </Link>
 
       <div className="p-10 lg:p-12 flex flex-col flex-1">
         <div className="flex flex-wrap gap-2 mb-6">
@@ -44,9 +55,13 @@ export default function ProjectCard({ project }: Props) {
           ))}
         </div>
 
-        <h3 className={`text-3xl font-bold mb-2 transition-colors ${accentTextClass}`}>
-          {project.title}
-        </h3>
+        <Link to={`/projects/${project.id}`} className="block">
+          <h3
+            className={`text-3xl font-bold mb-2 transition-colors hover:underline underline-offset-4 ${accentTextClass}`}
+          >
+            {project.title}
+          </h3>
+        </Link>
 
         <p className="text-slate-500 font-medium mb-6">{project.oneLine}</p>
 
@@ -54,32 +69,55 @@ export default function ProjectCard({ project }: Props) {
           {project.description}
         </p>
 
-        <div className="flex items-center gap-8">
-          <a
-            className={`flex items-center gap-2 text-base font-bold group/link ${linkTextClass}`}
-            href={project.primaryLink.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {project.primaryLink.label}
-            <span className="material-symbols-outlined text-xl group-hover/link:translate-x-1 transition-transform">
-              {project.primaryLink.icon}
-            </span>
-          </a>
-
-          {project.secondaryLink && project.secondaryLink.url !== "#" && (
+        <div className="flex items-center gap-8 flex-wrap">
+          {primaryIsExternal ? (
             <a
-              className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
-              href={project.secondaryLink.url}
+              className={`flex items-center gap-2 text-base font-bold group/link ${linkTextClass}`}
+              href={project.primaryLink.url}
               target="_blank"
               rel="noreferrer"
             >
-              {project.secondaryLink.label}
-              <span className="material-symbols-outlined text-xl">
-                {project.secondaryLink.icon}
+              {project.primaryLink.label}
+              <span className="material-symbols-outlined text-xl group-hover/link:translate-x-1 transition-transform">
+                {project.primaryLink.icon}
               </span>
             </a>
+          ) : (
+            <Link
+              to={`/projects/${project.id}`}
+              className={`flex items-center gap-2 text-base font-bold group/link ${linkTextClass}`}
+            >
+              {project.primaryLink.label}
+              <span className="material-symbols-outlined text-xl group-hover/link:translate-x-1 transition-transform">
+                {project.primaryLink.icon}
+              </span>
+            </Link>
           )}
+
+          {project.secondaryLink &&
+            (secondaryIsExternal ? (
+              <a
+                className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
+                href={project.secondaryLink.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {project.secondaryLink.label}
+                <span className="material-symbols-outlined text-xl">
+                  {project.secondaryLink.icon}
+                </span>
+              </a>
+            ) : (
+              <Link
+                to={`/projects/${project.id}`}
+                className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
+              >
+                {project.secondaryLink.label}
+                <span className="material-symbols-outlined text-xl">
+                  {project.secondaryLink.icon}
+                </span>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

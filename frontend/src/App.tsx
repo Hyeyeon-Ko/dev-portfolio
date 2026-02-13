@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import Stack from "./pages/Stack";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -17,6 +18,7 @@ export default function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/stack" element={<Stack />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/write" element={<BlogWrite />} />

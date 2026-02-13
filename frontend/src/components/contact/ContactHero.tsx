@@ -28,7 +28,7 @@ export default function ContactHero() {
 
   return (
     <section className="mb-16 lg:mb-24">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-primary text-xs font-bold uppercase tracking-widest w-fit mb-6">
         {CONTACT_HERO.badge}
       </div>
 

@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body, #root {
     height: 100%;
   }
   body {
     margin: 0;
-    @apply font-sans antialiased text-[#1e293b];
-    background-color: #f8fafc;
+    @apply font-sans bg-background text-[#1e293b] antialiased;
     background-image:
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
     background-attachment: fixed;
   }
 }
@@ -26,7 +31,7 @@
 
   /* 레퍼런스에서 쓰던 glass-card */
   .glass-card {
-    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 shadow-[0_18px_50px_rgba(15,23,42,0.08)];
+    @apply bg-white/40 backdrop-blur-xl border border-white/40 shadow-xl;
   }
 
   .section-divider {

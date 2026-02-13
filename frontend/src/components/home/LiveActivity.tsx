@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import type { FC } from "react";
 import { Icons, LIVE_ACTIVITY } from "../../constants";
 
-const LiveActivity: React.FC = () => {
+const LiveActivity: FC = () => {
   return (
     <section className="max-w-7xl mx-auto px-6 mb-20">
       <div className="flex items-center justify-between mb-8">

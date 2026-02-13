@@ -9,30 +9,26 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <NavLink to="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-            D
+    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/40 backdrop-blur-md">
+      <div className="max-w-[1200px] mx-auto h-20 flex items-center justify-between">
+        <NavLink to="/" className="flex items-center gap-3">
+          <div className="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/20">
+            <span className="material-symbols-outlined">auto_awesome</span>
           </div>
-          <span className="font-black text-[20px] tracking-tight text-slate-900 uppercase">
-            DEV.PORTFOLIO
-          </span>
+          <h2 className="text-xl font-black tracking-tight font-serif uppercase">
+            Dev.HYEYEON
+          </h2>
         </NavLink>
 
-        {/* Nav */}
-        <nav className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-slate-700">
+        <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
                 [
-                  "px-3 py-1.5 rounded-full transition-colors",
-                  isActive
-                    ? "text-slate-900 bg-slate-900/5"
-                    : "hover:text-slate-900 hover:bg-slate-900/5",
+                  "text-sm font-semibold transition-colors tracking-wide",
+                  isActive ? "text-primary" : "hover:text-primary",
                 ].join(" ")
               }
             >

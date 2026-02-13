@@ -6,7 +6,7 @@ const HomeHero: React.FC = () => {
   return (
     <section className="py-16 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
       <div className="space-y-8">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-semibold">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-primary text-xs font-bold uppercase tracking-widest w-fit">
           <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
           <span>현재 새로운 도전을 준비 중입니다</span>
         </div>
