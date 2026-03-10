@@ -9,6 +9,7 @@ public class PostRequest {
     private String excerpt;
     private String category;      // TIL/Retrospective/Thinking
     private String coverImageUrl; // optional
+    private String tags;          // optional, comma-separated
     private Integer readTimeMin;  // optional
     private String status;        // optional: DRAFT/PUBLISHED/ARCHIVED
 }
