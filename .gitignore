@@ -44,3 +44,6 @@ logs/
 
 #backend secrets
 backend/src/main/resources/application.yaml
+# Claude Code / OMC
+.claude/
+.omc/

@@ -4,6 +4,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
+import java.time.OffsetDateTime;
+
 @Getter
 public class PostCreateRequest {
     @NotBlank
@@ -24,4 +26,6 @@ public class PostCreateRequest {
     private Integer readTimeMin;  // optional
 
     private String status;        // optional: DRAFT/PUBLISHED/ARCHIVED
+
+    private OffsetDateTime publishedAt; // optional: 지정하지 않으면 현재 시간
 }
