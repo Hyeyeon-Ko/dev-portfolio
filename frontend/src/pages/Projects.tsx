@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import ProjectCard from "../components/projects/ProjectCard";
 import CategoryFilter from "../components/projects/CategoryFilter";
-import { PROJECTS } from "../constants/projects/mockProjects";
 import { Category } from "../types/project";
+import type { Project } from "../types/project";
+import { fetchProjects } from "../api/projectApi";
 
 const PROJECTS_PER_PAGE = 4;
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<Category>(Category.ALL);
   const [page, setPage] = useState(0);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const categories: Category[] = [
     Category.ALL,
@@ -18,20 +22,47 @@ export default function Projects() {
     Category.FULLSTACK,
   ];
 
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === Category.ALL) return PROJECTS;
-    return PROJECTS.filter((p) => p.category.includes(selectedCategory));
-  }, [selectedCategory]);
+  // Category value -> API string mapping
+  // Category values are display strings ("All Works", "Web", etc.)
+  // The API accepts the key portion: WEB, MOBILE, BACKEND, FULLSTACK
+  const categoryToApiParam: Record<Category, string> = {
+    [Category.ALL]: "",
+    [Category.WEB]: "WEB",
+    [Category.MOBILE]: "MOBILE",
+    [Category.BACKEND]: "BACKEND",
+    [Category.FULLSTACK]: "FULLSTACK",
+    [Category.HYBRID]: "HYBRID",
+  };
 
-  // 카테고리 변경 시 첫 페이지로
   useEffect(() => {
-    setPage(0);
+    let cancelled = false;
+    setLoading(true);
+    setError(false);
+
+    const param = categoryToApiParam[selectedCategory];
+    fetchProjects(param || undefined)
+      .then((data) => {
+        if (!cancelled) {
+          setProjects(data);
+          setPage(0);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory]);
 
-  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
-  const pagedProjects = filteredProjects.slice(
-    page * PROJECTS_PER_PAGE,
-    (page + 1) * PROJECTS_PER_PAGE,
+  // Client-side pagination over the fetched list
+  const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
+  const pagedProjects = useMemo(
+    () => projects.slice(page * PROJECTS_PER_PAGE, (page + 1) * PROJECTS_PER_PAGE),
+    [projects, page],
   );
 
   const handlePageChange = (p: number) => {
@@ -56,13 +87,17 @@ export default function Projects() {
         onSelect={setSelectedCategory}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-        {pagedProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      {loading && (
+        <div className="flex justify-center py-16">
+          <span className="material-symbols-outlined text-4xl text-slate-300 animate-pulse">hourglass_empty</span>
+        </div>
+      )}
 
-      {filteredProjects.length === 0 && (
+      {error && !loading && (
+        <p className="text-center text-slate-400 py-16">프로젝트를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</p>
+      )}
+
+      {!loading && !error && projects.length === 0 && (
         <div className="py-20 text-center">
           <p className="text-slate-400 text-lg">
             해당 카테고리의 프로젝트가 아직 없습니다.
@@ -70,8 +105,16 @@ export default function Projects() {
         </div>
       )}
 
+      {!loading && !error && projects.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {pagedProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      )}
+
       {/* 페이지네이션 */}
-      {totalPages > 1 && (
+      {!loading && !error && totalPages > 1 && (
         <div className="flex items-center justify-center gap-2 mt-16">
           <button
             type="button"

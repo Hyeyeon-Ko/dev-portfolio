@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { PROJECTS } from "../constants/projects/mockProjects";
 import ProjectDetailSidebar from "../components/projects/ProjectDetailSidebar";
-import { PROJECT_CASE_STUDIES } from "../constants/projects/projectCaseStudy";
+import { fetchProjectDetail } from "../api/projectApi";
+import type { ProjectDetail as ProjectDetailType } from "../api/projectApi";
 
 function getTechBadgeClass(tag: string) {
   const t = tag.toLowerCase();
@@ -48,9 +49,44 @@ function splitTitleForGradient(title: string) {
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
-  const project = PROJECTS.find((p) => String(p.id) === id);
+  const [project, setProject] = useState<ProjectDetailType | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!project) {
+  useEffect(() => {
+    if (!id) {
+      setNotFound(true);
+      setLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setLoading(true);
+    setNotFound(false);
+
+    fetchProjectDetail(Number(id))
+      .then((data) => {
+        if (!cancelled) setProject(data);
+      })
+      .catch(() => {
+        if (!cancelled) setNotFound(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => { cancelled = true; };
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-32">
+        <span className="material-symbols-outlined text-4xl text-slate-300 animate-pulse">hourglass_empty</span>
+      </div>
+    );
+  }
+
+  if (notFound || !project) {
     return <Navigate to="/projects" replace />;
   }
 
@@ -63,10 +99,9 @@ export default function ProjectDetail() {
     ...(project.award ? [{ value: project.award, label: "수상", colorClass: "text-amber-600" }] : []),
   ];
 
-  const caseStudy = PROJECT_CASE_STUDIES[project.id];
-  const problemItems = caseStudy?.problem ?? [];
-  const processItems = caseStudy?.process ?? [];
-  const impactItems = caseStudy?.impact ?? [];
+  const problemItems = project.problem ?? [];
+  const processItems = project.process ?? [];
+  const impactItems = project.impact ?? [];
 
   const titleParts = splitTitleForGradient(project.title);
   const heroTitle = titleParts.tail ? (
@@ -151,7 +186,7 @@ export default function ProjectDetail() {
               </div>
 
               <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                {caseStudy?.overview ?? project.description}
+                {project.overview || project.description}
               </p>
             </section>
 
