@@ -34,6 +34,14 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/blog/edit/:id"
+          element={
+            <ProtectedRoute>
+              <BlogWrite />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />

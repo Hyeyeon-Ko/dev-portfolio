@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import BlogPostContent from "../components/blog/BlogPostContent";
 import BlogPostSidebar from "../components/blog/BlogPostSidebar";
-import { fetchPostDetail, fetchAllPostIds } from "../api/blogApi";
+import CommentSection from "../components/blog/CommentSection";
+import AdminCommentPanel from "../components/blog/AdminCommentPanel";
+import { fetchPostDetail, fetchAllPostIds, deletePost } from "../api/blogApi";
 import type { PostDetail } from "../types/blog";
+import { isAdmin } from "../utils/auth";
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
@@ -64,8 +67,35 @@ export default function BlogPost() {
   const prevId = currentIndex > 0 ? allIds[currentIndex - 1] : null;
   const nextId = currentIndex >= 0 && currentIndex < allIds.length - 1 ? allIds[currentIndex + 1] : null;
 
+  const handleDeletePost = () => {
+    if (!confirm("이 글을 영구 삭제할까요?")) return;
+    deletePost(postId)
+      .then(() => navigate("/blog"))
+      .catch(() => alert("삭제에 실패했습니다."));
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      {isAdmin() && (
+        <div className="flex justify-end gap-2 mb-6">
+          <button
+            type="button"
+            onClick={() => navigate(`/blog/edit/${postId}`)}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+          >
+            <span className="material-symbols-outlined text-[18px]">edit</span>
+            수정
+          </button>
+          <button
+            type="button"
+            onClick={handleDeletePost}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-rose-500 bg-rose-50 hover:bg-rose-100 transition-all"
+          >
+            <span className="material-symbols-outlined text-[18px]">delete</span>
+            삭제
+          </button>
+        </div>
+      )}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
         <div className="lg:col-span-2">
           <BlogPostContent
@@ -73,6 +103,8 @@ export default function BlogPost() {
             onPrev={prevId ? () => navigate(`/blog/${prevId}`) : undefined}
             onNext={nextId ? () => navigate(`/blog/${nextId}`) : undefined}
           />
+          <CommentSection postId={postId} />
+          {isAdmin() && <AdminCommentPanel postId={postId} />}
         </div>
         <div className="lg:col-span-1">
           <BlogPostSidebar author={post.author} relatedPosts={post.relatedPosts ?? []} />
