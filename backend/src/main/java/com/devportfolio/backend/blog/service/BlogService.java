@@ -123,7 +123,7 @@ public class BlogService {
                 .build();
 
         if ("PUBLISHED".equalsIgnoreCase(post.getStatus())) {
-            post.setPublishedAt(OffsetDateTime.now());
+            post.setPublishedAt(req.getPublishedAt() != null ? req.getPublishedAt() : OffsetDateTime.now());
         }
 
         BlogPost saved = postRepository.save(post);
