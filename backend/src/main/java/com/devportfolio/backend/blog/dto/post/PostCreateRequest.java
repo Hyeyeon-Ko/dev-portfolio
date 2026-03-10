@@ -21,6 +21,7 @@ public class PostCreateRequest {
     private String category;      // TIL/Retrospective/Thinking
 
     private String coverImageUrl; // optional
+    private String tags;          // optional, comma-separated
 
     @Min(1)
     private Integer readTimeMin;  // optional

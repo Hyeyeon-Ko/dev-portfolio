@@ -38,6 +38,9 @@ public class BlogPost {
     @Column(name = "cover_image_url", columnDefinition = "text")
     private String coverImageUrl;
 
+    @Column(length = 500)
+    private String tags; // comma-separated, e.g. "React,TypeScript,Spring"
+
     @Column(name = "read_time_min")
     private Integer readTimeMin;
 
