@@ -5,7 +5,7 @@ import { setAdminKey } from "../utils/auth";
 export default function AdminLogin() {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string })?.from ?? "/blog/write";
+  const from = (location.state as { from?: string })?.from ?? "/";
 
   const [key, setKey] = useState("");
   const [error, setError] = useState(false);
