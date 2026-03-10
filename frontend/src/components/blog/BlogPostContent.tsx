@@ -1,8 +1,9 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { HeartIcon, MessageCircleIcon } from "./BlogIcons";
 import type { PostDetail } from "../../types/blog";
+import { likePost } from "../../api/blogApi";
 
 type Props = {
   post: PostDetail;
@@ -11,7 +12,22 @@ type Props = {
 };
 
 const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
-  const { author, category, date, readTime, title, subtitle, likeCount, commentCount, tags, content } = post;
+  const { author, category, date, readTime, title, subtitle, tags, content } = post;
+
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(post.likeCount);
+
+  const handleLike = async () => {
+    if (liked) return;
+    setLiked(true);
+    setLikeCount((c) => c + 1);
+    try {
+      await likePost(post.id);
+    } catch {
+      setLiked(false);
+      setLikeCount((c) => c - 1);
+    }
+  };
 
   return (
     <article className="lg:pr-12">
@@ -83,19 +99,31 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
 
       <div className="flex items-center justify-between p-8 bg-white rounded-3xl border border-gray-100 shadow-sm mb-20">
         <div className="flex gap-6">
-          <button
-            type="button"
-            className="flex items-center gap-2.5 text-slate-500 hover:text-rose-500 transition-colors group"
-          >
-            <HeartIcon className="group-hover:fill-rose-500 group-hover:stroke-rose-500" />
-            <span className="font-bold">{likeCount}</span>
-          </button>
+          <div className="relative group/like">
+            <button
+              type="button"
+              onClick={handleLike}
+              disabled={liked}
+              className="flex items-center gap-2.5 text-slate-500 hover:text-rose-500 transition-colors group disabled:cursor-default"
+            >
+              <HeartIcon
+                className={liked ? "fill-rose-500 stroke-rose-500" : "group-hover:fill-rose-500 group-hover:stroke-rose-500"}
+              />
+              <span className="font-bold">{likeCount}</span>
+            </button>
+            {liked && (
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-slate-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/like:opacity-100 transition-opacity pointer-events-none">
+                이미 좋아요를 눌렀어요 🩷
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800" />
+              </div>
+            )}
+          </div>
           <button
             type="button"
             className="flex items-center gap-2.5 text-slate-500 hover:text-blue-500 transition-colors"
           >
             <MessageCircleIcon />
-            <span className="font-bold">{commentCount}</span>
+            <span className="font-bold">{post.commentCount}</span>
           </button>
         </div>
         <div className="flex gap-4 text-sm font-bold text-gray-400">

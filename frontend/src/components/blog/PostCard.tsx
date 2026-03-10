@@ -25,9 +25,11 @@ export default function PostCard({ post }: Props) {
         {post.title}
       </h3>
 
-      <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-        {post.excerpt}
-      </p>
+      <div className="flex-1 overflow-hidden mb-8">
+        <p className="text-slate-500 text-sm leading-relaxed line-clamp-4">
+          {post.excerpt}
+        </p>
+      </div>
 
       <div className="flex items-center justify-between pt-6 border-t border-slate-100/50">
         <div className="flex items-center gap-2">

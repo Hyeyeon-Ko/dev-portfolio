@@ -1,18 +1,17 @@
-import React from "react";
-import { BLOG_POSTS } from "../../constants/blog/mockBlog";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import PostCard from "../blog/PostCard";
-
-function parseBlogDateToNumber(date: string): number {
-  // Expected format: YYYY.MM.DD
-  return Number(date.replaceAll(".", ""));
-}
+import { fetchPosts } from "../../api/blogApi";
+import type { Post } from "../../types/blog";
 
 const BlogSection: React.FC = () => {
-  const latestPosts = [...BLOG_POSTS]
-    .sort((a, b) => parseBlogDateToNumber(b.date) - parseBlogDateToNumber(a.date))
-    .slice(0, 3);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    fetchPosts({ size: 3 })
+      .then((page) => setPosts(page.items))
+      .catch(() => {});
+  }, []);
 
   return (
     <section id="blog" className="max-w-7xl mx-auto px-6 mb-32">
@@ -30,7 +29,7 @@ const BlogSection: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
-        {latestPosts.map((post) => (
+        {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </div>
