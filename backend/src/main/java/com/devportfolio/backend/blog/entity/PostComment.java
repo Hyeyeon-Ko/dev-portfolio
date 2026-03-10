@@ -29,8 +29,12 @@ public class PostComment {
     @Column(name="created_at", nullable = false)
     private OffsetDateTime createdAt;
 
+    @Column(length = 20, nullable = false)
+    private String status; // PENDING / APPROVED
+
     @PrePersist
     void onCreate() {
         if (createdAt == null) createdAt = OffsetDateTime.now();
+        if (status == null) status = "PENDING";
     }
 }
