@@ -76,19 +76,12 @@ export async function fetchPostDetail(id: number): Promise<PostDetail> {
   const json = await res.json();
   const d = json.data;
 
-  const subtitleMap: Record<string, string> = {
-    TIL: "실무에서 바로 재사용 가능한 기준과 체크리스트를 중심으로 정리했습니다.",
-    Retrospective: "실패/개선 포인트를 숨기지 않고, 다음 행동으로 연결하는 회고를 지향합니다.",
-    Thinking: "개발을 더 오래, 더 안정적으로 하기 위한 생각을 기록합니다.",
-  };
-
   return {
     id: d.id,
     category: d.category,
     date: formatDate(d.publishedAt),
     readTime: formatReadTime(d.readTimeMin),
     title: d.title,
-    subtitle: subtitleMap[d.category as string] ?? "",
     content: d.contentMd ?? "",
     author: BLOG_AUTHOR,
     tags: [],
