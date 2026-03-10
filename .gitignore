@@ -44,6 +44,9 @@ logs/
 
 #backend secrets
 backend/src/main/resources/application.yaml
+
+# Admin scripts (local use only)
+scripts/
 # Claude Code / OMC
 .claude/
 .omc/
