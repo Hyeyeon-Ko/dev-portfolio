@@ -196,3 +196,74 @@ export async function deleteProject(id: number): Promise<void> {
   });
   if (!res.ok) throw new Error(`deleteProject failed: ${res.status}`);
 }
+
+export interface ProjectFormState {
+  title: string;
+  oneLine: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+  tags: string;
+  accentColor: string;
+  primaryLinkLabel: string;
+  primaryLinkIcon: string;
+  primaryLinkUrl: string;
+  secondaryLinkLabel: string;
+  secondaryLinkIcon: string;
+  secondaryLinkUrl: string;
+  hoverText: string;
+  team: string;
+  period: string;
+  role: string;
+  award: string;
+  highlights: string;
+  sortOrder: number;
+  overview: string;
+  problem: CaseStudyItem[];
+  process: CaseStudyItem[];
+  impact: CaseStudyItem[];
+}
+
+export async function fetchProjectDetailAdmin(id: number): Promise<ProjectFormState> {
+  const res = await fetch(`${BASE}/admin/projects/${id}`, {
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`fetchProjectDetailAdmin failed: ${res.status}`);
+  const json = await res.json();
+  const d: RawProject = json.data;
+  const categories = Array.isArray(d.category)
+    ? d.category.join(",")
+    : (d.category as unknown as string) ?? "";
+  const tags = Array.isArray(d.tags)
+    ? d.tags.join(",")
+    : (d.tags as unknown as string) ?? "";
+  const highlights = Array.isArray(d.highlights)
+    ? d.highlights.join(",")
+    : (d.highlights as unknown as string) ?? "";
+  return {
+    title: d.title ?? "",
+    oneLine: d.oneLine ?? "",
+    description: "",
+    imageUrl: d.imageUrl ?? "",
+    category: categories,
+    tags,
+    accentColor: d.accentColor ?? "primary",
+    primaryLinkLabel: d.primaryLinkLabel ?? "",
+    primaryLinkIcon: d.primaryLinkIcon ?? "",
+    primaryLinkUrl: d.primaryLinkUrl ?? "",
+    secondaryLinkLabel: d.secondaryLinkLabel ?? "",
+    secondaryLinkIcon: d.secondaryLinkIcon ?? "",
+    secondaryLinkUrl: d.secondaryLinkUrl ?? "",
+    hoverText: d.hoverText ?? "",
+    team: d.team ?? "",
+    period: d.period ?? "",
+    role: d.role ?? "",
+    award: d.award ?? "",
+    highlights,
+    sortOrder: d.sortOrder ?? 0,
+    overview: d.overview ?? "",
+    problem: parseJsonArray(d.problemJson),
+    process: parseJsonArray(d.processJson),
+    impact: parseJsonArray(d.impactJson),
+  };
+}

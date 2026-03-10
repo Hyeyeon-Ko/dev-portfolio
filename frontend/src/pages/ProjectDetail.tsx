@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import ProjectDetailSidebar from "../components/projects/ProjectDetailSidebar";
-import { fetchProjectDetail } from "../api/projectApi";
+import { fetchProjectDetail, deleteProject } from "../api/projectApi";
 import type { ProjectDetail as ProjectDetailType } from "../api/projectApi";
+import { isAdmin } from "../utils/auth";
 
 function getTechBadgeClass(tag: string) {
   const t = tag.toLowerCase();
@@ -49,6 +50,7 @@ function splitTitleForGradient(title: string) {
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [project, setProject] = useState<ProjectDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -90,6 +92,13 @@ export default function ProjectDetail() {
     return <Navigate to="/projects" replace />;
   }
 
+  const handleDeleteProject = () => {
+    if (!confirm("이 프로젝트를 영구 삭제할까요?")) return;
+    deleteProject(Number(id))
+      .then(() => navigate("/projects"))
+      .catch(() => alert("삭제에 실패했습니다."));
+  };
+
   const stats = [
     ...(project.team ? [{ value: project.team, label: "팀 구성", colorClass: "text-primary" }] : []),
     ...(project.period ? [{ value: project.period, label: "기간", colorClass: "text-accent" }] : []),
@@ -118,6 +127,26 @@ export default function ProjectDetail() {
   return (
     <div className="min-h-screen">
       <main className="max-w-[1200px] mx-auto px-6 pt-10 pb-24">
+        {isAdmin() && (
+          <div className="flex justify-end gap-2 mb-6">
+            <button
+              type="button"
+              onClick={() => navigate(`/projects/edit/${id}`)}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+            >
+              <span className="material-symbols-outlined text-[18px]">edit</span>
+              수정
+            </button>
+            <button
+              type="button"
+              onClick={handleDeleteProject}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-rose-500 bg-rose-50 hover:bg-rose-100 transition-all"
+            >
+              <span className="material-symbols-outlined text-[18px]">delete</span>
+              삭제
+            </button>
+          </div>
+        )}
         <section className="mb-16">
           <div className="flex flex-col gap-8">
             <div className="space-y-4">
