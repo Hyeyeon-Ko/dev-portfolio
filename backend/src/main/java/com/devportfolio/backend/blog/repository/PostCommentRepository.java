@@ -9,7 +9,9 @@ import com.devportfolio.backend.blog.entity.PostComment;
 public interface PostCommentRepository extends JpaRepository<PostComment, Long> {
 
     List<PostComment> findByPostIdOrderByIdAsc(Long postId);
-    
+
+    List<PostComment> findByPostIdAndStatusOrderByIdAsc(Long postId, String status);
+
     long countByPostId(Long postId);
 
     long deleteByPostId(Long postId);

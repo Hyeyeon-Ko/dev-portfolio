@@ -84,7 +84,7 @@ export async function fetchPostDetail(id: number): Promise<PostDetail> {
     title: d.title,
     content: d.contentMd ?? "",
     author: BLOG_AUTHOR,
-    tags: [],
+    tags: d.tags ? d.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [],
     likeCount: d.likeCount ?? 0,
     commentCount: d.commentCount ?? 0,
     relatedPosts: [],
@@ -110,6 +110,7 @@ export interface CreatePostPayload {
   status: "DRAFT" | "PUBLISHED";
   readTimeMin?: number;
   coverImageUrl?: string;
+  tags?: string; // comma-separated
 }
 
 export async function createPost(payload: CreatePostPayload): Promise<number> {
@@ -139,4 +140,121 @@ export async function updatePost(id: number, payload: Partial<CreatePostPayload>
     body: JSON.stringify(payload),
   });
   if (!res.ok) throw new Error(`updatePost failed: ${res.status}`);
+}
+
+// ── Admin 글 상세 조회 (수정용) ────────────────────────
+
+export interface AdminPostDetail {
+  id: number;
+  title: string;
+  contentMd: string;
+  excerpt: string;
+  category: string;
+  status: string;
+  readTimeMin: number | null;
+  coverImageUrl: string | null;
+  tags: string[]; // parsed from comma-separated
+}
+
+export async function fetchPostDetailAdmin(id: number): Promise<AdminPostDetail> {
+  const res = await fetch(`${BASE}/admin/posts/${id}`, {
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`fetchPostDetailAdmin failed: ${res.status}`);
+  const json = await res.json();
+  const d = json.data;
+  return {
+    id: d.id,
+    title: d.title ?? "",
+    contentMd: d.contentMd ?? "",
+    excerpt: d.excerpt ?? "",
+    category: d.category ?? "TIL",
+    status: d.status ?? "DRAFT",
+    readTimeMin: d.readTimeMin ?? null,
+    coverImageUrl: d.coverImageUrl ?? null,
+    tags: d.tags ? d.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [],
+  };
+}
+
+export async function deletePost(id: number): Promise<void> {
+  const res = await fetch(`${BASE}/admin/posts/${id}`, {
+    method: "DELETE",
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`deletePost failed: ${res.status}`);
+}
+
+// ── 좋아요 ────────────────────────────────────────────
+
+function getOrCreateVisitorKey(): string {
+  const KEY = "visitor_key";
+  let key = localStorage.getItem(KEY);
+  if (!key) {
+    key = crypto.randomUUID();
+    localStorage.setItem(KEY, key);
+  }
+  return key;
+}
+
+export async function likePost(id: number): Promise<void> {
+  const res = await fetch(`${BASE}/posts/${id}/likes`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ visitorKey: getOrCreateVisitorKey() }),
+  });
+  if (!res.ok) throw new Error(`likePost failed: ${res.status}`);
+}
+
+// ── 댓글 ──────────────────────────────────────────────
+
+export interface Comment {
+  id: number;
+  authorName: string | null;
+  content: string;
+  createdAt: string;
+  status?: string;
+}
+
+export async function fetchComments(postId: number): Promise<Comment[]> {
+  const res = await fetch(`${BASE}/posts/${postId}/comments`);
+  if (!res.ok) throw new Error(`fetchComments failed: ${res.status}`);
+  const json = await res.json();
+  return json.data ?? [];
+}
+
+export async function createComment(
+  postId: number,
+  payload: { authorName: string; content: string }
+): Promise<void> {
+  const res = await fetch(`${BASE}/posts/${postId}/comments`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(`createComment failed: ${res.status}`);
+}
+
+export async function fetchPendingComments(postId: number): Promise<Comment[]> {
+  const res = await fetch(`${BASE}/admin/posts/${postId}/comments/pending`, {
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`fetchPendingComments failed: ${res.status}`);
+  const json = await res.json();
+  return json.data ?? [];
+}
+
+export async function approveComment(id: number): Promise<void> {
+  const res = await fetch(`${BASE}/admin/comments/${id}/approve`, {
+    method: "PUT",
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`approveComment failed: ${res.status}`);
+}
+
+export async function deleteComment(id: number): Promise<void> {
+  const res = await fetch(`${BASE}/admin/comments/${id}`, {
+    method: "DELETE",
+    headers: { "X-ADMIN-KEY": getAdminKey() ?? "" },
+  });
+  if (!res.ok) throw new Error(`deleteComment failed: ${res.status}`);
 }

@@ -113,6 +113,7 @@ public class BlogService {
                 .excerpt(req.getExcerpt())
                 .category(req.getCategory())
                 .coverImageUrl(req.getCoverImageUrl())
+                .tags(req.getTags())
                 .readTimeMin(req.getReadTimeMin())
                 .status(req.getStatus() == null ? "DRAFT" : req.getStatus())
                 .publishedAt(null)
@@ -140,6 +141,7 @@ public class BlogService {
         if (req.getExcerpt() != null) post.setExcerpt(req.getExcerpt());
         if (req.getCategory() != null) post.setCategory(req.getCategory());
         if (req.getCoverImageUrl() != null) post.setCoverImageUrl(req.getCoverImageUrl());
+        if (req.getTags() != null) post.setTags(req.getTags());
         if (req.getReadTimeMin() != null) post.setReadTimeMin(req.getReadTimeMin());
 
         if (req.getStatus() != null) {
@@ -162,7 +164,14 @@ public class BlogService {
     }
     
     public List<CommentItemResponse> listComments(Long postId) {
-        return commentRepository.findByPostIdOrderByIdAsc(postId)
+        return commentRepository.findByPostIdAndStatusOrderByIdAsc(postId, "APPROVED")
+                .stream()
+                .map(this::toCommentItem)
+                .toList();
+    }
+
+    public List<CommentItemResponse> listPendingComments(Long postId) {
+        return commentRepository.findByPostIdAndStatusOrderByIdAsc(postId, "PENDING")
                 .stream()
                 .map(this::toCommentItem)
                 .toList();
@@ -171,23 +180,49 @@ public class BlogService {
     @Transactional
     public IdResponse addComment(Long postId, CommentCreateRequest req) {
         // 게시글 존재 체크
-        BlogPost post = postRepository.findById(postId)
+        postRepository.findById(postId)
                 .orElseThrow(() -> new NotFoundException("post not found: " + postId));
 
         PostComment comment = PostComment.builder()
                 .postId(postId)
                 .authorName(req.getAuthorName())
                 .content(req.getContent())
+                .status("PENDING")
                 .createdAt(OffsetDateTime.now())
                 .build();
 
         PostComment saved = commentRepository.save(comment);
+        return new IdResponse(saved.getId());
+    }
 
-        // count 컬럼 유지하는 설계라면 여기서 증가
+    @Transactional
+    public void approveComment(Long commentId) {
+        PostComment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new NotFoundException("comment not found: " + commentId));
+
+        comment.setStatus("APPROVED");
+        commentRepository.save(comment);
+
+        BlogPost post = postRepository.findById(comment.getPostId())
+                .orElseThrow(() -> new NotFoundException("post not found: " + comment.getPostId()));
         post.setCommentCount(post.getCommentCount() + 1);
         postRepository.save(post);
+    }
 
-        return new IdResponse(saved.getId());
+    @Transactional
+    public void deleteComment(Long commentId) {
+        PostComment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new NotFoundException("comment not found: " + commentId));
+
+        boolean wasApproved = "APPROVED".equalsIgnoreCase(comment.getStatus());
+        commentRepository.deleteById(commentId);
+
+        if (wasApproved) {
+            postRepository.findById(comment.getPostId()).ifPresent(post -> {
+                post.setCommentCount(Math.max(0, post.getCommentCount() - 1));
+                postRepository.save(post);
+            });
+        }
     }
 
     @Transactional
@@ -249,6 +284,7 @@ public class BlogService {
                 .status(p.getStatus())
                 .publishedAt(p.getPublishedAt())
                 .coverImageUrl(p.getCoverImageUrl())
+                .tags(p.getTags())
                 .readTimeMin(p.getReadTimeMin())
                 .likeCount(p.getLikeCount())
                 .commentCount(p.getCommentCount())
@@ -263,6 +299,7 @@ public class BlogService {
                 .authorName(c.getAuthorName())
                 .content(c.getContent())
                 .createdAt(c.getCreatedAt())
+                .status(c.getStatus())
                 .build();
     }
 }

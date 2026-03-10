@@ -12,4 +12,5 @@ public class CommentItemResponse {
     private String authorName;
     private String content;
     private OffsetDateTime createdAt;
+    private String status;
 }
