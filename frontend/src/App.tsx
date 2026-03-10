@@ -8,6 +8,7 @@ import Stack from "./pages/Stack";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BlogWrite from "./pages/BlogWrite";
+import ProjectWrite from "./pages/ProjectWrite";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import AdminLogin from "./pages/AdminLogin";
@@ -24,6 +25,22 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route
+          path="/projects/write"
+          element={
+            <ProtectedRoute>
+              <ProjectWrite />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects/edit/:id"
+          element={
+            <ProtectedRoute>
+              <ProjectWrite />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/stack" element={<Stack />} />
         <Route path="/blog" element={<Blog />} />
         <Route
