@@ -10,10 +10,15 @@ import BlogPost from "./pages/BlogPost";
 import BlogWrite from "./pages/BlogWrite";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
+import AdminLogin from "./pages/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
     <Routes>
+      {/* 관리자 로그인 (레이아웃 없음) */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+
       {/* 공통 레이아웃 적용 */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
@@ -21,7 +26,14 @@ export default function App() {
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/stack" element={<Stack />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/write" element={<BlogWrite />} />
+        <Route
+          path="/blog/write"
+          element={
+            <ProtectedRoute>
+              <BlogWrite />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
