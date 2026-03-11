@@ -16,11 +16,6 @@ export default function ContactForm() {
   const [isSending, setIsSending] = useState(false);
   const { dialogProps, alert } = useDialog();
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((p) => ({ ...p, [name]: value }));
-  };
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
