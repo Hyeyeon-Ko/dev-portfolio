@@ -1,7 +1,8 @@
+// ✏️ 현재 작업 중인 내용을 직접 수정하세요
 export const LIVE_ACTIVITY = {
-    title: "Home 랜딩 페이지 UI 구성",
-    status: "BUILDING",
-    lastCommit: "feat: wire home sections",
-    progress: 35,
-  } as const;
-  
+  title: "포트폴리오 사용자 화면 개선",
+  status: "IN PROGRESS",
+  progress: 60,
+} as const;
+
+export const CURRENT_READING = "Clean Code (Robert C. Martin)";

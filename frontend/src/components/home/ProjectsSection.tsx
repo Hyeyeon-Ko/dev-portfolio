@@ -1,13 +1,16 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import { PROJECTS } from "../../constants/projects/mockProjects";
+import type { Project } from "../../types/project";
+import { fetchProjects } from "../../api/projectApi";
 
 const ProjectsSection: React.FC = () => {
-  const latestProjects = [...PROJECTS]
-    .sort((a, b) => b.id - a.id)
-    .slice(0, 2);
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetchProjects()
+      .then((data) => setProjects(data.slice(0, 2)))
+      .catch(() => {});
+  }, []);
 
   return (
     <section id="projects" className="max-w-7xl mx-auto px-6 mb-32">
@@ -17,7 +20,7 @@ const ProjectsSection: React.FC = () => {
           <p className="text-slate-500">어제보다 더 나은 가치를 전달하기 위해 고민한 흔적들입니다.</p>
         </div>
         <Link to="/projects" className="text-indigo-600 font-bold flex items-center hover:translate-x-1 transition-transform">
-          전체 프로젝트 
+          전체 프로젝트
           <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
@@ -25,19 +28,19 @@ const ProjectsSection: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
-        {latestProjects.map((project) => (
+        {projects.map((project) => (
           <div key={project.id} className="group glass-card rounded-[40px] card-shadow overflow-hidden hover:-translate-y-2 transition-all duration-300">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
+              <img
+                src={project.imageUrl}
+                alt={project.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="p-8 space-y-6">
-              <div className="flex gap-2">
-                {project.tags.map(tag => (
+              <div className="flex flex-wrap gap-2">
+                {project.tags.slice(0, 3).map((tag) => (
                   <span key={tag} className="px-3 py-1 bg-slate-50 text-slate-400 text-[10px] font-bold tracking-wider rounded-lg">
                     {tag}
                   </span>
@@ -46,11 +49,11 @@ const ProjectsSection: React.FC = () => {
               <div className="space-y-3">
                 <h3 className="text-2xl font-bold text-slate-800">{project.title}</h3>
                 <p className="text-slate-500 leading-relaxed text-sm">
-                  {project.description}
+                  {project.oneLine}
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-50 flex items-center">
-                <Link to="/projects" className="text-indigo-600 flex items-center hover:underline text-sm font-bold">
+                <Link to={`/projects/${project.id}`} className="text-indigo-600 flex items-center hover:underline text-sm font-bold">
                   프로젝트 보러가기
                   <svg className="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
