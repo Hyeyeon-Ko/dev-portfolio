@@ -7,10 +7,13 @@ import AdminCommentPanel from "../components/blog/AdminCommentPanel";
 import { fetchPostDetail, fetchAllPostIds, deletePost } from "../api/blogApi";
 import type { PostDetail } from "../types/blog";
 import { isAdmin } from "../utils/auth";
+import Dialog from "../components/ui/Dialog";
+import { useDialog } from "../hooks/useDialog";
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { dialogProps, confirm, alert } = useDialog();
   const postId = id ? parseInt(id, 10) : NaN;
 
   const [post, setPost] = useState<PostDetail | null>(null);
@@ -67,15 +70,22 @@ export default function BlogPost() {
   const prevId = currentIndex > 0 ? allIds[currentIndex - 1] : null;
   const nextId = currentIndex >= 0 && currentIndex < allIds.length - 1 ? allIds[currentIndex + 1] : null;
 
-  const handleDeletePost = () => {
-    if (!confirm("이 글을 영구 삭제할까요?")) return;
+  const handleDeletePost = async () => {
+    const ok = await confirm("이 글을 영구 삭제할까요?", {
+      type: "danger",
+      message: "삭제 후 복구할 수 없습니다.",
+      confirmLabel: "삭제",
+      cancelLabel: "취소",
+    });
+    if (!ok) return;
     deletePost(postId)
       .then(() => navigate("/blog"))
-      .catch(() => alert("삭제에 실패했습니다."));
+      .catch(() => alert("삭제에 실패했습니다.", { type: "error" }));
   };
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      <Dialog {...dialogProps} />
       {isAdmin() && (
         <div className="flex justify-end gap-2 mb-6">
           <button
