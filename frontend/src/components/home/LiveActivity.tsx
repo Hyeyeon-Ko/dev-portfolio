@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useState } from "react";
 import { Icons, LIVE_ACTIVITY, CURRENT_READING } from "../../constants";
 
 const GITHUB_OWNER = "Hyeyeon-Ko";
