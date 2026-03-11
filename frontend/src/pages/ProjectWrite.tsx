@@ -6,6 +6,8 @@ import {
   deleteProject,
   fetchProjectDetailAdmin,
 } from "../api/projectApi";
+import Dialog from "../components/ui/Dialog";
+import { useDialog } from "../hooks/useDialog";
 
 interface CaseStudyItem {
   title: string;
@@ -207,6 +209,7 @@ export default function ProjectWrite() {
   const isEditMode = editId !== null && !isNaN(editId);
 
   const navigate = useNavigate();
+  const { dialogProps, confirm, alert } = useDialog();
   const [form, setForm] = useState<ProjectFormState>(INITIAL_FORM);
   const [loadingEdit, setLoadingEdit] = useState(isEditMode);
   const [isSaving, setIsSaving] = useState(false);
@@ -223,7 +226,7 @@ export default function ProjectWrite() {
         });
       })
       .catch(() => {
-        alert("프로젝트를 불러오지 못했습니다.");
+        alert("프로젝트를 불러오지 못했습니다.", { type: "error" });
         navigate("/projects");
       })
       .finally(() => setLoadingEdit(false));
@@ -235,10 +238,14 @@ export default function ProjectWrite() {
 
   const handleSave = useCallback(async () => {
     if (!form.title.trim()) {
-      alert("제목을 입력해주세요.");
+      await alert("제목을 입력해주세요.", { type: "error" });
       return;
     }
-    if (!confirm(isEditMode ? "변경사항을 저장할까요?" : "새 프로젝트를 생성할까요?")) return;
+    const ok = await confirm(
+      isEditMode ? "변경사항을 저장할까요?" : "새 프로젝트를 생성할까요?",
+      { type: "confirm", icon: "save", confirmLabel: "저장", cancelLabel: "취소" }
+    );
+    if (!ok) return;
 
     setIsSaving(true);
     const payload = {
@@ -277,18 +284,23 @@ export default function ProjectWrite() {
         navigate(`/projects/${newId}`);
       }
     } catch {
-      alert("저장에 실패했습니다. 다시 시도해주세요.");
+      await alert("저장에 실패했습니다. 다시 시도해주세요.", { type: "error" });
     } finally {
       setIsSaving(false);
     }
-  }, [form, isEditMode, editId, navigate]);
+  }, [form, isEditMode, editId, navigate, alert, confirm]);
 
-  const handleDelete = () => {
-    if (!confirm("이 프로젝트를 영구 삭제할까요?")) return;
-    if (!editId) return;
+  const handleDelete = async () => {
+    const ok = await confirm("이 프로젝트를 영구 삭제할까요?", {
+      type: "danger",
+      message: "삭제 후 복구할 수 없습니다.",
+      confirmLabel: "삭제",
+      cancelLabel: "취소",
+    });
+    if (!ok || !editId) return;
     deleteProject(editId)
       .then(() => navigate("/projects"))
-      .catch(() => alert("삭제에 실패했습니다."));
+      .catch(() => alert("삭제에 실패했습니다.", { type: "error" }));
   };
 
   if (loadingEdit) {
@@ -301,6 +313,7 @@ export default function ProjectWrite() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc]">
+      <Dialog {...dialogProps} />
       {/* Header */}
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-slate-100 px-6 py-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between">

@@ -5,6 +5,8 @@ import WriteSidebar from "../components/blog/write/WriteSidebar";
 import WriteEditor from "../components/blog/write/WriteEditor";
 import { createPost, updatePost, deletePost, fetchPostDetailAdmin } from "../api/blogApi";
 import type { BlogDraft, BlogWriteUser, Category } from "../types/blog";
+import Dialog from "../components/ui/Dialog";
+import { useDialog } from "../hooks/useDialog";
 
 const INITIAL_POST: BlogDraft = {
   title: "",
@@ -41,6 +43,7 @@ export default function BlogWrite() {
   const isEditMode = editId !== null && !isNaN(editId);
 
   const navigate = useNavigate();
+  const { dialogProps, confirm, alert } = useDialog();
   const [post, setPost] = useState<BlogDraft>(INITIAL_POST);
   const [savedPostId, setSavedPostId] = useState<number | null>(editId);
   const [loadingEdit, setLoadingEdit] = useState(isEditMode);
@@ -62,7 +65,7 @@ export default function BlogWrite() {
         });
       })
       .catch(() => {
-        alert("글을 불러오지 못했습니다.");
+        alert("글을 불러오지 못했습니다.", { type: "error" });
         navigate("/blog");
       })
       .finally(() => setLoadingEdit(false));
@@ -74,7 +77,7 @@ export default function BlogWrite() {
 
   const handleSaveDraft = useCallback(async () => {
     if (!post.title.trim() || !post.content.trim()) {
-      alert("제목과 내용을 입력해주세요.");
+      await alert("제목과 내용을 입력해주세요.", { type: "error" });
       return;
     }
     setIsSaving(true);
@@ -88,10 +91,8 @@ export default function BlogWrite() {
     };
     try {
       if (savedPostId) {
-        // 수정 모드: status 변경 없이 내용만 저장
         await updatePost(savedPostId, basePayload);
       } else {
-        // 새 글: DRAFT로 생성
         const newId = await createPost({ ...basePayload, status: "DRAFT" as const });
         setSavedPostId(newId);
       }
@@ -103,18 +104,25 @@ export default function BlogWrite() {
         }),
       });
     } catch {
-      alert("임시저장에 실패했습니다. 다시 시도해주세요.");
+      await alert("임시저장에 실패했습니다. 다시 시도해주세요.", { type: "error" });
     } finally {
       setIsSaving(false);
     }
-  }, [post, savedPostId]);
+  }, [post, savedPostId, alert]);
 
   const handlePublish = useCallback(async () => {
     if (!post.title.trim() || !post.content.trim()) {
-      alert("제목과 내용을 입력해주세요.");
+      await alert("제목과 내용을 입력해주세요.", { type: "error" });
       return;
     }
-    if (!confirm("글을 발행할까요?")) return;
+    const ok = await confirm("글을 발행할까요?", {
+      type: "confirm",
+      icon: "send",
+      message: "발행된 글은 블로그에 공개됩니다.",
+      confirmLabel: "발행",
+      cancelLabel: "취소",
+    });
+    if (!ok) return;
 
     setIsPublishing(true);
     const payload = {
@@ -135,20 +143,26 @@ export default function BlogWrite() {
         navigate(`/blog/${newId}`);
       }
     } catch {
-      alert("글 발행에 실패했습니다. 다시 시도해주세요.");
+      await alert("글 발행에 실패했습니다. 다시 시도해주세요.", { type: "error" });
     } finally {
       setIsPublishing(false);
     }
-  }, [post, savedPostId, navigate]);
+  }, [post, savedPostId, navigate, alert, confirm]);
 
-  const handleDelete = () => {
-    const msg = isEditMode ? "이 글을 영구 삭제할까요?" : "이 초안을 삭제할까요?";
-    if (!confirm(msg)) return;
+  const handleDelete = async () => {
+    const title = isEditMode ? "이 글을 영구 삭제할까요?" : "이 초안을 삭제할까요?";
+    const ok = await confirm(title, {
+      type: "danger",
+      message: isEditMode ? "삭제 후 복구할 수 없습니다." : undefined,
+      confirmLabel: "삭제",
+      cancelLabel: "취소",
+    });
+    if (!ok) return;
 
     if (isEditMode && savedPostId) {
       deletePost(savedPostId)
         .then(() => navigate("/blog"))
-        .catch(() => alert("삭제에 실패했습니다."));
+        .catch(() => alert("삭제에 실패했습니다.", { type: "error" }));
     } else {
       setPost({ ...INITIAL_POST, title: "", content: "" });
       setSavedPostId(null);
@@ -165,6 +179,7 @@ export default function BlogWrite() {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)] overflow-hidden bg-[#f8fafc]">
+      <Dialog {...dialogProps} />
       <WriteHeader
         lastSaved={post.lastSaved}
         isSaving={isSaving}

@@ -4,6 +4,8 @@ import ProjectDetailSidebar from "../components/projects/ProjectDetailSidebar";
 import { fetchProjectDetail, deleteProject } from "../api/projectApi";
 import type { ProjectDetail as ProjectDetailType } from "../api/projectApi";
 import { isAdmin } from "../utils/auth";
+import Dialog from "../components/ui/Dialog";
+import { useDialog } from "../hooks/useDialog";
 
 function getTechBadgeClass(tag: string) {
   const t = tag.toLowerCase();
@@ -51,6 +53,7 @@ function splitTitleForGradient(title: string) {
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { dialogProps, confirm, alert } = useDialog();
   const [project, setProject] = useState<ProjectDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -92,11 +95,17 @@ export default function ProjectDetail() {
     return <Navigate to="/projects" replace />;
   }
 
-  const handleDeleteProject = () => {
-    if (!confirm("이 프로젝트를 영구 삭제할까요?")) return;
+  const handleDeleteProject = async () => {
+    const ok = await confirm("이 프로젝트를 영구 삭제할까요?", {
+      type: "danger",
+      message: "삭제 후 복구할 수 없습니다.",
+      confirmLabel: "삭제",
+      cancelLabel: "취소",
+    });
+    if (!ok) return;
     deleteProject(Number(id))
       .then(() => navigate("/projects"))
-      .catch(() => alert("삭제에 실패했습니다."));
+      .catch(() => alert("삭제에 실패했습니다.", { type: "error" }));
   };
 
   const stats = [
@@ -126,6 +135,7 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen">
+      <Dialog {...dialogProps} />
       <main className="max-w-[1200px] mx-auto px-6 pt-10 pb-24">
         {isAdmin() && (
           <div className="flex justify-end gap-2 mb-6">

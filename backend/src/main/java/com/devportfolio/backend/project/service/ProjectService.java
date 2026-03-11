@@ -89,8 +89,8 @@ public class ProjectService {
     public List<ProjectListItemResponse> listProjects(String category) {
         boolean hasCategory = category != null && !category.isBlank() && !"ALL".equalsIgnoreCase(category);
         List<Project> projects = hasCategory
-                ? projectRepository.findByCategoryContainingIgnoreCaseOrderBySortOrderDesc(category)
-                : projectRepository.findAllByOrderBySortOrderDesc();
+                ? projectRepository.findByCategoryContainingIgnoreCaseOrderBySortOrderDescCreatedAtDesc(category)
+                : projectRepository.findAllByOrderBySortOrderDescCreatedAtDesc();
         return projects.stream().map(this::toListItem).collect(Collectors.toList());
     }
 

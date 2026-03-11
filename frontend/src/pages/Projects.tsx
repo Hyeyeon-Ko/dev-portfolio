@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProjectCard from "../components/projects/ProjectCard";
 import CategoryFilter from "../components/projects/CategoryFilter";
 import { Category } from "../types/project";
 import type { Project } from "../types/project";
 import { fetchProjects } from "../api/projectApi";
+import { isAdmin } from "../utils/auth";
 
 const PROJECTS_PER_PAGE = 4;
 
 export default function Projects() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<Category>(Category.ALL);
   const [page, setPage] = useState(0);
   const [projects, setProjects] = useState<Project[]>([]);
@@ -81,11 +84,23 @@ export default function Projects() {
         </p>
       </section>
 
-      <CategoryFilter
-        categories={categories}
-        selected={selectedCategory}
-        onSelect={setSelectedCategory}
-      />
+      <div className="flex items-center justify-between mb-6">
+        <CategoryFilter
+          categories={categories}
+          selected={selectedCategory}
+          onSelect={setSelectedCategory}
+        />
+        {isAdmin() && (
+          <button
+            type="button"
+            onClick={() => navigate("/projects/write")}
+            className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-all shrink-0"
+          >
+            <span className="material-symbols-outlined text-[18px]">add</span>
+            새 프로젝트
+          </button>
+        )}
+      </div>
 
       {loading && (
         <div className="flex justify-center py-16">
