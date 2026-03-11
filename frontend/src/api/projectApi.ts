@@ -1,7 +1,7 @@
 import type { Project } from "../types/project";
 import { getAdminKey } from "../utils/auth";
 
-const BASE = "/api";
+const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
 
 // ── helpers ───────────────────────────────────────────
 
