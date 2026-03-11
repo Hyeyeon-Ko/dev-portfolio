@@ -3,7 +3,7 @@ import { BLOG_AUTHOR } from "../constants/blog/mockBlog";
 
 import { getAdminKey } from "../utils/auth";
 
-const BASE = "/api";
+const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
 
 // ── 공통 ─────────────────────────────────────────────
 
