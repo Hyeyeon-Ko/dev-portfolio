@@ -8,15 +8,20 @@ const EducationAwards: React.FC = () => {
         <h3 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-8">
           Education
         </h3>
-        <div className="space-y-6">
+        <div className="space-y-8">
           {EDUCATION.map((edu, idx) => (
-            <div
-              key={idx}
-              className="glass-card p-6 rounded-2xl border-b-2 border-b-transparent hover:border-b-primary transition-all"
-            >
-              <p className="text-sm font-bold text-slate-400 mb-1">{edu.period}</p>
-              <p className="text-lg font-bold">{edu.school}</p>
-              <p className="text-slate-600 font-medium">{edu.major}</p>
+            <div key={idx} className="flex gap-5 group">
+              <div className="flex flex-col items-center pt-1.5">
+                <div className="size-3 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0" />
+                <div className="w-px flex-1 bg-slate-100 mt-2" />
+              </div>
+              <div className="pb-6">
+                <span className="inline-block text-[10px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2.5 py-1 rounded-full mb-2">
+                  {edu.period}
+                </span>
+                <p className="text-lg font-bold text-slate-900 leading-snug">{edu.school}</p>
+                <p className="text-sm text-slate-500 font-medium mt-0.5">{edu.major}</p>
+              </div>
             </div>
           ))}
         </div>

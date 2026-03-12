@@ -26,7 +26,7 @@ const KeyImpact: React.FC = () => {
               key={idx}
               className={`glass-card p-8 rounded-3xl border-l-4 ${cls.border} hover:shadow-lg transition-shadow`}
             >
-              <p className={`text-4xl font-black font-serif mb-2 ${cls.text}`}>
+              <p className={`text-4xl font-black mb-2 ${cls.text}`}>
                 {item.value}
               </p>
               {item.subtitle && (

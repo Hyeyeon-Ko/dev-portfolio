@@ -11,7 +11,7 @@ export default function StackCard({ category }: { category: SkillCategory }) {
             {category.icon}
           </span>
         </div>
-        <h3 className="text-2xl font-bold font-serif">{category.title}</h3>
+        <h3 className="text-2xl font-bold">{category.title}</h3>
       </div>
 
       <div className="space-y-6">

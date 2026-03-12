@@ -23,11 +23,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/40 backdrop-blur-md">
       <div className="max-w-[1200px] mx-auto h-20 flex items-center justify-between px-6">
         <NavLink to="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-          <div className="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/20">
-            <span className="material-symbols-outlined">auto_awesome</span>
-          </div>
-          <h2 className="text-xl font-black tracking-tight font-serif uppercase">
-            Dev.HYEYEON
+          <h2 className="text-xl font-black tracking-tight font-brand">
+            Hyeyeon Studio
           </h2>
         </NavLink>
 

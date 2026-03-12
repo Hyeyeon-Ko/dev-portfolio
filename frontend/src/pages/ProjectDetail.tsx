@@ -163,7 +163,7 @@ export default function ProjectDetail() {
               <div className="flex items-center gap-2 text-primary font-bold tracking-widest text-sm uppercase">
                 <span className="w-8 h-[1px] bg-primary" /> Case Study
               </div>
-              <h1 className="text-5xl lg:text-7xl font-serif font-black leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-black leading-tight">
                 {heroTitle}
               </h1>
               <p className="text-xl text-slate-500 font-medium max-w-2xl leading-relaxed">

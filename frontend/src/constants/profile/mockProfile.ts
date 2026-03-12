@@ -36,13 +36,13 @@ export type SocialLinkItem = {
   };
   
   export const PROFILE = {
-    name: "KO HYEYEON",
+    name: "Ko Hyeyeon",
     roleTitle: "Full-stack Engineer",
     tagline:
       "업무를 더 빠르고 정확하게 만드는 구조를 고민하고, 꾸준히 개선하며 성장하는 개발자입니다.",
     profileImage: {
       // 나중에 네 사진 넣을 거니까 일단 placeholder
-      src: "https://picsum.photos/seed/hyeyeon/600/600",
+      src: "/images/projects/profile.jpg",
       alt: "KO HYEYEON Profile",
     },
     links: [
@@ -54,27 +54,27 @@ export type SocialLinkItem = {
   
   export const KEY_IMPACTS: ImpactItem[] = [
     {
-      value: "2w → 3d",
+      value: "1mo → 1wk",
       subtitle: "리드타임 단축",
-      title: "수기 기안 프로세스 웹 전환",
+      title: "발주 프로세스 완전 자동화",
       description:
-        "총무팀 수기 작성·기안·보관 흐름을 웹에서 일원화하고 내역 조회 및 엑셀 다운로드까지 제공했습니다.",
+        "총무팀 명함·문서·자산 신청부터 발주 완료까지 웹 일원화. 자동 엑셀 생성 및 발주사 이메일 자동 발송으로 처리 기간 약 1개월 → 1주일 이내로 단축.",
       tone: "primary",
     },
     {
-      value: "5h/w",
-      subtitle: "주간 절감",
-      title: "업무 자동화로 운영 효율 개선",
+      value: "5건",
+      subtitle: "고도화 완료",
+      title: "검진 결과지 서비스 기능 확장",
       description:
-        "반복 업무를 기능화해 수기 작성 부담과 파일 보관 부담을 줄이고, 운영 처리 시간을 안정화했습니다.",
+        "단일·특수검진 추가, 이미지·다국어 결과지 제공, 마이페이지 신규 구축 등 6개월간 vitaportVIEW 핵심 기능 5건 메인 개발.",
       tone: "accent",
     },
     {
       value: "E2E",
       subtitle: "Full-stack",
-      title: "신규 서비스 개발 및 고도화",
+      title: "기획부터 배포까지 전담",
       description:
-        "Spring + React 기반으로 화면/API/DB 흐름을 설계하고, 운영 고도화 및 성능 개선까지 이어갈 수 있습니다.",
+        "이 포트폴리오 사이트를 React + Spring Boot + PostgreSQL로 직접 설계·개발·배포. 화면·API·DB·인프라(Vercel + Railway)까지 혼자 담당.",
       tone: "dark",
     },
   ];
@@ -87,9 +87,9 @@ export type SocialLinkItem = {
       type: "Full-time",
       techStack: ["Java", "Spring", "React", "Oracle"],
       descriptions: [
-        "헬스케어 도메인 서비스 개발 및 운영 고도화",
-        "업무 프로세스 개선을 위한 기능 설계/개발(화면·API·DB)",
-        "운영 안정화 및 성능 개선(지표는 추후 업데이트 예정)",
+        "KMI 수검자 PC·모바일 검진 결과지 서비스(vitaportVIEW) 개발 및 운영 고도화 담당",
+        "단일검진·특수검진 추가, 이미지 결과지, 다국어 결과지, 마이페이지 신규 구축 등 5건 고도화 메인 개발",
+        "현재 건강성적표 외부결과지 신규 개발 진행 중 — 통계지수 기반 상세 결과지 제공",
       ],
     },
     {
@@ -99,9 +99,9 @@ export type SocialLinkItem = {
       type: "Contract",
       techStack: ["Java", "Spring", "React", "Oracle", "MariaDB", "SVN", "XPlatform"],
       descriptions: [
-        "총무팀 수기 기안 프로세스 웹 전환(내역 정리/엑셀 다운로드 포함)",
-        "업무 처리 리드타임 단축 및 운영 효율 개선",
-        "기능 상세/성과 지표는 추후 업데이트 예정",
+        "총무팀 명함·문서수발신·자산관리 신청·승인·발주·공지 전 과정 웹 전환 — 수기 기안 프로세스 완전 디지털화",
+        "발주 자동화: 승인 완료 내역 자동 엑셀 생성 및 발주사 이메일 자동 발송 구현",
+        "업무 처리 리드타임 약 1개월 → 1주일 이내로 단축",
       ],
     },
   ];

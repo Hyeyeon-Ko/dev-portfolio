@@ -21,7 +21,7 @@ const ProfileHero: React.FC = () => {
         </div>
 
         <div className="flex-1">
-          <h1 className="text-5xl font-serif font-black mb-4 tracking-tight leading-tight">
+          <h1 className="text-5xl font-black mb-4 tracking-tight leading-tight font-brand">
             {PROFILE.name}
           </h1>
           <p className="text-xl text-slate-500 font-medium mb-8">
@@ -47,10 +47,6 @@ const ProfileHero: React.FC = () => {
               />
             ))}
           </div>
-
-          <p className="mt-8 text-slate-600 leading-relaxed font-medium max-w-2xl text-lg">
-            {PROFILE.tagline}
-          </p>
         </div>
       </div>
     </section>

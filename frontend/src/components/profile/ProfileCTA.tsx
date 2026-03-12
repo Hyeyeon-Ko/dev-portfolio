@@ -9,7 +9,7 @@ const ProfileCTA: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl -ml-24 -mb-24"></div>
 
         <div className="relative z-10 text-center md:text-left">
-          <h2 className="text-4xl font-serif font-black mb-4 leading-tight">
+          <h2 className="text-4xl font-black mb-4 leading-tight">
             함께 새로운 가치를 만들<br />준비가 되셨나요?
           </h2>
           <p className="text-slate-500 font-medium text-lg">

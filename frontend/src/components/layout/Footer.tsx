@@ -18,10 +18,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
-              <div className="flex items-center justify-center size-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 text-white shadow-md">
-                <span className="material-symbols-outlined text-sm">auto_awesome</span>
+              <div className="flex items-center justify-center size-8 rounded-lg bg-[#0f0e17] shadow-md relative">
+                <span className="text-white font-black text-sm">H</span>
+                <span className="absolute bottom-0.5 right-0.5 size-2 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500" />
               </div>
-              <h2 className="text-lg font-black font-serif uppercase tracking-wider">Dev.Hyeyeon</h2>
+              <h2 className="text-lg font-black tracking-wider font-brand">Hyeyeon Studio</h2>
             </div>
             <p className="text-slate-500 max-w-sm mb-8 leading-relaxed font-medium">
               매일의 기록과 코드로 나만의 브랜드를 쌓아갑니다. 
@@ -110,7 +111,7 @@ export default function Footer() {
 
         <div className="pt-12 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-slate-400 font-medium">
-            © {new Date().getFullYear()} Dev.Aesthetic. All rights reserved. Designed with passion.
+            © {new Date().getFullYear()} Hyeyeon Studio. All rights reserved.
           </p>
           <div className="flex gap-10">
             <a className="text-sm text-slate-400 hover:text-primary transition-colors" href="#">

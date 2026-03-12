@@ -17,8 +17,8 @@ const BlogSection: React.FC = () => {
     <section id="blog" className="max-w-7xl mx-auto px-6 mb-32">
       <div className="flex items-end justify-between mb-12">
         <div className="space-y-2">
-          <h2 className="text-4xl font-bold text-slate-900 leading-tight">Blog</h2>
-          <p className="text-slate-500">배움의 과정을 기록하고 공유하는 개인적인 기술 저널입니다.</p>
+          <h2 className="text-4xl font-bold text-slate-900 leading-tight font-brand">Blog</h2>
+          <p className="text-lg text-slate-500 font-medium leading-relaxed">배움의 과정을 기록하고 공유하는 개인적인 기술 저널입니다.</p>
         </div>
         <Link
           to="/blog"

@@ -76,10 +76,10 @@ export default function Projects() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
       <section className="mb-20 text-center lg:text-left">
-        <h1 className="text-5xl lg:text-6xl font-serif font-black mb-4">
+        <h1 className="text-5xl lg:text-6xl font-black mb-4 font-brand">
           <span className="text-gradient">Projects</span>
         </h1>
-        <p className="text-xl text-slate-500 font-medium">
+        <p className="text-lg text-slate-500 font-medium leading-relaxed">
           단순한 코드의 나열을 넘어, 문제를 해결하고 가치를 창출한 기록들입니다.
         </p>
       </section>

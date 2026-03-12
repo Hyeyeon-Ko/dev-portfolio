@@ -52,12 +52,12 @@ const HomeHero: React.FC = () => {
           <span>현재 새로운 도전을 준비 중입니다</span>
         </div>
 
-        <h1 className="text-5xl md:text-5xl font-serif font-black text-slate-900 break-keep">
+        <h1 className="text-5xl md:text-5xl font-extrabold text-slate-900">
           <span className="block leading-[1.10]">
-            기술과 감성을 <span className="gradient-text">연결하며,</span>
+            안녕하세요,
           </span>
           <span className="block mt-3 leading-[1.10]">
-            매일 한 걸음씩 <span className="gradient-text">성장합니다.</span>
+            개발자 <span className="gradient-text">고혜연</span>입니다.
           </span>
         </h1>
 
@@ -68,16 +68,16 @@ const HomeHero: React.FC = () => {
 
         <div className="flex flex-wrap gap-4">
           <Link
-            to="/projects"
-            className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:-translate-y-1 transition-all"
+            to="/profile"
+            className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-500 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:-translate-y-1 transition-all"
           >
-            Projects 보기 →
+            개발자 소개 보기 →
           </Link>
           <Link
-            to="/blog"
+            to="/projects"
             className="px-8 py-4 bg-white text-slate-800 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 hover:-translate-y-1 transition-all"
           >
-            Dev-Log 읽기
+            Projects 보기
           </Link>
         </div>
       </div>

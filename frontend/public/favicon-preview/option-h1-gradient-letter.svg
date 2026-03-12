@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f3ff"/>
+      <stop offset="100%" style="stop-color:#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="letter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+  <!-- 연한 라벤더 배경 -->
+  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+  <!-- 그라디언트 H -->
+  <text x="16" y="22" font-family="Georgia,serif" font-size="20" fill="url(#letter)" font-weight="900" text-anchor="middle">H</text>
+  <!-- 아랫줄 액센트 -->
+  <rect x="10" y="25" width="12" height="2" rx="1" fill="url(#letter)" opacity="0.4"/>
+</svg>
