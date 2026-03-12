@@ -104,11 +104,6 @@ export default function Footer() {
                   LinkedIn
                 </a>
               </li>
-              <li>
-                <a className="text-slate-500 hover:text-primary transition-colors text-sm font-semibold" href="#">
-                  Instagram
-                </a>
-              </li>
             </ul>
           </div>
         </div>
