@@ -41,8 +41,7 @@ export type SocialLinkItem = {
     tagline:
       "업무를 더 빠르고 정확하게 만드는 구조를 고민하고, 꾸준히 개선하며 성장하는 개발자입니다.",
     profileImage: {
-      // 나중에 네 사진 넣을 거니까 일단 placeholder
-      src: "/images/projects/profile.jpg",
+      src: "https://picsum.photos/seed/hyeyeon/600/600",
       alt: "KO HYEYEON Profile",
     },
     links: [
