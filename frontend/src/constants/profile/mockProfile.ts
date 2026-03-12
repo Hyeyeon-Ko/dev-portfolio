@@ -123,13 +123,13 @@ export type SocialLinkItem = {
       description:
         "실무에서 DB 구조·쿼리 이해의 한계를 느껴 이론을 보강했고, SQLD 취득으로 기반을 탄탄히 다졌습니다.",
     },
-    {
-      title: "OPIC IM1",
-      issuer: "ACTFL",
-      year: "2026.02.25",
-      icon: "translate",
-      description: "IM1 등급 취득.",
-    },
+    // {
+    //   title: "OPIC IM1",
+    //   issuer: "ACTFL",
+    //   year: "2026.02.25",
+    //   icon: "translate",
+    //   description: "IM1 등급 취득.",
+    // },
   ];
   
   export const PROFILE_CTA = {
