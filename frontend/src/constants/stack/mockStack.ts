@@ -69,18 +69,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         color: "text-green-600",
       },
       {
+        name: "Java",
+        fullName: "Java",
+        description: "업무 시스템 개발에서 기본 언어로 활용하며, 안정적인 로직 구현에 집중합니다.",
+        color: "text-red-600",
+      },
+      {
         name: "Security",
         fullName: "Spring Security (OAuth 포함)",
         description:
           "소셜 로그인/인증 흐름을 적용하고, 사용자 접근 제어 기반 기능을 구현합니다.",
         color: "text-emerald-600",
-      },
-      {
-        name: "JPA",
-        fullName: "JPA",
-        description:
-          "엔티티 기반 데이터 처리와 도메인 설계를 통해 유지보수 가능한 구조를 지향합니다.",
-        color: "text-orange-600",
       },
       {
         name: "Django",
@@ -89,10 +88,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         color: "text-yellow-600",
       },
       {
-        name: "Java",
-        fullName: "Java",
-        description: "업무 시스템 개발에서 기본 언어로 활용하며, 안정적인 로직 구현에 집중합니다.",
-        color: "text-red-600",
+        name: "JPA",
+        fullName: "JPA",
+        description:
+          "엔티티 기반 데이터 처리와 도메인 설계를 통해 유지보수 가능한 구조를 지향합니다.",
+        color: "text-orange-600",
       },
       {
         name: "MyBatis",
@@ -142,15 +142,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     items: [
       {
         name: "Git",
-        fullName: "Git / GitHub",
-        description: "형상관리·협업, 기능 단위 브랜치 전략으로 작업을 분리해 진행합니다.",
+        fullName: "Git / GitHub / GitLab",
+        description: "형상관리·협업, 기능 단위 브랜치 전략으로 작업을 분리하고 MR 기반 리뷰·CI 파이프라인 확인 경험이 있습니다.",
         color: "text-pink-600",
-      },
-      {
-        name: "GitLab",
-        fullName: "GitLab",
-        description: "MR 기반 리뷰, CI 파이프라인(빌드/테스트) 확인 경험이 있습니다.",
-        color: "text-orange-600",
       },
       {
         name: "SVN",
