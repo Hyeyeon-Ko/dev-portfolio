@@ -1,5 +1,5 @@
 import React from "react";
-import { EDUCATION, AWARDS_CERTS } from "../../constants/profile/mockProfile";
+import { EDUCATION, AWARDS, CERTS } from "../../constants/profile/mockProfile";
 
 const EducationAwards: React.FC = () => {
   return (
@@ -32,7 +32,7 @@ const EducationAwards: React.FC = () => {
           Awards & Certs
         </h3>
         <div className="space-y-8">
-          {AWARDS_CERTS.map((award, idx) => (
+          {[...AWARDS, ...CERTS].map((award, idx) => (
             <div key={idx} className="flex items-start gap-4 group">
               <div className="size-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                 <span className="material-symbols-outlined text-primary group-hover:text-white transition-colors">
