@@ -3,8 +3,8 @@ import { EDUCATION, AWARDS_CERTS } from "../../constants/profile/mockProfile";
 
 const EducationAwards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-      <section>
+    <div className="space-y-20 mb-20">
+      <section id="education">
         <h3 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-8">
           Education
         </h3>
@@ -27,7 +27,7 @@ const EducationAwards: React.FC = () => {
         </div>
       </section>
 
-      <section>
+      <section id="awards">
         <h3 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-8">
           Awards & Certs
         </h3>
