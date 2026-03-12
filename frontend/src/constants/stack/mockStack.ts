@@ -94,6 +94,12 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         description: "업무 시스템 개발에서 기본 언어로 활용하며, 안정적인 로직 구현에 집중합니다.",
         color: "text-red-600",
       },
+      {
+        name: "MyBatis",
+        fullName: "MyBatis",
+        description: "SQL 매퍼 기반으로 복잡한 쿼리를 직접 제어하며 데이터 처리를 구현한 경험이 있습니다.",
+        color: "text-amber-600",
+      },
     ],
   },
 
@@ -173,21 +179,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
  */
 export const INFRA_TOOLS: InfrastructureItem[] = [
   {
-    name: "GitHub",
-    description: "프로젝트 협업 및 리포지토리 운영 경험이 있으며, 링크 공유/정리 형태를 선호합니다.",
-    icon: "code",
-    iconColor: "text-slate-800",
-    bgColor: "bg-slate-100",
-  },
-  {
-    name: "GitLab",
-    description:
-      "MR 기반 협업과 CI 파이프라인 확인(빌드/테스트/배포 흐름 점검)을 경험했습니다.",
-    icon: "schema",
-    iconColor: "text-orange-600",
-    bgColor: "bg-orange-100",
-  },
-  {
     name: "Grafana",
     description:
       "대시보드로 지표를 확인하며 서비스/배치 상태를 모니터링하고, 이상 징후를 빠르게 파악하는 데 활용했습니다.",
@@ -196,11 +187,25 @@ export const INFRA_TOOLS: InfrastructureItem[] = [
     bgColor: "bg-emerald-100",
   },
   {
-    name: "XPlatform",
-    description: "업무 시스템 개발에서 XPlatform 기반 화면/연동 환경을 경험했습니다.",
-    icon: "extension",
-    iconColor: "text-purple-700",
-    bgColor: "bg-purple-100",
+    name: "Postman",
+    description: "REST API 개발 시 요청/응답 검증 및 테스트 케이스 관리에 일상적으로 활용합니다.",
+    icon: "send",
+    iconColor: "text-orange-500",
+    bgColor: "bg-orange-100",
+  },
+  {
+    name: "IntelliJ IDEA",
+    description: "Java/Spring 개발의 주 IDE. 디버깅, 리팩토링, DB 연동까지 통합 환경으로 활용합니다.",
+    icon: "terminal",
+    iconColor: "text-indigo-600",
+    bgColor: "bg-indigo-100",
+  },
+  {
+    name: "AWS",
+    description: "학교 팀 프로젝트에서 EC2/S3 기반으로 배포를 경험했습니다.",
+    icon: "cloud",
+    iconColor: "text-amber-600",
+    bgColor: "bg-amber-100",
   },
   {
     name: "Vercel",
