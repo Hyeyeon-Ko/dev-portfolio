@@ -14,7 +14,7 @@ const toneClass = (tone?: "primary" | "accent" | "dark") => {
 
 const KeyImpact: React.FC = () => {
   return (
-    <section className="mb-20">
+    <section id="key-impact" className="mb-20">
       <h3 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-8">
         Key Impact
       </h3>

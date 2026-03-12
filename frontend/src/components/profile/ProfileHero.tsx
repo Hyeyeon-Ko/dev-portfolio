@@ -24,8 +24,12 @@ const ProfileHero: React.FC = () => {
           <h1 className="text-5xl font-black mb-4 tracking-tight leading-tight font-brand">
             {PROFILE.name}
           </h1>
-          <p className="text-xl text-slate-500 font-medium mb-8">
+          <p className="text-xl text-slate-500 font-medium mb-4">
             {PROFILE.roleTitle}
+          </p>
+          <p className="text-base text-slate-5
+          00 leading-relaxed mb-8 max-w-lg">
+            {PROFILE.tagline}
           </p>
 
           <div className="flex flex-wrap gap-4">
