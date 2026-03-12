@@ -5,8 +5,8 @@ import type { ExpertiseStats, InfrastructureItem, SkillCategory } from "../../ty
  */
 export const STACK_HERO = {
   badge: "TECHNICAL CAPABILITIES",
-  titleLine1: "기술적 도구들을 통해",
-  titleLine2: "가치를 증명합니다.",
+  titleLine1: "Tech",
+  titleLine2: "Stack",
   description:
     "프로젝트에서 실제로 써본 기술들을 중심으로, 왜 이 기술이 필요한지/어떻게 문제를 해결했는지에 초점을 맞춥니다.",
 };
@@ -211,6 +211,6 @@ export const STACK_CTA = {
   title: "기술적 도전을 즐길 준비가 되었습니다.",
   description:
     "Spring 기반 백엔드와 웹/모바일 UI 구현 경험을 바탕으로, 문제를 빠르게 구조화하고 끝까지 구현합니다.",
-  primaryLabel: "포트폴리오 PDF 다운로드",
+  primaryLabel: "Profile 바로가기",
   secondaryLabel: "진행 중인 사이드 프로젝트",
 };

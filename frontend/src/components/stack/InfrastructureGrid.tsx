@@ -5,7 +5,7 @@ export default function InfrastructureGrid() {
     <section className="mb-32">
       <div className="flex items-center gap-3 mb-8 px-2">
         <div className="size-2.5 bg-slate-800 rounded-full" />
-        <h2 className="text-2xl font-bold tracking-tight font-serif uppercase">
+        <h2 className="text-2xl font-bold tracking-tight uppercase">
           Infrastructure & Tools
         </h2>
       </div>

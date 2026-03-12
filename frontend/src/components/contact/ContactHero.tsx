@@ -32,13 +32,12 @@ export default function ContactHero() {
         {CONTACT_HERO.badge}
       </div>
 
-      <h1 className="text-5xl lg:text-5xl font-serif font-black leading-[1.1] text-slate-900">
-        {CONTACT_HERO.titleLine1} <br />
-        <span className="text-gradient">{CONTACT_HERO.titleLine2}</span>
+      <h1 className="text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 font-brand">
+        Say <span className="text-gradient">Hello.</span>
       </h1>
 
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-        <p className="text-lg lg:text-xl text-slate-500 max-w-2xl leading-relaxed">
+        <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl">
           {CONTACT_HERO.description.split("\n").map((line, i) => (
             <span key={i}>
               {i > 0 && <br />}

@@ -7,7 +7,7 @@ export default function StackCTA() {
         <div className="absolute -top-24 -right-24 size-80 bg-primary/20 rounded-full blur-3xl transition-transform group-hover:scale-125 duration-1000" />
         <div className="absolute -bottom-24 -left-24 size-80 bg-accent/20 rounded-full blur-3xl transition-transform group-hover:scale-125 duration-1000" />
 
-        <h2 className="text-4xl lg:text-6xl font-serif font-black text-white mb-8 relative z-10 leading-tight">
+        <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 relative z-10 leading-tight">
           {STACK_CTA.title}
         </h2>
 
@@ -16,9 +16,9 @@ export default function StackCTA() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-6 relative z-10">
-          <button className="bg-white text-slate-900 px-12 py-5 rounded-2xl font-black hover:scale-105 transition-all flex items-center gap-3 shadow-xl">
+          <button className="bg-white text-slate-900 px-12 py-5 rounded-2xl font-black hover:scale-105 transition-all flex items-center gap-3 shadow-xl" onClick={() => window.location.href = "/profile"}>
             {STACK_CTA.primaryLabel}
-            <span className="material-symbols-outlined">download</span>
+            {/* <span className="material-symbols-outlined">download</span> */}
           </button>
 
           <button className="bg-white/10 text-white backdrop-blur-md border border-white/20 px-12 py-5 rounded-2xl font-black hover:bg-white/20 transition-all" onClick={() => window.location.href = "/projects"}>

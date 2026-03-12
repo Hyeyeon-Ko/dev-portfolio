@@ -16,8 +16,8 @@ const ProjectsSection: React.FC = () => {
     <section id="projects" className="max-w-7xl mx-auto px-6 mb-32">
       <div className="flex items-end justify-between mb-12">
         <div className="space-y-2">
-          <h2 className="text-4xl font-bold text-slate-900 leading-tight">Projects</h2>
-          <p className="text-slate-500">어제보다 더 나은 가치를 전달하기 위해 고민한 흔적들입니다.</p>
+          <h2 className="text-4xl font-bold text-slate-900 leading-tight font-brand">Projects</h2>
+          <p className="text-lg text-slate-500 font-medium leading-relaxed">어제보다 더 나은 가치를 전달하기 위해 고민한 흔적들입니다.</p>
         </div>
         <Link to="/projects" className="text-indigo-600 font-bold flex items-center hover:translate-x-1 transition-transform">
           전체 프로젝트

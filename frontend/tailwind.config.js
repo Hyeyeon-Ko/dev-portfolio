@@ -11,8 +11,9 @@ export default {
         dark: "#1e293b",
       },
       fontFamily: {
-        sans: ["Pretendard", "sans-serif"],
+        sans: ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         serif: ["Noto Serif KR", "serif"],
+        brand: ["Space Grotesk", "Pretendard Variable", "sans-serif"],
       },
     },
   },

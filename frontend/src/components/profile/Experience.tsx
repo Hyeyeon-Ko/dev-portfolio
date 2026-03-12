@@ -12,7 +12,7 @@ const Experience: React.FC = () => {
         {EXPERIENCES.map((exp, idx) => (
           <div key={idx} className="flex flex-col md:flex-row gap-6 md:gap-16">
             <div className="md:w-56 shrink-0">
-              <p className="text-xl font-black font-serif">{exp.company}</p>
+              <p className="text-xl font-black">{exp.company}</p>
               <p className="text-xs font-bold text-slate-400 mt-2">{exp.period}</p>
 
               {exp.techStack && exp.techStack.length > 0 && (
