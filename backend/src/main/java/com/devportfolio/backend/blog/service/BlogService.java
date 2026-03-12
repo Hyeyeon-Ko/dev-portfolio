@@ -114,7 +114,6 @@ public class BlogService {
                 .category(req.getCategory())
                 .coverImageUrl(req.getCoverImageUrl())
                 .tags(req.getTags())
-                .readTimeMin(req.getReadTimeMin())
                 .status(req.getStatus() == null ? "DRAFT" : req.getStatus())
                 .publishedAt(null)
                 .likeCount(0)
@@ -142,7 +141,6 @@ public class BlogService {
         if (req.getCategory() != null) post.setCategory(req.getCategory());
         if (req.getCoverImageUrl() != null) post.setCoverImageUrl(req.getCoverImageUrl());
         if (req.getTags() != null) post.setTags(req.getTags());
-        if (req.getReadTimeMin() != null) post.setReadTimeMin(req.getReadTimeMin());
 
         if (req.getStatus() != null) {
             String before = post.getStatus();
@@ -268,7 +266,6 @@ public class BlogService {
                 .publishedAt(p.getPublishedAt())
                 .updatedAt(p.getUpdatedAt())
                 .coverImageUrl(p.getCoverImageUrl())
-                .readTimeMin(p.getReadTimeMin())
                 .likeCount(p.getLikeCount())
                 .commentCount(p.getCommentCount())
                 .build();
@@ -285,7 +282,6 @@ public class BlogService {
                 .publishedAt(p.getPublishedAt())
                 .coverImageUrl(p.getCoverImageUrl())
                 .tags(p.getTags())
-                .readTimeMin(p.getReadTimeMin())
                 .likeCount(p.getLikeCount())
                 .commentCount(p.getCommentCount())
                 .createdAt(p.getCreatedAt())

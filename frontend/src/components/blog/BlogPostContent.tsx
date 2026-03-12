@@ -12,7 +12,7 @@ type Props = {
 };
 
 const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
-  const { author, category, date, readTime, title, subtitle, tags, content } = post;
+  const { author, category, date, title, subtitle, tags, content } = post;
 
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likeCount);
@@ -36,8 +36,6 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
           {category}
         </span>
         <span>{date}</span>
-        <span>•</span>
-        <span>{readTime}</span>
       </div>
 
       <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold text-slate-900 leading-[1.15] mb-8">

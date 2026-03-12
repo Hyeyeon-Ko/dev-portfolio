@@ -27,10 +27,6 @@ const USER: BlogWriteUser = {
   avatar: "https://picsum.photos/id/1005/200/200",
 };
 
-function estimateReadTime(text: string): number {
-  const words = text.split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 200));
-}
 
 function generateExcerpt(content: string): string {
   const plain = content.replace(/[#*`>\[\]!_~]/g, "").replace(/\s+/g, " ").trim();
@@ -86,7 +82,6 @@ export default function BlogWrite() {
       contentMd: post.content,
       excerpt: generateExcerpt(post.content),
       category: post.category,
-      readTimeMin: estimateReadTime(post.content),
       tags: post.tags.length > 0 ? post.tags.join(",") : undefined,
     };
     try {
@@ -131,7 +126,6 @@ export default function BlogWrite() {
       excerpt: generateExcerpt(post.content),
       category: post.category,
       status: "PUBLISHED" as const,
-      readTimeMin: estimateReadTime(post.content),
       tags: post.tags.length > 0 ? post.tags.join(",") : undefined,
     };
     try {

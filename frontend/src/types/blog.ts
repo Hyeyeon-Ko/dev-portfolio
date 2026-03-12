@@ -6,7 +6,6 @@ export interface Post {
   date: string;
   title: string;
   excerpt: string;
-  readTime: string;
   color?: "primary" | "accent";
 }
 
@@ -15,7 +14,6 @@ export interface PostDetail {
   id: number;
   category: string;
   date: string;
-  readTime: string;
   title: string;
   subtitle?: string;
   content: string;
@@ -29,7 +27,6 @@ export interface PostDetail {
 export interface PostMeta {
   category: string;
   date: string;
-  readTime: string;
 }
 
 export interface RelatedPost {
