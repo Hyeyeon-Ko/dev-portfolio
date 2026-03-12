@@ -16,7 +16,6 @@ public class PostListItemResponse {
     private OffsetDateTime publishedAt;
     private OffsetDateTime updatedAt;
     private String coverImageUrl;
-    private Integer readTimeMin;
     private Integer likeCount;
     private Integer commentCount;
 }

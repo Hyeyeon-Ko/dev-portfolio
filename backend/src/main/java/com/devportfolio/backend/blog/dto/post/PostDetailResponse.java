@@ -17,7 +17,6 @@ public class PostDetailResponse {
     private OffsetDateTime publishedAt;
     private String coverImageUrl;
     private String tags;
-    private Integer readTimeMin;
     private Integer likeCount;
     private Integer commentCount;
     private OffsetDateTime createdAt;

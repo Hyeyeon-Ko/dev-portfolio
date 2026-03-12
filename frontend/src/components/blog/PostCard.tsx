@@ -32,10 +32,6 @@ export default function PostCard({ post }: Props) {
       </div>
 
       <div className="flex items-center justify-between pt-6 border-t border-slate-100/50">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-sm text-slate-400">schedule</span>
-          <span className="text-xs text-slate-400 font-bold">{post.readTime}</span>
-        </div>
         <span
           className={`material-symbols-outlined ${arrowColor} opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all`}
         >

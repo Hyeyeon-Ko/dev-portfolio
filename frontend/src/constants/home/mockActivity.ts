@@ -5,4 +5,4 @@ export const LIVE_ACTIVITY = {
   progress: 60,
 } as const;
 
-export const CURRENT_READING = "Clean Code (Robert C. Martin)";
+export const CURRENT_READING = "인간의 대지 (생텍쥐페리)";

@@ -16,10 +16,6 @@ function formatDate(iso: string | null | undefined): string {
   return `${y}.${m}.${day}`;
 }
 
-function formatReadTime(min: number | null | undefined): string {
-  return min ? `${min} min read` : "5 min read";
-}
-
 // ── 목록 ─────────────────────────────────────────────
 
 export interface FetchPostsOptions {
@@ -55,7 +51,6 @@ export async function fetchPosts(opts: FetchPostsOptions = {}): Promise<PostsPag
     date: formatDate(item.publishedAt as string),
     title: item.title as string,
     excerpt: item.excerpt as string,
-    readTime: formatReadTime(item.readTimeMin as number),
     color: idx % 2 === 0 ? "primary" : "accent",
   }));
 
@@ -80,7 +75,6 @@ export async function fetchPostDetail(id: number): Promise<PostDetail> {
     id: d.id,
     category: d.category,
     date: formatDate(d.publishedAt),
-    readTime: formatReadTime(d.readTimeMin),
     title: d.title,
     content: d.contentMd ?? "",
     author: BLOG_AUTHOR,
@@ -108,7 +102,6 @@ export interface CreatePostPayload {
   excerpt: string;
   category: string;
   status: "DRAFT" | "PUBLISHED";
-  readTimeMin?: number;
   coverImageUrl?: string;
   tags?: string; // comma-separated
 }
@@ -151,7 +144,6 @@ export interface AdminPostDetail {
   excerpt: string;
   category: string;
   status: string;
-  readTimeMin: number | null;
   coverImageUrl: string | null;
   tags: string[]; // parsed from comma-separated
 }
@@ -170,7 +162,6 @@ export async function fetchPostDetailAdmin(id: number): Promise<AdminPostDetail>
     excerpt: d.excerpt ?? "",
     category: d.category ?? "TIL",
     status: d.status ?? "DRAFT",
-    readTimeMin: d.readTimeMin ?? null,
     coverImageUrl: d.coverImageUrl ?? null,
     tags: d.tags ? d.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [],
   };

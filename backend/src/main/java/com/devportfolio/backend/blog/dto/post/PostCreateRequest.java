@@ -24,7 +24,6 @@ public class PostCreateRequest {
     private String tags;          // optional, comma-separated
 
     @Min(1)
-    private Integer readTimeMin;  // optional
 
     private String status;        // optional: DRAFT/PUBLISHED/ARCHIVED
 

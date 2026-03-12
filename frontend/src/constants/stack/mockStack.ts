@@ -202,6 +202,20 @@ export const INFRA_TOOLS: InfrastructureItem[] = [
     iconColor: "text-purple-700",
     bgColor: "bg-purple-100",
   },
+  {
+    name: "Vercel",
+    description: "이 포트폴리오 프론트엔드를 Vercel에 배포. GitHub 연동으로 main push 시 자동 배포됩니다.",
+    icon: "rocket_launch",
+    iconColor: "text-slate-800",
+    bgColor: "bg-slate-100",
+  },
+  {
+    name: "Railway",
+    description: "Spring Boot 백엔드와 PostgreSQL DB를 Railway에 배포하여 운영 중입니다.",
+    icon: "cloud_done",
+    iconColor: "text-violet-600",
+    bgColor: "bg-violet-100",
+  },
 ];
 
 /**
