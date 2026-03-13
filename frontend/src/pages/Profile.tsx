@@ -37,7 +37,7 @@ function SectionBlock({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="pt-10">
+    <section id={id} className="pt-6 scroll-mt-10">
       <hr className="border-slate-100 mb-10" />
       <div className="flex gap-10 lg:gap-14">
         <div className="hidden sm:block w-28 lg:w-32 shrink-0 pt-0.5">
@@ -345,8 +345,8 @@ export default function Profile() {
         </div>
 
         {/* Sticky Sidebar */}
-        <aside className="hidden lg:block w-40 shrink-0">
-          <nav className="sticky top-24">
+        <aside className="hidden lg:block w-40 shrink-0 sticky top-24 self-start">
+          <nav>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-3">
               On this page
             </p>
