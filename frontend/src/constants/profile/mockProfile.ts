@@ -27,7 +27,6 @@ export type EducationItem = {
   schoolKo?: string;
   major: string;
   majorKo?: string;
-  gpa?: string;
 };
 
 export type ActivityItem = {
@@ -134,7 +133,6 @@ export const EDUCATION: EducationItem[] = [
     schoolKo: "경희대학교",
     major: "B.S. in Computer Engineering",
     majorKo: "컴퓨터공학과",
-    gpa: "3.60 / 4.3",
   },
 ];
 

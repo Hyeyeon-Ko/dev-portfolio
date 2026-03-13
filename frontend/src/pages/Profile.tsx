@@ -264,9 +264,6 @@ export default function Profile() {
                         <span className="ml-2 text-xs font-normal text-slate-400">{edu.major}</span>
                       )}
                     </p>
-                    {edu.gpa && (
-                      <p className="text-xs text-slate-400 font-medium mt-1">GPA {edu.gpa}</p>
-                    )}
                   </div>
                   <span className="text-xs text-slate-400 font-medium shrink-0">{edu.period}</span>
                 </div>
