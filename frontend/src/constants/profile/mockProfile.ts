@@ -91,7 +91,7 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     company: "SALUSCARE",
     period: "2025.02 — 재직 중",
-    role: "Backend Engineer",
+    role: "Fullstack Engineer",
     type: "정규직",
     techStack: ["Java", "Spring Boot", "React", "Oracle", "MyBatis"],
     descriptions: [
@@ -104,10 +104,11 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     company: "KOREA MEDICAL INSTITUTE (KMI)",
     period: "2024.06 — 2024.12",
-    role: "Backend Engineer",
+    role: "Fullstack Engineer",
     type: "현장실습 → 계약직",
     techStack: ["Java", "Spring", "Oracle", "MariaDB", "MyBatis", "SVN", "XPlatform"],
     descriptions: [
+      "요구사항 분석·UX 기획·화면 디자인부터 개발까지 전 프로세스를 동료와 함께 담당",
       "총무팀 명함·문서수발신·자산관리 신청·승인·발주·공지 전 과정 웹 전환 — 수기 기안 프로세스 완전 디지털화",
       "발주 자동화: 승인 완료 내역 자동 엑셀 생성 및 발주사 이메일 자동 발송 구현",
       "업무 처리 리드타임 약 1개월 → 1주일 이내로 단축",
