@@ -22,7 +22,7 @@ export default function Footer() {
                 <span className="text-white font-black text-sm">H</span>
                 <span className="absolute bottom-0.5 right-0.5 size-2 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500" />
               </div>
-              <h2 className="text-lg font-black tracking-wider font-brand">Hyeyeon Studio</h2>
+              <h2 className="text-lg font-black tracking-normal font-brand">Hyeyeon Studio</h2>
             </div>
             <p className="text-slate-500 max-w-sm mb-8 leading-relaxed font-medium">
               매일의 기록과 코드로 나만의 브랜드를 쌓아갑니다. 
