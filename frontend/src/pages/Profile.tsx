@@ -39,8 +39,8 @@ function SectionBlock({
   return (
     <section id={id} className="pt-6 scroll-mt-10">
       <hr className="border-slate-100 mb-10" />
-      <div className="flex gap-10 lg:gap-14">
-        <div className="hidden sm:block w-28 lg:w-32 shrink-0 pt-0.5">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 lg:gap-14">
+        <div className="w-fit sm:w-28 lg:w-32 shrink-0 sm:pt-0.5">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
             {label}
           </span>

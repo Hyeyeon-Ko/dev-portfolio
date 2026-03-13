@@ -21,7 +21,7 @@ export default function LiveActivity() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 mb-20 overflow-x-hidden">
+    <section className="hidden lg:block max-w-7xl mx-auto px-6 mb-20">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
@@ -36,9 +36,9 @@ export default function LiveActivity() {
             <Icons.Project />
           </div>
           <div className="flex-grow space-y-3 min-w-0">
-            <div className="flex items-center space-x-2 flex-wrap gap-y-1 min-w-0">
-              <h3 className="font-bold text-slate-800 truncate min-w-0">작업 중: {LIVE_ACTIVITY.title}</h3>
-              <span className="px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded text-[10px] font-bold shrink-0">
+            <div className="space-y-1 min-w-0">
+              <h3 className="font-bold text-slate-800 break-words">작업 중: {LIVE_ACTIVITY.title}</h3>
+              <span className="px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded text-[10px] font-bold inline-block">
                 {LIVE_ACTIVITY.status}
               </span>
             </div>
