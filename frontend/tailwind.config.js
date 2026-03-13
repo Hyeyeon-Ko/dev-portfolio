@@ -13,7 +13,7 @@ export default {
       fontFamily: {
         sans: ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         serif: ["Noto Serif KR", "serif"],
-        brand: ["Space Grotesk", "Pretendard Variable", "sans-serif"],
+        brand: ["Pretendard Variable", "Pretendard", "sans-serif"],
       },
     },
   },
