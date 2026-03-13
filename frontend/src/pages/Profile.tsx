@@ -89,7 +89,7 @@ export default function Profile() {
         </div>
 
         <div className="flex-1">
-          <h1 className="text-5xl font-black mb-2 tracking-tight font-brand">{PROFILE.name}</h1>
+          <h1 className="text-5xl font-bold mb-2 tracking-wide">{PROFILE.name}</h1>
           <p className="text-lg text-slate-500 font-semibold mb-3">{PROFILE.roleTitle}</p>
           <p className="text-sm text-slate-500 leading-relaxed mb-6 max-w-lg">{PROFILE.tagline}</p>
           <div className="flex flex-wrap gap-3">
