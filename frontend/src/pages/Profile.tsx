@@ -159,7 +159,7 @@ export default function Profile() {
               {EXPERIENCES.map((exp, idx) => (
                 <div key={idx}>
                   <div className="flex items-baseline justify-between gap-4 mb-1">
-                    <h4 className="text-base font-black text-slate-900">{exp.company}</h4>
+                    <h4 className="font-bold text-slate-900">{exp.company}</h4>
                     <span className="text-xs text-slate-400 font-medium shrink-0">{exp.period}</span>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
