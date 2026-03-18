@@ -24,7 +24,7 @@ export default function LiveActivity() {
   }, []);
 
   return (
-    <section className="hidden lg:block max-w-7xl mx-auto px-6 mb-20">
+    <section className="max-w-7xl mx-auto px-6 mb-20">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
