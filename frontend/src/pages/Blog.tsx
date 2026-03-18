@@ -5,7 +5,6 @@ import { isAdmin } from "../utils/auth";
 import BlogHero from "../components/blog/BlogHero";
 import BlogFilterBar from "../components/blog/BlogFilterBar";
 import PostCard from "../components/blog/PostCard";
-import BlogAssistant from "../components/blog/BlogAssistant";
 
 import { BLOG_CATEGORIES } from "../constants/blog/mockBlog";
 import { fetchPosts } from "../api/blogApi";
@@ -169,7 +168,6 @@ export default function Blog() {
         </div>
       )}
 
-      <BlogAssistant posts={posts} />
     </div>
   );
 }
