@@ -229,109 +229,94 @@ export default function ProjectDetail() {
               </p>
             </section>
 
-            <section className="scroll-mt-32" id="problem">
-              <SectionTitle title="문제 정의" />
-              <div className="glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-white/60 to-white/20">
-                <ul className="space-y-8">
-                  {(problemItems.length > 0
-                    ? problemItems
-                    : [
-                        {
-                          title: "도구의 파편화로 인한 집중력 분산",
-                          description: project.description,
-                        },
-                      ]
-                  ).map((item, idx) => (
-                    <li key={`${item.title}-${idx}`} className="flex gap-6">
-                      <span className="flex-shrink-0 size-10 rounded-full bg-red-100 text-red-500 flex items-center justify-center font-bold">
-                        {formatIndex(idx)}
-                      </span>
-                      <div>
-                        <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                        <p className="text-slate-500 leading-relaxed">{item.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
+            {problemItems.length > 0 && (
+              <section className="scroll-mt-32" id="problem">
+                <SectionTitle title="문제 정의" />
+                <div className="glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-white/60 to-white/20">
+                  <ul className="space-y-8">
+                    {problemItems.map((item, idx) => (
+                      <li key={`${item.title}-${idx}`} className="flex gap-6">
+                        <span className="flex-shrink-0 size-10 rounded-full bg-red-100 text-red-500 flex items-center justify-center font-bold">
+                          {formatIndex(idx)}
+                        </span>
+                        <div>
+                          <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                          <p className="text-slate-500 leading-relaxed">{item.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            )}
 
-            <section className="scroll-mt-32" id="process">
-              <SectionTitle title="해결 과정" />
-              <div className="space-y-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                  <div className="order-2 md:order-1">
-                    <h4 className="text-2xl font-bold mb-4">
-                      {(processItems[0] && processItems[0].title) || "통합 대시보드 설계"}
-                    </h4>
-                    <p className="text-slate-500 leading-relaxed mb-6">
-                      {(processItems[0] && processItems[0].description) ||
-                        "가장 빈번하게 사용하는 기능을 중심으로 레이아웃을 구성했습니다. 탐색/메인 작업/서브 위젯의 시선 흐름을 최적화하는 데 집중했습니다."}
-                    </p>
-                    <div className="flex gap-4">
-                      <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
-                        <p className="text-sm font-bold text-primary">
-                          {primaryTags.join(" & ") || "Contextual UI"}
-                        </p>
-                      </div>
-                      <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
-                        <p className="text-sm font-bold text-accent">
-                          {secondaryTags.join(" & ") || "Zero Latency"}
-                        </p>
+            {processItems.length > 0 && (
+              <section className="scroll-mt-32" id="process">
+                <SectionTitle title="해결 과정" />
+                <div className="space-y-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="order-2 md:order-1">
+                      <h4 className="text-2xl font-bold mb-4">{processItems[0].title}</h4>
+                      <p className="text-slate-500 leading-relaxed mb-6">
+                        {processItems[0].description}
+                      </p>
+                      <div className="flex gap-4">
+                        {primaryTags.length > 0 && (
+                          <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
+                            <p className="text-sm font-bold text-primary">
+                              {primaryTags.join(" & ")}
+                            </p>
+                          </div>
+                        )}
+                        {secondaryTags.length > 0 && (
+                          <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
+                            <p className="text-sm font-bold text-accent">
+                              {secondaryTags.join(" & ")}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                  <div className="order-1 md:order-2 rounded-3xl overflow-hidden glass-card shadow-inner">
-                    <img
-                      alt="Solution UI Preview"
-                      className="w-full h-auto"
-                      src={project.imageUrl}
-                    />
+                    <div className="order-1 md:order-2 rounded-3xl overflow-hidden glass-card shadow-inner">
+                      <img
+                        alt="Solution UI Preview"
+                        className="w-full h-auto"
+                        src={project.imageUrl}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
 
-            <section className="scroll-mt-32" id="impact">
-              <SectionTitle title="기술적 도전 및 성과" />
-              <div className="grid grid-cols-1 gap-8">
-                {(impactItems.length > 0
-                  ? impactItems.slice(0, 2)
-                  : [
-                      {
-                        title: "Optimistic UI 업데이트 구현",
-                        description:
-                          "서버 응답을 기다리지 않고 UI를 즉시 업데이트하는 Optimistic UI 패턴을 도입해, 네트워크 지연 환경에서도 즉각적인 반응성을 확보했습니다.",
-                      },
-                      {
-                        title: "복잡한 인터랙션 성능 최적화",
-                        description:
-                          "리스트/드래그 등 빈번한 상호작용에서 불필요한 렌더링을 줄이고, 체감 성능을 개선하는 데 집중했습니다.",
-                      },
-                    ]
-                ).map((item, idx) => (
-                  <div
-                    key={`${item.title}-${idx}`}
-                    className="glass-card p-10 rounded-[2.5rem] transition-transform hover:translate-y-[-4px]"
-                  >
-                    <h4
-                      className={`text-xl font-bold mb-4 ${
-                        idx === 0 ? "text-primary" : "text-accent"
-                      }`}
+            {impactItems.length > 0 && (
+              <section className="scroll-mt-32" id="impact">
+                <SectionTitle title="기술적 도전 및 성과" />
+                <div className="grid grid-cols-1 gap-8">
+                  {impactItems.slice(0, 2).map((item, idx) => (
+                    <div
+                      key={`${item.title}-${idx}`}
+                      className="glass-card p-10 rounded-[2.5rem] transition-transform hover:translate-y-[-4px]"
                     >
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-600 leading-relaxed mb-6">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-sm font-bold text-slate-400">
-                      <span className="material-symbols-outlined text-base">check_circle</span>
-                      {project.tags.slice(0, 2).join(" & ") || project.category.join(" · ")} 활용
+                      <h4
+                        className={`text-xl font-bold mb-4 ${
+                          idx === 0 ? "text-primary" : "text-accent"
+                        }`}
+                      >
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-600 leading-relaxed mb-6">
+                        {item.description}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm font-bold text-slate-400">
+                        <span className="material-symbols-outlined text-base">check_circle</span>
+                        {project.tags.slice(0, 2).join(" & ") || project.category.join(" · ")} 활용
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         </div>
       </main>
