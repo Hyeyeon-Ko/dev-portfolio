@@ -186,13 +186,13 @@ export const CERTS: AwardItem[] = [
     description:
       "실무에서 DB 구조·쿼리 이해의 한계를 느껴 이론을 보강했고, SQLD 취득으로 기반을 탄탄히 다졌습니다.",
   },
-  // {
-  //   title: "OPIC IM1",
-  //   issuer: "ACTFL",
-  //   year: "2026.02",
-  //   icon: "translate",
-  //   description: "IM1 등급 취득.",
-  // },
+  {
+    title: "Toeic Speaking AL",
+    issuer: "ETS",
+    year: "2026.03",
+    icon: "translate",
+    description: "Toeic Speaking AL등급을 취득했습니다.",
+  },
 ];
 
 export const PROFILE_CTA = {
