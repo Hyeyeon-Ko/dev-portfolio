@@ -5,6 +5,7 @@ import { isAdmin } from "../utils/auth";
 import BlogHero from "../components/blog/BlogHero";
 import BlogFilterBar from "../components/blog/BlogFilterBar";
 import PostCard from "../components/blog/PostCard";
+import Pagination from "../components/ui/Pagination";
 
 import { BLOG_CATEGORIES } from "../constants/blog/mockBlog";
 import { fetchPosts } from "../api/blogApi";
@@ -132,40 +133,13 @@ export default function Blog() {
         </section>
       )}
 
-      {/* 페이지네이션 */}
-      {!loading && !error && totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mb-24">
-          <button
-            type="button"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 0}
-            className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
-          >
-            이전
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => handlePageChange(i)}
-              className={`w-9 h-9 rounded-xl text-sm font-bold transition-all ${
-                i === currentPage
-                  ? "bg-primary text-white shadow-sm"
-                  : "text-slate-500 hover:bg-slate-100"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-          <button
-            type="button"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage >= totalPages - 1}
-            className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
-          >
-            다음
-          </button>
-        </div>
+      {!loading && !error && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          className="mb-24"
+        />
       )}
 
     </div>

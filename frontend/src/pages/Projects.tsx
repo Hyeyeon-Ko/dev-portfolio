@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "../components/projects/ProjectCard";
 import CategoryFilter from "../components/projects/CategoryFilter";
+import Pagination from "../components/ui/Pagination";
 import { Category } from "../types/project";
 import type { Project } from "../types/project";
 import { fetchProjects } from "../api/projectApi";
@@ -128,40 +129,13 @@ export default function Projects() {
         </div>
       )}
 
-      {/* 페이지네이션 */}
-      {!loading && !error && totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-16">
-          <button
-            type="button"
-            onClick={() => handlePageChange(page - 1)}
-            disabled={page === 0}
-            className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
-          >
-            이전
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => handlePageChange(i)}
-              className={`w-9 h-9 rounded-xl text-sm font-bold transition-all ${
-                i === page
-                  ? "bg-primary text-white shadow-sm"
-                  : "text-slate-500 hover:bg-slate-100"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-          <button
-            type="button"
-            onClick={() => handlePageChange(page + 1)}
-            disabled={page >= totalPages - 1}
-            className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
-          >
-            다음
-          </button>
-        </div>
+      {!loading && !error && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          className="mt-16"
+        />
       )}
     </div>
   );
