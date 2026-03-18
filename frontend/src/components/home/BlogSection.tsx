@@ -6,11 +6,12 @@ import type { Post } from "../../types/blog";
 
 const BlogSection: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchPosts({ size: 3 })
       .then((page) => setPosts(page.items))
-      .catch(() => {});
+      .catch(() => setError(true));
   }, []);
 
   return (
@@ -27,6 +28,12 @@ const BlogSection: React.FC = () => {
           기록 전체 보기
         </Link>
       </div>
+
+      {error && (
+        <p className="text-slate-400 text-sm text-center py-12">
+          포스트를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.
+        </p>
+      )}
 
       <div className="grid md:grid-cols-3 gap-8">
         {posts.map((post) => (

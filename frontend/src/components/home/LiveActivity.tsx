@@ -10,14 +10,17 @@ export default function LiveActivity() {
 
   useEffect(() => {
     fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/commits?per_page=1`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+        return res.json();
+      })
       .then((data) => {
         const msg: string = data[0]?.commit?.message ?? "";
         // 첫 줄만 (멀티라인 커밋 메시지 대응)
-        setLastCommit(msg.split("\n")[0]);
+        setLastCommit(msg.split("\n")[0] || "커밋 정보 없음");
         setCommitUrl(data[0]?.html_url ?? "#");
       })
-      .catch(() => {});
+      .catch(() => setLastCommit("GitHub 정보를 불러올 수 없습니다"));
   }, []);
 
   return (
@@ -45,7 +48,11 @@ export default function LiveActivity() {
 
             <p className="text-sm text-slate-500 truncate">
               Last Commit:{" "}
-              {lastCommit ? (
+              {lastCommit === null ? (
+                <span className="bg-slate-50 px-1.5 py-0.5 rounded text-slate-400 animate-pulse">
+                  불러오는 중...
+                </span>
+              ) : commitUrl !== "#" ? (
                 <a
                   href={commitUrl}
                   target="_blank"
@@ -55,8 +62,8 @@ export default function LiveActivity() {
                   {lastCommit}
                 </a>
               ) : (
-                <span className="bg-slate-50 px-1.5 py-0.5 rounded text-slate-400 animate-pulse">
-                  불러오는 중...
+                <span className="bg-slate-50 px-1.5 py-0.5 rounded text-slate-400">
+                  {lastCommit}
                 </span>
               )}
             </p>

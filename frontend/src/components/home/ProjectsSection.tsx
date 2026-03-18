@@ -5,11 +5,12 @@ import { fetchProjects } from "../../api/projectApi";
 
 const ProjectsSection: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchProjects()
       .then((data) => setProjects(data.slice(0, 2)))
-      .catch(() => {});
+      .catch(() => setError(true));
   }, []);
 
   return (
@@ -26,6 +27,12 @@ const ProjectsSection: React.FC = () => {
           </svg>
         </Link>
       </div>
+
+      {error && (
+        <p className="text-slate-400 text-sm text-center py-12">
+          프로젝트를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.
+        </p>
+      )}
 
       <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project) => (
