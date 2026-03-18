@@ -160,20 +160,20 @@ export const ACTIVITIES: ActivityItem[] = [
 
 export const AWARDS: AwardItem[] = [
   {
-    title: "KHreative StartUP 창업아이디어 공모전 최우수상",
-    issuer: "KYUNG HEE UNIVERSITY",
-    year: "2024.08",
-    icon: "emoji_events",
-    description:
-      "SHIFT 무인결제 아이디어를 공동 기획하고 백엔드를 담당. 기술·보안·비용 측면 해결안으로 최우수상 수상.",
-  },
-  {
     title: "교내 동아리 대항전 장려상",
     issuer: "KYUNG HEE UNIVERSITY",
     year: "2021.08",
     icon: "military_tech",
     description:
       "신입생 대상 멘토-멘티 앱 개발. Spring 기반 실시간 채팅 API를 구현해 장려상 수상.",
+  },
+  {
+    title: "KHreative StartUP 창업아이디어 공모전 최우수상",
+    issuer: "KYUNG HEE UNIVERSITY",
+    year: "2024.08",
+    icon: "emoji_events",
+    description:
+      "SHIFT 무인결제 아이디어를 공동 기획하고 백엔드를 담당. 기술·보안·비용 측면 해결안으로 최우수상 수상.",
   },
 ];
 
