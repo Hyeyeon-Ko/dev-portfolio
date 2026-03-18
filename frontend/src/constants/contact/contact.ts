@@ -18,10 +18,11 @@ export const SOCIALS: SocialItem[] = [
   },
   {
     label: "LinkedIn",
-    subLabel: "커리어/경험 확인",
-    href: "https://linkedin.com",
+    subLabel: "준비 중",
+    href: "#",
     icon: "work",
     colorClass: "bg-[#0077b5]",
+    disabled: true,
   },
   {
     label: "Email",

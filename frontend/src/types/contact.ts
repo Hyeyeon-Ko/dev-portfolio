@@ -12,6 +12,7 @@ export interface ContactFormData {
     icon: string;
     colorClass: string;
     copyText?: string;
+    disabled?: boolean;
   }
   
   export interface ContactHeroCopy {

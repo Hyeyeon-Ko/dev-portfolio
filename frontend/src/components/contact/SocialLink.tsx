@@ -16,6 +16,25 @@ export default function SocialLink({ item }: { item: SocialItem }) {
     }
   };
 
+  if (item.disabled) {
+    return (
+      <div className="flex items-center justify-between p-6 glass-card rounded-3xl opacity-50 cursor-not-allowed">
+        <div className="flex items-center gap-5">
+          <div
+            className={`size-12 rounded-2xl ${item.colorClass} text-white flex items-center justify-center shadow-lg`}
+          >
+            <span className="material-symbols-outlined">{item.icon}</span>
+          </div>
+          <div>
+            <p className="font-black text-slate-900">{item.label}</p>
+            <p className="text-xs font-medium text-slate-400 mt-0.5">{item.subLabel}</p>
+          </div>
+        </div>
+        <span className="material-symbols-outlined text-[20px] text-slate-300">lock</span>
+      </div>
+    );
+  }
+
   return (
     <a
       href={item.href}
@@ -43,7 +62,7 @@ export default function SocialLink({ item }: { item: SocialItem }) {
         type="button"
         onClick={item.copyText ? onCopy : undefined}
         className="text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all"
-        aria-label="action"
+        aria-label={item.copyText ? `${item.label} 주소 복사` : `${item.label} 바로가기`}
       >
         <span className="material-symbols-outlined text-[20px]">
           {item.copyText ? (copied ? "check" : "content_copy") : "chevron_right"}
