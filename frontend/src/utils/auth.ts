@@ -15,3 +15,17 @@ export function clearAdminKey(): void {
 export function isAdmin(): boolean {
   return !!getAdminKey();
 }
+
+export async function verifyAdminKey(): Promise<boolean> {
+  const key = getAdminKey();
+  if (!key) return false;
+  try {
+    const res = await fetch("/api/admin/verify", {
+      headers: { "X-ADMIN-KEY": key },
+    });
+    if (!res.ok) clearAdminKey();
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
