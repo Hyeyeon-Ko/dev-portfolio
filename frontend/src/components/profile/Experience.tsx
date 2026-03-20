@@ -20,7 +20,7 @@ const Experience: React.FC = () => {
                   {exp.techStack.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-1 rounded-lg bg-slate-50 text-slate-500 text-[10px] font-bold tracking-wider"
+                      className="px-2 py-1 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] font-bold tracking-wider"
                     >
                       {t}
                     </span>
@@ -33,12 +33,12 @@ const Experience: React.FC = () => {
               <div className="flex items-center gap-3 mb-4">
                 <h4 className="text-2xl font-bold">{exp.role}</h4>
                 {exp.type && (
-                  <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">
                     {exp.type}
                   </span>
                 )}
               </div>
-              <ul className="space-y-4 text-slate-600 font-medium list-disc list-outside ml-4">
+              <ul className="space-y-4 text-slate-600 dark:text-slate-300 font-medium list-disc list-outside ml-4">
                 {exp.descriptions.map((desc, dIdx) => (
                   <li key={dIdx} className="leading-relaxed">
                     {desc}

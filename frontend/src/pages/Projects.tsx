@@ -103,7 +103,7 @@ export default function Projects() {
         <h1 className="text-5xl lg:text-6xl font-black mb-4 font-brand">
           <span className="text-gradient">Projects</span>
         </h1>
-        <p className="text-lg text-slate-500 font-medium leading-relaxed">
+        <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
           단순한 코드의 나열을 넘어, 문제를 해결하고 가치를 창출한 기록들입니다.
         </p>
       </section>
@@ -136,7 +136,7 @@ export default function Projects() {
             onChange={(e) => { setSearchInput(e.target.value); setPage(0); }}
             placeholder="프로젝트 검색..."
             aria-label="프로젝트 검색"
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
       </div>

@@ -52,7 +52,7 @@ const HomeHero: React.FC = () => {
           <span>현재 새로운 도전을 준비 중입니다</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100">
           <span className="block leading-[1.10]">
             안녕하세요,
           </span>
@@ -75,7 +75,7 @@ const HomeHero: React.FC = () => {
           </Link>
           <Link
             to="/projects"
-            className="px-8 py-4 bg-white text-slate-800 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 hover:-translate-y-1 transition-all"
+            className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:-translate-y-1 transition-all"
           >
             Projects 보기
           </Link>
@@ -84,7 +84,7 @@ const HomeHero: React.FC = () => {
 
       {/* Code snippet panel */}
       <div className="relative overflow-hidden">
-        <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-50 rounded-full blur-3xl opacity-50" />
+        <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-50 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-50" />
         <div className="rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-300/40 transform rotate-1 hover:rotate-0 transition-transform duration-700">
           {/* Title bar */}
           <div className="bg-[#1e1e2e] px-5 py-3.5 flex items-center gap-2 border-b border-white/5">

@@ -24,7 +24,7 @@ const NAV_ITEMS = [
 const TONE = {
   primary: { value: "text-primary", border: "border-l-primary", bg: "bg-primary/5" },
   accent: { value: "text-accent", border: "border-l-accent", bg: "bg-accent/5" },
-  dark: { value: "text-slate-800", border: "border-l-slate-300", bg: "bg-slate-50" },
+  dark: { value: "text-slate-800 dark:text-slate-100", border: "border-l-slate-300", bg: "bg-slate-50 dark:bg-slate-800" },
 } as const;
 
 function SectionBlock({
@@ -38,10 +38,10 @@ function SectionBlock({
 }) {
   return (
     <section id={id} className="pt-6 scroll-mt-10">
-      <hr className="border-slate-100 mb-10" />
+      <hr className="border-slate-100 dark:border-slate-700 mb-10" />
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 lg:gap-14">
         <div className="w-fit sm:w-28 lg:w-32 shrink-0 sm:pt-0.5">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
             {label}
           </span>
         </div>
@@ -76,7 +76,7 @@ export default function Profile() {
       {/* ── Hero ── */}
       <div className="flex flex-col md:flex-row gap-12 items-start mb-4">
         <div className="relative shrink-0">
-          <div className="size-40 rounded-[2rem] overflow-hidden shadow-xl relative z-10 bg-white">
+          <div className="size-40 rounded-[2rem] overflow-hidden shadow-xl relative z-10 bg-white dark:bg-slate-800">
             <img
               alt={PROFILE.profileImage.alt}
               className="w-full h-full object-cover"
@@ -90,20 +90,20 @@ export default function Profile() {
 
         <div className="flex-1">
           <h1 className="text-5xl font-bold mb-2 tracking-normal">{PROFILE.name}</h1>
-          <p className="text-lg text-slate-500 font-semibold mb-3">{PROFILE.roleTitle}</p>
-          <p className="text-sm text-slate-500 leading-relaxed mb-6 max-w-lg">{PROFILE.tagline}</p>
+          <p className="text-lg text-slate-500 dark:text-slate-400 font-semibold mb-3">{PROFILE.roleTitle}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 max-w-lg">{PROFILE.tagline}</p>
           <div className="flex flex-wrap gap-3">
             {PROFILE.links.map((link) =>
               link.enabled === false ? (
                 <div
                   key={link.label}
-                  className="flex items-center gap-2 px-3 py-1.5 glass-card rounded-xl text-xs font-bold text-slate-400 cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-1.5 glass-card rounded-xl text-xs font-bold text-slate-400 dark:text-slate-500 cursor-not-allowed"
                 >
                   <span className="material-symbols-outlined text-base">
                     {link.label === "GitHub" ? "hub" : link.label === "Blog" ? "history_edu" : "work"}
                   </span>
                   {link.label}
-                  <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-slate-100">준비중</span>
+                  <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700">준비중</span>
                 </div>
               ) : (
                 <a
@@ -145,7 +145,7 @@ export default function Profile() {
                         {item.subtitle}
                       </p>
                     )}
-                    <p className="text-sm font-bold text-slate-800 mb-1.5">{item.title}</p>
+                    <p className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-1.5">{item.title}</p>
                     <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
                   </div>
                 );
@@ -159,20 +159,20 @@ export default function Profile() {
               {EXPERIENCES.map((exp, idx) => (
                 <div key={idx}>
                   <div className="flex items-baseline justify-between gap-4 mb-1">
-                    <h4 className="font-bold text-slate-900">{exp.company}</h4>
-                    <span className="text-xs text-slate-400 font-medium shrink-0">{exp.period}</span>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100">{exp.company}</h4>
+                    <span className="text-xs text-slate-400 dark:text-slate-500 font-medium shrink-0">{exp.period}</span>
                   </div>
                   <div className="flex items-center gap-2 mb-3">
                     <p className="text-sm font-bold text-primary">{exp.role}</p>
                     {exp.type && (
-                      <span className="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                      <span className="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
                         {exp.type}
                       </span>
                     )}
                   </div>
                   <ul className="space-y-2 mb-3">
                     {exp.descriptions.map((desc, dIdx) => (
-                      <li key={dIdx} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
+                      <li key={dIdx} className="flex gap-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                         <span className="text-primary font-bold shrink-0 mt-0.5">—</span>
                         <span>{desc}</span>
                       </li>
@@ -183,7 +183,7 @@ export default function Profile() {
                       {exp.techStack.map((t) => (
                         <span
                           key={t}
-                          className="text-[10px] font-bold px-2 py-1 bg-slate-50 text-slate-500 rounded-lg tracking-wider border border-slate-100"
+                          className="text-[10px] font-bold px-2 py-1 bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg tracking-wider border border-slate-100 dark:border-slate-700"
                         >
                           {t}
                         </span>
@@ -197,10 +197,10 @@ export default function Profile() {
 
           {/* 프로젝트 */}
           <SectionBlock id="projects" label="프로젝트">
-            <div className="flex items-center justify-between p-6 rounded-2xl bg-slate-50 border border-slate-100">
+            <div className="flex items-center justify-between p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
               <div>
-                <p className="font-bold text-slate-900 mb-1">개발 프로젝트 전체 보기</p>
-                <p className="text-sm text-slate-500">사이드 프로젝트 및 팀 프로젝트를 확인할 수 있어요.</p>
+                <p className="font-bold text-slate-900 dark:text-slate-100 mb-1">개발 프로젝트 전체 보기</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">사이드 프로젝트 및 팀 프로젝트를 확인할 수 있어요.</p>
               </div>
               <Link
                 to="/projects"
@@ -218,26 +218,26 @@ export default function Profile() {
               <div className="p-6 rounded-2xl border-l-4 border-l-primary bg-primary/5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="material-symbols-outlined text-primary text-lg">dns</span>
-                  <p className="font-bold text-slate-900">{SPECIALTY.main}</p>
+                  <p className="font-bold text-slate-900 dark:text-slate-100">{SPECIALTY.main}</p>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed mb-3">{SPECIALTY.mainDesc}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">{SPECIALTY.mainDesc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {SPECIALTY.mainSkills.map((s) => (
-                    <span key={s} className="text-[10px] font-bold px-2 py-1 bg-white text-primary rounded-lg tracking-wider border border-primary/20">
+                    <span key={s} className="text-[10px] font-bold px-2 py-1 bg-white dark:bg-slate-800 text-primary rounded-lg tracking-wider border border-primary/20">
                       {s}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="p-6 rounded-2xl border-l-4 border-l-slate-300 bg-slate-50">
+              <div className="p-6 rounded-2xl border-l-4 border-l-slate-300 bg-slate-50 dark:bg-slate-800">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="material-symbols-outlined text-slate-500 text-lg">web</span>
-                  <p className="font-bold text-slate-700">{SPECIALTY.sub}</p>
+                  <span className="material-symbols-outlined text-slate-500 dark:text-slate-400 text-lg">web</span>
+                  <p className="font-bold text-slate-700 dark:text-slate-200">{SPECIALTY.sub}</p>
                 </div>
-                <p className="text-sm text-slate-500 leading-relaxed mb-3">{SPECIALTY.subDesc}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-3">{SPECIALTY.subDesc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {SPECIALTY.subSkills.map((s) => (
-                    <span key={s} className="text-[10px] font-bold px-2 py-1 bg-white text-slate-500 rounded-lg tracking-wider border border-slate-200">
+                    <span key={s} className="text-[10px] font-bold px-2 py-1 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg tracking-wider border border-slate-200 dark:border-slate-700">
                       {s}
                     </span>
                   ))}
@@ -252,20 +252,20 @@ export default function Profile() {
               {EDUCATION.map((edu, idx) => (
                 <div key={idx} className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-black text-slate-900">
+                    <p className="font-black text-slate-900 dark:text-slate-100">
                       {edu.schoolKo ?? edu.school}
                       {edu.schoolKo && (
-                        <span className="ml-2 text-xs font-medium text-slate-400">{edu.school}</span>
+                        <span className="ml-2 text-xs font-medium text-slate-400 dark:text-slate-500">{edu.school}</span>
                       )}
                     </p>
-                    <p className="text-sm text-slate-600 font-medium mt-0.5">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 font-medium mt-0.5">
                       {edu.majorKo ?? edu.major}
                       {edu.majorKo && (
-                        <span className="ml-2 text-xs font-normal text-slate-400">{edu.major}</span>
+                        <span className="ml-2 text-xs font-normal text-slate-400 dark:text-slate-500">{edu.major}</span>
                       )}
                     </p>
                   </div>
-                  <span className="text-xs text-slate-400 font-medium shrink-0">{edu.period}</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-500 font-medium shrink-0">{edu.period}</span>
                 </div>
               ))}
             </div>
@@ -283,12 +283,12 @@ export default function Profile() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-baseline justify-between gap-4">
-                        <p className="font-bold text-slate-900">{award.title}</p>
-                        <span className="text-xs text-slate-400 font-medium shrink-0">{award.year}</span>
+                        <p className="font-bold text-slate-900 dark:text-slate-100">{award.title}</p>
+                        <span className="text-xs text-slate-400 dark:text-slate-500 font-medium shrink-0">{award.year}</span>
                       </div>
-                      <p className="text-sm text-slate-500 mt-0.5">{award.issuer}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{award.issuer}</p>
                       {award.description && (
-                        <p className="text-xs text-slate-500 mt-2 leading-relaxed">{award.description}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">{award.description}</p>
                       )}
                     </div>
                   </div>
@@ -300,13 +300,13 @@ export default function Profile() {
                 {ACTIVITIES.map((act, idx) => (
                   <div key={idx}>
                     <div className="flex items-baseline justify-between gap-4 mb-1">
-                      <h4 className="font-bold text-slate-900">{act.name}</h4>
-                      <span className="text-xs text-slate-400 font-medium shrink-0">{act.period}</span>
+                      <h4 className="font-bold text-slate-900 dark:text-slate-100">{act.name}</h4>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-medium shrink-0">{act.period}</span>
                     </div>
                     <p className="text-sm font-semibold text-primary mb-2">{act.role}</p>
                     <ul className="space-y-1.5">
                       {act.descriptions.map((desc, dIdx) => (
-                        <li key={dIdx} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
+                        <li key={dIdx} className="flex gap-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                           <span className="text-primary font-bold shrink-0 mt-0.5">—</span>
                           <span>{desc}</span>
                         </li>
@@ -328,12 +328,12 @@ export default function Profile() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-baseline justify-between gap-4">
-                      <p className="font-bold text-slate-900">{cert.title}</p>
-                      <span className="text-xs text-slate-400 font-medium shrink-0">{cert.year}</span>
+                      <p className="font-bold text-slate-900 dark:text-slate-100">{cert.title}</p>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-medium shrink-0">{cert.year}</span>
                     </div>
-                    <p className="text-sm text-slate-500 mt-0.5">{cert.issuer}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{cert.issuer}</p>
                     {cert.description && (
-                      <p className="text-xs text-slate-500 mt-2 leading-relaxed">{cert.description}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">{cert.description}</p>
                     )}
                   </div>
                 </div>
@@ -347,7 +347,7 @@ export default function Profile() {
         {/* Sticky Sidebar */}
         <aside className="hidden lg:block w-40 shrink-0 sticky top-24 self-start">
           <nav>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-3">
+            <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 px-3">
               On this page
             </p>
             <ul className="space-y-0.5">
@@ -358,7 +358,7 @@ export default function Profile() {
                     className={`block text-sm py-1.5 px-3 rounded-lg font-medium transition-all ${
                       activeId === id
                         ? "text-primary bg-primary/10 font-bold"
-                        : "text-slate-400 hover:text-slate-700 hover:bg-slate-50"
+                        : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
                     }`}
                   >
                     {label}

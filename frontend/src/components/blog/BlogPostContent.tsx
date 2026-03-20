@@ -31,14 +31,14 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
 
   return (
     <article className="lg:pr-12">
-      <div className="flex items-center gap-4 text-sm text-gray-400 mb-6 font-medium">
+      <div className="flex items-center gap-4 text-sm text-gray-400 dark:text-slate-500 mb-6 font-medium">
         <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-tight">
           {category}
         </span>
         <span>{date}</span>
       </div>
 
-      <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold text-slate-900 leading-[1.15] mb-8">
+      <h1 className="text-4xl md:text-5xl lg:text-4xl font-extrabold text-slate-900 dark:text-slate-100 leading-[1.15] mb-8">
         {title}
         {subtitle && (
           <>
@@ -48,7 +48,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
         )}
       </h1>
 
-      <div className="flex items-center justify-between mb-12 py-6 border-b border-gray-100">
+      <div className="flex items-center justify-between mb-12 py-6 border-b border-gray-100 dark:border-slate-700">
         <div className="flex items-center gap-4">
           <img
             src={author.avatar}
@@ -56,26 +56,26 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
             className="w-12 h-12 rounded-full ring-2 ring-primary/20"
           />
           <div>
-            <div className="font-bold text-slate-800">{author.name}</div>
-            <div className="text-sm text-gray-400">{author.title}</div>
+            <div className="font-bold text-slate-800 dark:text-slate-100">{author.name}</div>
+            <div className="text-sm text-gray-400 dark:text-slate-500">{author.title}</div>
           </div>
         </div>
       </div>
 
       {/* 마크다운 본문 */}
       <div className="prose prose-slate max-w-none mb-12
-        prose-headings:font-extrabold prose-headings:text-slate-900
+        prose-headings:font-extrabold prose-headings:text-slate-900 dark:prose-headings:text-slate-100
         prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
         prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-        prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
+        prose-p:text-gray-600 dark:prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
         prose-a:text-primary prose-a:no-underline hover:prose-a:underline
         prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:rounded prose-code:font-semibold prose-code:text-sm
         prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-pre:rounded-2xl prose-pre:p-6
-        prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-slate-700 prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:rounded-r-xl
-        prose-ul:text-gray-600 prose-ol:text-gray-600
+        prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-slate-700 dark:prose-blockquote:text-slate-300 prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:rounded-r-xl
+        prose-ul:text-gray-600 dark:prose-ul:text-slate-300 prose-ol:text-gray-600 dark:prose-ol:text-slate-300
         prose-li:mb-2
-        prose-strong:text-slate-800
-        prose-table:w-full prose-th:bg-slate-50 prose-th:font-bold
+        prose-strong:text-slate-800 dark:prose-strong:text-slate-100
+        prose-table:w-full prose-th:bg-slate-50 dark:prose-th:bg-slate-700 prose-th:font-bold
         prose-img:rounded-2xl prose-img:my-8">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {content}
@@ -87,7 +87,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 bg-slate-100 text-slate-500 rounded-full text-sm font-semibold hover:bg-slate-200 transition-colors cursor-pointer"
+              className="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 rounded-full text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
             >
               #{tag}
             </span>
@@ -95,7 +95,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
         </div>
       )}
 
-      <div className="flex items-center justify-between p-8 bg-white rounded-3xl border border-gray-100 shadow-sm mb-20">
+      <div className="flex items-center justify-between p-8 bg-white dark:bg-slate-800 rounded-3xl border border-gray-100 dark:border-slate-700 shadow-sm mb-20">
         <div className="flex gap-6">
           <div className="relative group/like">
             <button
@@ -124,7 +124,7 @@ const BlogPostContent: FC<Props> = ({ post, onPrev, onNext }) => {
             <span className="font-bold">{post.commentCount}</span>
           </button>
         </div>
-        <div className="flex gap-4 text-sm font-bold text-gray-400">
+        <div className="flex gap-4 text-sm font-bold text-gray-400 dark:text-slate-500">
           <button
             type="button"
             onClick={onPrev}

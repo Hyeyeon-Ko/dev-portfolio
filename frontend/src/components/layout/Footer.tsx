@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/20 py-16 bg-white/30 backdrop-blur-lg mt-20">
+    <footer className="border-t border-white/20 dark:border-slate-700/30 py-16 bg-white/30 dark:bg-slate-900/50 backdrop-blur-lg mt-20">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           <div className="col-span-1 md:col-span-2">
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold mb-8 text-slate-800">Navigation</h3>
+            <h3 className="font-bold mb-8 text-slate-800 dark:text-slate-200">Navigation</h3>
             <ul className="space-y-4">
               {navItems.map((item) => (
                 <li key={item.to}>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold mb-8 text-slate-800">Socials</h3>
+            <h3 className="font-bold mb-8 text-slate-800 dark:text-slate-200">Socials</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="pt-12 border-t border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-slate-400 font-medium">
             © {new Date().getFullYear()} Hyeyeon Studio. All rights reserved.
           </p>

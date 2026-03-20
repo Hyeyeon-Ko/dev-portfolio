@@ -14,7 +14,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 0}
-        className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
+        className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 transition-all"
       >
         이전
       </button>
@@ -26,7 +26,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
           className={`w-9 h-9 rounded-xl text-sm font-bold transition-all ${
             i === currentPage
               ? "bg-primary text-white shadow-sm"
-              : "text-slate-500 hover:bg-slate-100"
+              : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
           }`}
         >
           {i + 1}
@@ -36,7 +36,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage >= totalPages - 1}
-        className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 hover:bg-slate-100 disabled:opacity-30 transition-all"
+        className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 transition-all"
       >
         다음
       </button>

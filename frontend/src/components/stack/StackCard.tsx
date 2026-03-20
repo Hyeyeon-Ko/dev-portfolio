@@ -18,14 +18,14 @@ export default function StackCard({ category }: { category: SkillCategory }) {
         {category.items.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-start gap-4 p-4 rounded-2xl bg-white/30 border border-white/50 hover:bg-white/50 transition-colors"
+            className="flex items-start gap-4 p-4 rounded-2xl bg-white/30 dark:bg-slate-700/50 border border-white/50 dark:border-slate-600/50 hover:bg-white/50 dark:hover:bg-slate-700/70 transition-colors"
           >
-            <div className={`size-10 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center font-bold ${item.color} text-[10px] uppercase text-center leading-tight`}>
+            <div className={`size-10 shrink-0 bg-white dark:bg-slate-600 rounded-xl shadow-sm flex items-center justify-center font-bold ${item.color} text-[10px] uppercase text-center leading-tight`}>
               {item.name}
             </div>
             <div>
               <p className="font-bold text-sm mb-1">{item.fullName}</p>
-              <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">{item.description}</p>
             </div>
           </div>
         ))}

@@ -32,7 +32,7 @@ export default function ContactHero() {
         {CONTACT_HERO.badge}
       </div>
 
-      <h1 className="text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 font-brand">
+      <h1 className="text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 dark:text-slate-100 font-brand">
         Say <span className="text-gradient">Hello.</span>
       </h1>
 
@@ -53,12 +53,12 @@ export default function ContactHero() {
           className="flex-shrink-0 group relative text-left"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-700" />
-          <div className="relative px-6 py-4 bg-white ring-1 ring-slate-900/5 rounded-2xl flex items-center gap-4">
+          <div className="relative px-6 py-4 bg-white dark:bg-slate-800 ring-1 ring-slate-900/5 dark:ring-slate-700 rounded-2xl flex items-center gap-4">
             <div className="flex flex-col">
               <span className="text-[10px] font-bold text-primary uppercase tracking-tighter">
                 AI Networking Tip
               </span>
-              <p className="text-sm font-medium text-slate-700 min-h-[1.5rem] w-[220px]">
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-200 min-h-[1.5rem] w-[220px]">
                 {loading ? "생성 중..." : tip ?? "팁을 보려면 클릭하세요"}
               </p>
             </div>

@@ -63,9 +63,9 @@ export default function ProjectCard({ project }: Props) {
           </h3>
         </Link>
 
-        <p className="text-slate-500 font-medium mb-6">{project.oneLine}</p>
+        <p className="text-slate-500 dark:text-slate-400 font-medium mb-6">{project.oneLine}</p>
 
-        <p className="text-slate-500 leading-relaxed mb-10 flex-1 text-lg">
+        <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-10 flex-1 text-lg">
           {project.description}
         </p>
 
@@ -97,7 +97,7 @@ export default function ProjectCard({ project }: Props) {
           {project.secondaryLink &&
             (secondaryIsExternal ? (
               <a
-                className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
+                className="flex items-center gap-2 text-base font-bold text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
                 href={project.secondaryLink.url}
                 target="_blank"
                 rel="noreferrer"
@@ -110,7 +110,7 @@ export default function ProjectCard({ project }: Props) {
             ) : (
               <Link
                 to={`/projects/${project.id}`}
-                className="flex items-center gap-2 text-base font-bold text-slate-400 hover:text-slate-600"
+                className="flex items-center gap-2 text-base font-bold text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
               >
                 {project.secondaryLink.label}
                 <span className="material-symbols-outlined text-xl">

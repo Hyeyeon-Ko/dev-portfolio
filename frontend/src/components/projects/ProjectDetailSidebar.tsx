@@ -43,7 +43,7 @@ export default function ProjectDetailSidebar({ project }: Props) {
   return (
     <aside className="hidden lg:block w-64 flex-shrink-0">
       <div className="sticky top-32 space-y-10">
-        <nav className="flex flex-col gap-4 border-l-2 border-slate-200">
+        <nav className="flex flex-col gap-4 border-l-2 border-slate-200 dark:border-slate-700">
           {PROJECT_DETAIL_SIDEBAR_LINKS.map((link) => {
             const active = activeId === link.id;
             return (
@@ -100,7 +100,7 @@ export default function ProjectDetailSidebar({ project }: Props) {
                 href={project.secondaryLink.url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/40 backdrop-blur-xl border border-white/40 shadow-xl text-slate-700 font-bold hover:bg-white/60 transition-all"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 shadow-xl text-slate-700 dark:text-slate-200 font-bold hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all"
               >
                 <span className="material-symbols-outlined text-xl">
                   {project.secondaryLink.icon}
@@ -108,7 +108,7 @@ export default function ProjectDetailSidebar({ project }: Props) {
                 {project.secondaryLink.label}
               </a>
             ) : secondaryIsPlaceholder ? (
-              <div className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/30 backdrop-blur-xl border border-white/40 shadow-xl text-slate-500 font-bold opacity-60 cursor-not-allowed">
+              <div className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/30 dark:bg-slate-800/30 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 shadow-xl text-slate-500 dark:text-slate-400 font-bold opacity-60 cursor-not-allowed">
                 <span className="material-symbols-outlined text-xl">
                   {project.secondaryLink.icon}
                 </span>
@@ -117,7 +117,7 @@ export default function ProjectDetailSidebar({ project }: Props) {
             ) : (
               <Link
                 to={project.secondaryLink.url}
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/40 backdrop-blur-xl border border-white/40 shadow-xl text-slate-700 font-bold hover:bg-white/60 transition-all"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 shadow-xl text-slate-700 dark:text-slate-200 font-bold hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all"
               >
                 <span className="material-symbols-outlined text-xl">
                   {project.secondaryLink.icon}

@@ -86,7 +86,7 @@ export default function Dialog({
 
       {/* modal */}
       <div
-        className="relative glass-card rounded-[2rem] p-8 w-full max-w-sm shadow-2xl animate-[fadeInUp_0.18s_ease]"
+        className="relative glass-card rounded-[2rem] p-8 w-full max-w-sm shadow-2xl animate-[fadeInUp_0.18s_ease] dark:bg-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
         {/* icon */}
@@ -97,9 +97,9 @@ export default function Dialog({
         </div>
 
         {/* text */}
-        <h3 className="text-lg font-bold text-slate-800 mb-2 leading-snug">{title}</h3>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 leading-snug">{title}</h3>
         {message && (
-          <p className="text-sm text-slate-500 leading-relaxed mb-6">{message}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">{message}</p>
         )}
         {!message && <div className="mb-6" />}
 
@@ -109,7 +109,7 @@ export default function Dialog({
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all"
             >
               {cancelLabel}
             </button>

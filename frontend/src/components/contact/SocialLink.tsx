@@ -26,7 +26,7 @@ export default function SocialLink({ item }: { item: SocialItem }) {
             <span className="material-symbols-outlined">{item.icon}</span>
           </div>
           <div>
-            <p className="font-black text-slate-900">{item.label}</p>
+            <p className="font-black text-slate-900 dark:text-slate-100">{item.label}</p>
             <p className="text-xs font-medium text-slate-400 mt-0.5">{item.subLabel}</p>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function SocialLink({ item }: { item: SocialItem }) {
           <span className="material-symbols-outlined">{item.icon}</span>
         </div>
         <div>
-          <p className="font-black text-slate-900 group-hover:text-primary transition-colors">
+          <p className="font-black text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">
             {item.label}
           </p>
           <p className="text-xs font-medium text-slate-400 mt-0.5">

@@ -14,10 +14,10 @@ function SkillBar({
   return (
     <div className="w-full">
       <div className="flex items-center justify-between text-sm mb-1">
-        <span className="font-bold text-slate-600">{label}</span>
+        <span className="font-bold text-slate-600 dark:text-slate-300">{label}</span>
         <span className={`font-bold ${textClass}`}>{percentage}%</span>
       </div>
-      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
         <div className={`h-full ${colorClass} rounded-full`} style={{ width: `${percentage}%` }} />
       </div>
     </div>
@@ -36,7 +36,7 @@ export default function ExpertiseRing() {
       <div className="relative size-64 flex items-center justify-center mb-8">
         <svg className="size-full" viewBox="0 0 100 100">
           <circle
-            className="text-slate-200 stroke-current"
+            className="text-slate-200 dark:text-slate-600 stroke-current"
             cx="50"
             cy="50"
             fill="transparent"
@@ -78,7 +78,7 @@ export default function ExpertiseRing() {
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className="text-4xl font-black text-slate-800">{EXPERTISE.levelLabel}</span>
+          <span className="text-4xl font-black text-slate-800 dark:text-slate-100">{EXPERTISE.levelLabel}</span>
           <span className="text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">
             Total Skillset
           </span>
@@ -88,7 +88,7 @@ export default function ExpertiseRing() {
       <div className="w-full space-y-4 relative z-10">
         <SkillBar label="Frontend" percentage={EXPERTISE.frontend} colorClass="bg-primary" textClass="text-primary" />
         <SkillBar label="Backend" percentage={EXPERTISE.backend} colorClass="bg-accent" textClass="text-accent" />
-        <SkillBar label="DevOps & Tools" percentage={EXPERTISE.devops} colorClass="bg-slate-800" textClass="text-slate-800" />
+        <SkillBar label="DevOps & Tools" percentage={EXPERTISE.devops} colorClass="bg-slate-800 dark:bg-slate-400" textClass="text-slate-800 dark:text-slate-300" />
       </div>
     </div>
   );

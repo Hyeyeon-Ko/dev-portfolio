@@ -17,8 +17,8 @@ const ProjectsSection: React.FC = () => {
     <section id="projects" className="max-w-7xl mx-auto px-6 mb-32">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-12">
         <div className="space-y-2">
-          <h2 className="text-4xl font-bold text-slate-900 leading-tight font-brand">Projects</h2>
-          <p className="text-lg text-slate-500 font-medium leading-relaxed">어제보다 더 나은 가치를 전달하기 위해 고민한 흔적들입니다.</p>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 leading-tight font-brand">Projects</h2>
+          <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">어제보다 더 나은 가치를 전달하기 위해 고민한 흔적들입니다.</p>
         </div>
         <Link to="/projects" className="text-indigo-600 font-bold flex items-center hover:translate-x-1 transition-transform">
           전체 프로젝트
@@ -48,18 +48,18 @@ const ProjectsSection: React.FC = () => {
             <div className="p-8 space-y-6">
               <div className="flex flex-wrap gap-2">
                 {project.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-slate-50 text-slate-400 text-[10px] font-bold tracking-wider rounded-lg">
+                  <span key={tag} className="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-[10px] font-bold tracking-wider rounded-lg">
                     {tag}
                   </span>
                 ))}
               </div>
               <div className="space-y-3">
-                <h3 className="text-2xl font-bold text-slate-800">{project.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">
+                <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100">{project.title}</h3>
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
                   {project.oneLine}
                 </p>
               </div>
-              <div className="pt-4 border-t border-slate-50 flex items-center">
+              <div className="pt-4 border-t border-slate-50 dark:border-slate-700 flex items-center">
                 <Link to={`/projects/${project.id}`} className="text-indigo-600 flex items-center hover:underline text-sm font-bold">
                   프로젝트 보러가기
                   <svg className="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

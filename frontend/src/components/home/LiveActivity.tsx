@@ -28,28 +28,28 @@ export default function LiveActivity() {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-          <h2 className="text-xl font-bold text-slate-800">Live Activity</h2>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Live Activity</h2>
         </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {/* 현재 작업 카드 */}
         <div className="md:col-span-2 glass-card rounded-3xl p-6 card-shadow flex items-start space-x-6">
-          <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0">
+          <div className="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0">
             <Icons.Project />
           </div>
           <div className="flex-grow space-y-3 min-w-0">
             <div className="space-y-1 min-w-0">
-              <h3 className="font-bold text-slate-800 break-words">작업 중: {LIVE_ACTIVITY.title}</h3>
+              <h3 className="font-bold text-slate-800 dark:text-slate-100 break-words">작업 중: {LIVE_ACTIVITY.title}</h3>
               <span className="px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded text-[10px] font-bold inline-block">
                 {LIVE_ACTIVITY.status}
               </span>
             </div>
 
-            <p className="text-sm text-slate-500 truncate">
+            <p className="text-sm text-slate-500 dark:text-slate-400 truncate">
               Last Commit:{" "}
               {lastCommit === null ? (
-                <span className="bg-slate-50 px-1.5 py-0.5 rounded text-slate-400 animate-pulse">
+                <span className="bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 dark:text-slate-500 animate-pulse">
                   불러오는 중...
                 </span>
               ) : commitUrl !== "#" ? (
@@ -57,12 +57,12 @@ export default function LiveActivity() {
                   href={commitUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-slate-50 px-1.5 py-0.5 rounded text-indigo-500 hover:text-indigo-700 transition-colors"
+                  className="bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded text-indigo-500 hover:text-indigo-700 transition-colors"
                 >
                   {lastCommit}
                 </a>
               ) : (
-                <span className="bg-slate-50 px-1.5 py-0.5 rounded text-slate-400">
+                <span className="bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-400 dark:text-slate-500">
                   {lastCommit}
                 </span>
               )}
@@ -70,12 +70,12 @@ export default function LiveActivity() {
 
             <div className="space-y-2 pt-1">
               <div className="flex justify-between items-end">
-                <span className="text-xs font-bold text-slate-400">Progress</span>
+                <span className="text-xs font-bold text-slate-400 dark:text-slate-500">Progress</span>
                 <span className="text-lg font-black text-indigo-600 leading-none">
                   {LIVE_ACTIVITY.progress}%
                 </span>
               </div>
-              <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+              <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-indigo-600 rounded-full transition-all duration-1000"
                   style={{ width: `${LIVE_ACTIVITY.progress}%` }}
@@ -87,14 +87,14 @@ export default function LiveActivity() {
 
         {/* 현재 읽는 책 카드 */}
         <div className="glass-card rounded-3xl p-6 card-shadow flex items-center space-x-4">
-          <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 shrink-0">
+          <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-purple-600 shrink-0">
             <Icons.Reading />
           </div>
           <div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase block mb-1">
+            <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase block mb-1">
               Current Reading
             </span>
-            <h4 className="font-bold text-slate-800 leading-tight">{CURRENT_READING}</h4>
+            <h4 className="font-bold text-slate-800 dark:text-slate-100 leading-tight">{CURRENT_READING}</h4>
           </div>
         </div>
       </div>

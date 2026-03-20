@@ -22,7 +22,7 @@ export default function InfrastructureGrid() {
               </div>
               <span className="font-bold">{tool.name}</span>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed">{tool.description}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">{tool.description}</p>
           </div>
         ))}
       </div>
