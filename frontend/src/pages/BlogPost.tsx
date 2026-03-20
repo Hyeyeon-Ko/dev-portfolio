@@ -9,6 +9,7 @@ import type { PostDetail } from "../types/blog";
 import { isAdmin } from "../utils/auth";
 import Dialog from "../components/ui/Dialog";
 import { useDialog } from "../hooks/useDialog";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
@@ -20,6 +21,8 @@ export default function BlogPost() {
   const [allIds, setAllIds] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  usePageMeta(post?.title ?? "블로그");
 
   useEffect(() => {
     if (Number.isNaN(postId)) {

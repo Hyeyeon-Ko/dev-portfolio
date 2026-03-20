@@ -6,6 +6,7 @@ import type { ProjectDetail as ProjectDetailType } from "../api/projectApi";
 import { isAdmin } from "../utils/auth";
 import Dialog from "../components/ui/Dialog";
 import { useDialog } from "../hooks/useDialog";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 function getTechBadgeClass(tag: string) {
   const t = tag.toLowerCase();
@@ -57,6 +58,8 @@ export default function ProjectDetail() {
   const [project, setProject] = useState<ProjectDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  usePageMeta(project?.title ?? "프로젝트", project?.oneLine ?? undefined);
 
   useEffect(() => {
     if (!id) {
@@ -175,6 +178,7 @@ export default function ProjectDetail() {
                 alt={project.title}
                 className="w-full h-full object-cover"
                 src={project.imageUrl}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
@@ -282,6 +286,7 @@ export default function ProjectDetail() {
                         alt="Solution UI Preview"
                         className="w-full h-auto"
                         src={project.imageUrl}
+                        loading="lazy"
                       />
                     </div>
                   </div>
