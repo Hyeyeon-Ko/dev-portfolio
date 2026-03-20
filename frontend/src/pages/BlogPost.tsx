@@ -26,6 +26,7 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (Number.isNaN(postId)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setNotFound(true);
       setLoading(false);
       return;
@@ -94,7 +95,7 @@ export default function BlogPost() {
           <button
             type="button"
             onClick={() => navigate(`/blog/edit/${postId}`)}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all"
           >
             <span className="material-symbols-outlined text-[18px]">edit</span>
             수정

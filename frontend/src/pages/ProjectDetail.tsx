@@ -63,6 +63,7 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     if (!id) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setNotFound(true);
       setLoading(false);
       return;
@@ -145,7 +146,7 @@ export default function ProjectDetail() {
             <button
               type="button"
               onClick={() => navigate(`/projects/edit/${id}`)}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all"
             >
               <span className="material-symbols-outlined text-[18px]">edit</span>
               수정
@@ -169,7 +170,7 @@ export default function ProjectDetail() {
               <h1 className="text-5xl lg:text-7xl font-black leading-tight">
                 {heroTitle}
               </h1>
-              <p className="text-xl text-slate-500 font-medium max-w-2xl leading-relaxed">
+              <p className="text-xl text-slate-500 dark:text-slate-400 font-medium max-w-2xl leading-relaxed">
                 {project.oneLine}
               </p>
             </div>
@@ -194,7 +195,7 @@ export default function ProjectDetail() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div className="glass-card p-8 rounded-[2rem]">
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
+                  <h4 className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6">
                     사용 기술
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -212,14 +213,14 @@ export default function ProjectDetail() {
                 </div>
 
                 <div className="glass-card p-8 rounded-[2rem]">
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
+                  <h4 className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6">
                     주요 성과
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
                     {stats.slice(0, 4).map((stat) => (
                       <div key={stat.label}>
                         <p className={`text-3xl font-black ${stat.colorClass}`}>{stat.value}</p>
-                        <p className="text-xs font-bold text-slate-500 mt-1 uppercase">
+                        <p className="text-xs font-bold text-slate-500 dark:text-slate-400 mt-1 uppercase">
                           {stat.label}
                         </p>
                       </div>
@@ -228,7 +229,7 @@ export default function ProjectDetail() {
                 </div>
               </div>
 
-              <p className="text-lg text-slate-600 leading-relaxed font-medium">
+              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 {project.overview || project.description}
               </p>
             </section>
@@ -236,7 +237,7 @@ export default function ProjectDetail() {
             {problemItems.length > 0 && (
               <section className="scroll-mt-32" id="problem">
                 <SectionTitle title="문제 정의" />
-                <div className="glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-white/60 to-white/20">
+                <div className="glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-white/60 dark:from-slate-800/60 to-white/20 dark:to-slate-800/20">
                   <ul className="space-y-8">
                     {problemItems.map((item, idx) => (
                       <li key={`${item.title}-${idx}`} className="flex gap-6">
@@ -245,7 +246,7 @@ export default function ProjectDetail() {
                         </span>
                         <div>
                           <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                          <p className="text-slate-500 leading-relaxed">{item.description}</p>
+                          <p className="text-slate-500 dark:text-slate-400 leading-relaxed">{item.description}</p>
                         </div>
                       </li>
                     ))}
@@ -266,14 +267,14 @@ export default function ProjectDetail() {
                       </p>
                       <div className="flex gap-4">
                         {primaryTags.length > 0 && (
-                          <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
+                          <div className="bg-white/60 dark:bg-slate-800/60 px-5 py-3 rounded-2xl border border-white/40 dark:border-slate-700/40 shadow-sm">
                             <p className="text-sm font-bold text-primary">
                               {primaryTags.join(" & ")}
                             </p>
                           </div>
                         )}
                         {secondaryTags.length > 0 && (
-                          <div className="bg-white/60 px-5 py-3 rounded-2xl border border-white/40 shadow-sm">
+                          <div className="bg-white/60 dark:bg-slate-800/60 px-5 py-3 rounded-2xl border border-white/40 dark:border-slate-700/40 shadow-sm">
                             <p className="text-sm font-bold text-accent">
                               {secondaryTags.join(" & ")}
                             </p>
@@ -310,10 +311,10 @@ export default function ProjectDetail() {
                       >
                         {item.title}
                       </h4>
-                      <p className="text-slate-600 leading-relaxed mb-6">
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                         {item.description}
                       </p>
-                      <div className="flex items-center gap-2 text-sm font-bold text-slate-400">
+                      <div className="flex items-center gap-2 text-sm font-bold text-slate-400 dark:text-slate-500">
                         <span className="material-symbols-outlined text-base">check_circle</span>
                         {project.tags.slice(0, 2).join(" & ") || project.category.join(" · ")} 활용
                       </div>

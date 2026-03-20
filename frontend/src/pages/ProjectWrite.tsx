@@ -230,7 +230,7 @@ export default function ProjectWrite() {
         navigate("/projects");
       })
       .finally(() => setLoadingEdit(false));
-  }, [editId, isEditMode, navigate]);
+  }, [editId, isEditMode, navigate, alert]);
 
   const update = (field: keyof ProjectFormState, value: ProjectFormState[keyof ProjectFormState]) => {
     setForm((prev) => ({ ...prev, [field]: value }));

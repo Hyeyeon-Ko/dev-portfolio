@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import WriteHeader from "../components/blog/write/WriteHeader";
 import WriteSidebar from "../components/blog/write/WriteSidebar";
@@ -7,6 +7,8 @@ import { createPost, updatePost, deletePost, fetchPostDetailAdmin } from "../api
 import type { BlogDraft, BlogWriteUser, Category } from "../types/blog";
 import Dialog from "../components/ui/Dialog";
 import { useDialog } from "../hooks/useDialog";
+
+const DRAFT_KEY = "blog-autosave-draft";
 
 const INITIAL_POST: BlogDraft = {
   title: "",
@@ -29,7 +31,7 @@ const USER: BlogWriteUser = {
 
 
 function generateExcerpt(content: string): string {
-  const plain = content.replace(/[#*`>\[\]!_~]/g, "").replace(/\s+/g, " ").trim();
+  const plain = content.replace(/[#*`>[\]!_~]/g, "").replace(/\s+/g, " ").trim();
   return plain.slice(0, 280) + (plain.length > 280 ? "..." : "");
 }
 
@@ -45,6 +47,37 @@ export default function BlogWrite() {
   const [loadingEdit, setLoadingEdit] = useState(isEditMode);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
+  const postRef = useRef(post);
+  postRef.current = post;
+
+  // 새 글 작성 시 자동저장 복원
+  useEffect(() => {
+    if (isEditMode) return;
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return;
+    try {
+      const draft = JSON.parse(raw) as Partial<Pick<BlogDraft, "title" | "content" | "category" | "tags">>;
+      setPost((prev) => ({ ...prev, ...draft, lastSaved: "자동저장 복원됨" }));
+    } catch {
+      // 손상된 데이터 무시
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 30초마다 자동저장 (새 글 작성 시만)
+  useEffect(() => {
+    if (isEditMode) return;
+    const id = setInterval(() => {
+      const { title, content, category, tags } = postRef.current;
+      if (!title.trim() && !content.trim()) return;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ title, content, category, tags }));
+      setPost((prev) => ({
+        ...prev,
+        lastSaved: new Date().toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit" }) + " (자동저장)",
+      }));
+    }, 30_000);
+    return () => clearInterval(id);
+  }, [isEditMode]);
 
   // 수정 모드: 기존 글 불러오기
   useEffect(() => {
@@ -65,7 +98,7 @@ export default function BlogWrite() {
         navigate("/blog");
       })
       .finally(() => setLoadingEdit(false));
-  }, [editId, isEditMode, navigate]);
+  }, [editId, isEditMode, navigate, alert]);
 
   const handleUpdatePost = (updates: Partial<BlogDraft>) => {
     setPost((prev) => ({ ...prev, ...updates }));
@@ -131,9 +164,11 @@ export default function BlogWrite() {
     try {
       if (savedPostId) {
         await updatePost(savedPostId, payload);
+        localStorage.removeItem(DRAFT_KEY);
         navigate(`/blog/${savedPostId}`);
       } else {
         const newId = await createPost(payload);
+        localStorage.removeItem(DRAFT_KEY);
         navigate(`/blog/${newId}`);
       }
     } catch {
@@ -158,6 +193,7 @@ export default function BlogWrite() {
         .then(() => navigate("/blog"))
         .catch(() => alert("삭제에 실패했습니다.", { type: "error" }));
     } else {
+      localStorage.removeItem(DRAFT_KEY);
       setPost({ ...INITIAL_POST, title: "", content: "" });
       setSavedPostId(null);
     }

@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from "react";
+import { useCallback, useEffect, useState, type FC } from "react";
 import {
   fetchPendingComments,
   approveComment,
@@ -15,18 +15,19 @@ const AdminCommentPanel: FC<Props> = ({ postId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const load = () => {
+  const load = useCallback(() => {
     setLoading(true);
     fetchPendingComments(postId)
       .then(setComments)
       .catch(() => setComments([]))
       .finally(() => setLoading(false));
-  };
+  }, [postId]);
 
   useEffect(() => {
     if (!isAdmin()) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, [postId]);
+  }, [load]);
 
   if (!isAdmin()) return null;
 

@@ -35,6 +35,7 @@ export default function Blog() {
   // 글 목록 조회
   useEffect(() => {
     let cancelled = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     setError(false);
 
@@ -121,7 +122,7 @@ export default function Blog() {
           ))}
 
           {isLastPage && !isFiltering && (
-            <article className="glass-card p-8 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 group cursor-pointer flex flex-col h-full border-dashed border-2 border-slate-300">
+            <article className="glass-card p-8 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 group cursor-pointer flex flex-col h-full border-dashed border-2 border-slate-300 dark:border-slate-600">
               <div className="flex flex-col items-center justify-center flex-1 text-center py-12">
                 <span className="material-symbols-outlined text-4xl text-slate-300 mb-4 animate-pulse">
                   more_horiz
