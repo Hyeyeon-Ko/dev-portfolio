@@ -56,7 +56,7 @@ export const PROFILE = {
   links: [
     { label: "GitHub", href: "https://github.com/Hyeyeon-Ko", enabled: true },
     { label: "Blog", href: "https://hyeyeon-ii.tistory.com/", enabled: true },
-    { label: "LinkedIn", href: "#", enabled: false },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/hyeyeon-ko/", enabled: true },
   ] as SocialLinkItem[],
 };
 

@@ -49,7 +49,7 @@ export default function Footer() {
               </a>
               <a
                 className="size-12 rounded-2xl glass-card flex items-center justify-center hover:text-primary hover:border-primary transition-all"
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/hyeyeon-ko/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
@@ -98,7 +98,7 @@ export default function Footer() {
               <li>
                 <a
                   className="text-slate-500 hover:text-primary transition-colors text-sm font-semibold"
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/hyeyeon-ko/"
                   target="_blank"
                   rel="noreferrer"
                 >
