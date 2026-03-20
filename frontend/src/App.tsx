@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
@@ -12,6 +12,7 @@ import ProjectWrite from "./pages/ProjectWrite";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import AdminLogin from "./pages/AdminLogin";
+import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
@@ -64,8 +65,10 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
       </Route>
 
-      {/* 없는 주소로 들어오면 홈으로 */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {/* 없는 주소 → 404 */}
+      <Route element={<MainLayout />}>
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   );
 }
