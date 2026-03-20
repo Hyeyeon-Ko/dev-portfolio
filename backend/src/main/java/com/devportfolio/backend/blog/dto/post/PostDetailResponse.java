@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Builder
@@ -21,4 +22,5 @@ public class PostDetailResponse {
     private Integer commentCount;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
+    private List<RelatedPostItem> relatedPosts;
 }

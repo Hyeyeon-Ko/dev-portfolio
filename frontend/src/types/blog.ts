@@ -30,6 +30,7 @@ export interface PostMeta {
 }
 
 export interface RelatedPost {
+  id: number;
   category: string;
   title: string;
   date: string;

@@ -7,6 +7,7 @@ import com.devportfolio.backend.blog.dto.common.PageResponse;
 import com.devportfolio.backend.blog.dto.like.LikeResponse;
 import com.devportfolio.backend.blog.dto.post.*;
 import com.devportfolio.backend.blog.entity.BlogPost;
+import java.util.List;
 import com.devportfolio.backend.blog.entity.PostComment;
 import com.devportfolio.backend.blog.entity.PostLike;
 import com.devportfolio.backend.blog.exception.NotFoundException;
@@ -96,13 +97,26 @@ public class BlogService {
         if (!"PUBLISHED".equalsIgnoreCase(post.getStatus())) {
             throw new NotFoundException("post not found: " + id);
         }
-        return toDetail(post);
+
+        List<RelatedPostItem> related = postRepository
+                .findTop4ByStatusAndCategoryAndIdNotOrderByPublishedAtDesc("PUBLISHED", post.getCategory(), id)
+                .stream()
+                .limit(3)
+                .map(p -> RelatedPostItem.builder()
+                        .id(p.getId())
+                        .title(p.getTitle())
+                        .category(p.getCategory())
+                        .date(p.getPublishedAt() != null ? p.getPublishedAt().toString() : "")
+                        .build())
+                .toList();
+
+        return toDetail(post, related);
     }
 
     public PostDetailResponse getPostAdmin(Long id) {
         BlogPost post = postRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("post not found: " + id));
-        return toDetail(post);
+        return toDetail(post, List.of());
     }
 
     @Transactional
@@ -271,7 +285,7 @@ public class BlogService {
                 .build();
     }
 
-    private PostDetailResponse toDetail(BlogPost p) {
+    private PostDetailResponse toDetail(BlogPost p, List<RelatedPostItem> related) {
         return PostDetailResponse.builder()
                 .id(p.getId())
                 .title(p.getTitle())
@@ -286,6 +300,7 @@ public class BlogService {
                 .commentCount(p.getCommentCount())
                 .createdAt(p.getCreatedAt())
                 .updatedAt(p.getUpdatedAt())
+                .relatedPosts(related)
                 .build();
     }
 

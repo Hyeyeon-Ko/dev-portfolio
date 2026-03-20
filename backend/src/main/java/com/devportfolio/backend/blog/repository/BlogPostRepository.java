@@ -8,7 +8,11 @@ import org.springframework.data.repository.query.Param;
 
 import com.devportfolio.backend.blog.entity.BlogPost;
 
+import java.util.List;
+
 public interface BlogPostRepository extends JpaRepository<BlogPost, Long> {
+
+    List<BlogPost> findTop4ByStatusAndCategoryAndIdNotOrderByPublishedAtDesc(String status, String category, Long id);
 
     Page<BlogPost> findByStatusOrderByPublishedAtDesc(String status, Pageable pageable);
 

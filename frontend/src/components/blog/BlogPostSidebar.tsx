@@ -16,6 +16,7 @@ const BlogPostSidebar: FC<Props> = ({ author, relatedPosts }) => {
             src={author.avatar}
             alt={author.name}
             className="w-24 h-24 rounded-full border-4 border-primary/20 p-1"
+            loading="lazy"
           />
           <div className="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full" />
         </div>
@@ -28,10 +29,10 @@ const BlogPostSidebar: FC<Props> = ({ author, relatedPosts }) => {
           <span className="text-primary text-xl">✦</span>
           <h4 className="font-bold text-gray-800">연관 포스트</h4>
         </div>
-        {relatedPosts.map((post, idx) => (
+        {relatedPosts.map((post) => (
           <Link
-            key={idx}
-            to={`/blog/${idx + 2}`}
+            key={post.id}
+            to={`/blog/${post.id}`}
             className="block bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:border-primary/30 transition-all group cursor-pointer"
           >
             <span

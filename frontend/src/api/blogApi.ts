@@ -81,7 +81,13 @@ export async function fetchPostDetail(id: number): Promise<PostDetail> {
     tags: d.tags ? d.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [],
     likeCount: d.likeCount ?? 0,
     commentCount: d.commentCount ?? 0,
-    relatedPosts: [],
+    relatedPosts: (d.relatedPosts ?? []).map((r: Record<string, unknown>) => ({
+      id: r.id as number,
+      category: r.category as string,
+      title: r.title as string,
+      date: formatDate(r.date as string),
+      type: r.category as "Retrospective" | "Thinking" | "TIL",
+    })),
   };
 }
 
