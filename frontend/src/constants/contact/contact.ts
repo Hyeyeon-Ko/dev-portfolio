@@ -18,11 +18,10 @@ export const SOCIALS: SocialItem[] = [
   },
   {
     label: "LinkedIn",
-    subLabel: "준비 중",
-    href: "#",
+    subLabel: "프로필 보기",
+    href: "https://www.linkedin.com/in/hyeyeon-ko/",
     icon: "work",
     colorClass: "bg-[#0077b5]",
-    disabled: true,
   },
   {
     label: "Email",
