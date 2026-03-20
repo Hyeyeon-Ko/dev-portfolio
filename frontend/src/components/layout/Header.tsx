@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { isAdmin, clearAdminKey } from "../../utils/auth";
+import { useTheme } from "../../hooks/useTheme";
 
 const navItems = [
   { to: "/projects", label: "Projects" },
@@ -12,6 +13,7 @@ const navItems = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { theme, toggle } = useTheme();
 
   const handleLogout = () => {
     clearAdminKey();
@@ -20,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/40 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/40 dark:bg-slate-900/70 dark:border-slate-700/40 backdrop-blur-md">
       <div className="max-w-[1200px] mx-auto h-20 flex items-center justify-between px-6">
         <NavLink to="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
           <h2 className="text-xl font-black tracking-tight font-brand">
@@ -29,7 +31,7 @@ export default function Header() {
         </NavLink>
 
         {/* 데스크톱 nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav aria-label="주 내비게이션" className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -67,10 +69,22 @@ export default function Header() {
             </button>
           )}
 
+          {/* 다크모드 토글 */}
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환"}
+            className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+          >
+            <span className="material-symbols-outlined text-xl">
+              {theme === "dark" ? "light_mode" : "dark_mode"}
+            </span>
+          </button>
+
           {/* 햄버거 버튼 (모바일) */}
           <button
             type="button"
-            className="md:hidden p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-all"
+            className="md:hidden p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="메뉴 열기/닫기"
           >
@@ -83,8 +97,8 @@ export default function Header() {
 
       {/* 모바일 드롭다운 메뉴 */}
       {menuOpen && (
-        <div className="md:hidden border-t border-white/20 bg-white/95 backdrop-blur-md">
-          <nav className="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
+        <div className="md:hidden border-t border-white/20 dark:border-slate-700/40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+          <nav aria-label="모바일 내비게이션" className="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
