@@ -10,6 +10,17 @@ import { isAdmin } from "../utils/auth";
 
 const PROJECTS_PER_PAGE = 4;
 
+function searchProjects(projects: Project[], query: string): Project[] {
+  if (!query.trim()) return projects;
+  const q = query.toLowerCase();
+  return projects.filter(
+    (p) =>
+      p.title.toLowerCase().includes(q) ||
+      p.oneLine.toLowerCase().includes(q) ||
+      p.tags.some((t) => t.toLowerCase().includes(q))
+  );
+}
+
 export default function Projects() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<Category>(Category.ALL);
@@ -17,6 +28,8 @@ export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [debouncedQ, setDebouncedQ] = useState("");
 
   const categories: Category[] = [
     Category.ALL,
@@ -37,6 +50,12 @@ export default function Projects() {
     [Category.FULLSTACK]: "FULLSTACK",
     [Category.HYBRID]: "HYBRID",
   };
+
+  // 검색어 디바운스 (400ms)
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQ(searchInput), 400);
+    return () => clearTimeout(t);
+  }, [searchInput]);
 
   useEffect(() => {
     let cancelled = false;
@@ -62,11 +81,15 @@ export default function Projects() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory]);
 
-  // Client-side pagination over the fetched list
-  const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
+  // Client-side search + pagination
+  const filteredProjects = useMemo(
+    () => searchProjects(projects, debouncedQ),
+    [projects, debouncedQ],
+  );
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
   const pagedProjects = useMemo(
-    () => projects.slice(page * PROJECTS_PER_PAGE, (page + 1) * PROJECTS_PER_PAGE),
-    [projects, page],
+    () => filteredProjects.slice(page * PROJECTS_PER_PAGE, (page + 1) * PROJECTS_PER_PAGE),
+    [filteredProjects, page],
   );
 
   const handlePageChange = (p: number) => {
@@ -85,22 +108,37 @@ export default function Projects() {
         </p>
       </section>
 
-      <div className="flex items-center justify-between mb-6">
-        <CategoryFilter
-          categories={categories}
-          selected={selectedCategory}
-          onSelect={setSelectedCategory}
-        />
-        {isAdmin() && (
-          <button
-            type="button"
-            onClick={() => navigate("/projects/write")}
-            className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-all shrink-0"
-          >
-            <span className="material-symbols-outlined text-[18px]">add</span>
-            새 프로젝트
-          </button>
-        )}
+      <div className="flex flex-col gap-4 mb-6">
+        <div className="flex items-center justify-between gap-4">
+          <CategoryFilter
+            categories={categories}
+            selected={selectedCategory}
+            onSelect={(cat) => { setSelectedCategory(cat); setPage(0); }}
+          />
+          {isAdmin() && (
+            <button
+              type="button"
+              onClick={() => navigate("/projects/write")}
+              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-all shrink-0"
+            >
+              <span className="material-symbols-outlined text-[18px]">add</span>
+              새 프로젝트
+            </button>
+          )}
+        </div>
+        <div className="relative max-w-sm">
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">
+            search
+          </span>
+          <input
+            type="search"
+            value={searchInput}
+            onChange={(e) => { setSearchInput(e.target.value); setPage(0); }}
+            placeholder="프로젝트 검색..."
+            aria-label="프로젝트 검색"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-primary/40"
+          />
+        </div>
       </div>
 
       {loading && (
@@ -113,15 +151,16 @@ export default function Projects() {
         <p className="text-center text-slate-400 py-16">프로젝트를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</p>
       )}
 
-      {!loading && !error && projects.length === 0 && (
+      {!loading && !error && filteredProjects.length === 0 && (
         <div className="py-20 text-center">
+          <span className="material-symbols-outlined text-4xl text-slate-300 mb-4 block">search_off</span>
           <p className="text-slate-400 text-lg">
-            해당 카테고리의 프로젝트가 아직 없습니다.
+            {debouncedQ ? "검색 결과가 없습니다." : "해당 카테고리의 프로젝트가 아직 없습니다."}
           </p>
         </div>
       )}
 
-      {!loading && !error && projects.length > 0 && (
+      {!loading && !error && filteredProjects.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           {pagedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
