@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# Dev Portfolio — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite 기반 포트폴리오 프론트엔드입니다.
 
-Currently, two official plugins are available:
+루트 README에서 전체 프로젝트 설명, 실행 방법, 배포 가이드를 확인하세요: [../README.md](../README.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 개발 서버
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cp .env.example .env   # 환경 변수 설정
+npm install
+npm run dev            # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 스크립트
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| 명령어 | 설명 |
+|--------|------|
+| `npm run dev` | 개발 서버 실행 |
+| `npm run build` | 프로덕션 빌드 |
+| `npm run preview` | 빌드 결과 미리보기 |
+| `npm run lint` | ESLint 검사 |
+| `npm test` | 단위 테스트 실행 |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 환경 변수
+
+| 변수 | 설명 |
+|------|------|
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS 서비스 ID |
+| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS 템플릿 ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS 공개 키 |
+| `VITE_API_BASE_URL` | API 베이스 URL (개발 시 비워두면 Vite proxy 사용) |
+
+## 구조
+
+```
+src/
+├── api/          API 호출 함수
+├── components/   재사용 컴포넌트 (도메인별 분류)
+├── constants/    상수 및 목 데이터
+├── hooks/        커스텀 훅
+├── layouts/      페이지 레이아웃
+├── pages/        라우트 페이지
+├── types/        TypeScript 타입 정의
+└── utils/        유틸리티 함수
 ```
