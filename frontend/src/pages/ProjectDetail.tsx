@@ -219,7 +219,7 @@ export default function ProjectDetail() {
                   <div className="grid grid-cols-2 gap-4">
                     {stats.slice(0, 4).map((stat) => (
                       <div key={stat.label}>
-                        <p className={`text-3xl font-black ${stat.colorClass}`}>{stat.value}</p>
+                        <p className={`text-lg font-black leading-snug break-words ${stat.colorClass}`}>{stat.value}</p>
                         <p className="text-xs font-bold text-slate-500 dark:text-slate-400 mt-1 uppercase">
                           {stat.label}
                         </p>
@@ -299,7 +299,7 @@ export default function ProjectDetail() {
               <section className="scroll-mt-32" id="impact">
                 <SectionTitle title="기술적 도전 및 성과" />
                 <div className="grid grid-cols-1 gap-8">
-                  {impactItems.slice(0, 2).map((item, idx) => (
+                  {impactItems.map((item, idx) => (
                     <div
                       key={`${item.title}-${idx}`}
                       className="glass-card p-10 rounded-[2.5rem] transition-transform hover:translate-y-[-4px]"
@@ -318,6 +318,29 @@ export default function ProjectDetail() {
                         <span className="material-symbols-outlined text-base">check_circle</span>
                         {project.tags.slice(0, 2).join(" & ") || project.category.join(" · ")} 활용
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {project.highlights && project.highlights.length > 0 && (
+              <section className="scroll-mt-32" id="metrics">
+                <SectionTitle title="핵심 지표" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.highlights.map((item, idx) => (
+                    <div
+                      key={`${item}-${idx}`}
+                      className="glass-card p-6 rounded-[2rem] flex items-start gap-4 hover:translate-y-[-2px] transition-transform"
+                    >
+                      <div className="flex-shrink-0 size-9 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                        <span className="text-sm font-black text-primary">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <p className="text-slate-700 dark:text-slate-200 font-semibold leading-snug pt-1.5">
+                        {item}
+                      </p>
                     </div>
                   ))}
                 </div>
