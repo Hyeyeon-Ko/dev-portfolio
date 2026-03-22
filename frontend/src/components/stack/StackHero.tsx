@@ -8,7 +8,7 @@ export default function StackHero() {
           {STACK_HERO.badge}
         </div>
 
-        <h1 className="text-5xl lg:text-6xl font-black leading-[1.15] text-slate-900 font-brand">
+        <h1 className="text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 dark:text-slate-100 font-brand">
           Tech <span className="text-gradient">Stack</span>
         </h1>
 
