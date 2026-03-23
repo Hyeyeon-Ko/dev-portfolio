@@ -138,6 +138,20 @@ export default function Profile() {
                 </a>
               )
             )}
+            {/* 모바일 — 정적 PDF 직접 다운로드 */}
+            <a
+              href="/Ko_Hyeyeon_CV.pdf"
+              download="Ko_Hyeyeon_CV.pdf"
+              className="md:hidden flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold
+                         text-primary border border-primary/40 bg-primary/10
+                         hover:bg-primary hover:text-white hover:border-primary
+                         transition-all hover:-translate-y-0.5"
+            >
+              <span className="material-symbols-outlined text-base">picture_as_pdf</span>
+              Download CV
+            </a>
+
+            {/* 데스크탑 — /print 페이지 열기 */}
             <div className="relative group/cv hidden md:block">
               <a
                 href="/print"
