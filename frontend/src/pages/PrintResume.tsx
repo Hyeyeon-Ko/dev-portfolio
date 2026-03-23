@@ -154,10 +154,16 @@ export default function PrintResume() {
   return (
     <>
       <style>{`
-        @page { size: A4; margin: 13mm 14mm 13mm 14mm; }
+        @page { size: A4; margin: 0; }
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         body { margin: 0; background: white; }
-        @media print { .no-print { display: none !important; } }
+        @media print {
+          .no-print { display: none !important; }
+          .print-root { padding: 13mm 14mm 0 14mm; }
+          .print-page { padding: 13mm 0 0 0; }
+          .page-num { display: flex !important; }
+          .print-only { display: block !important; }
+        }
       `}</style>
 
       {/* Print Button */}
@@ -170,7 +176,7 @@ export default function PrintResume() {
         </button>
       </div>
 
-      <div className="max-w-[794px] mx-auto bg-white text-slate-900 font-sans print:max-w-none print:mx-0 px-2 py-6 print:p-0">
+      <div className="print-root max-w-[794px] mx-auto bg-white text-slate-900 font-sans print:max-w-none print:mx-0 px-2 py-6 print:p-0">
 
         {/* ═══════════════════════════════════════════════ */}
         {/* PAGE 1 — 이력서                                */}
@@ -296,10 +302,13 @@ export default function PrintResume() {
           </div>
         </div>
 
+        {/* Page 1 번호 */}
+        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">1 / 4</div>
+
         {/* ═══════════════════════════════════════════════ */}
         {/* PAGE 2 — 경력 프로젝트 (상세)                  */}
         {/* ═══════════════════════════════════════════════ */}
-        <div style={{ breakBefore: "page" }}>
+        <div style={{ breakBefore: "page" }} className="print-page">
           <header className="border-b-[3px] border-indigo-600 pb-3 mb-5">
             <h1 className="text-xl font-black text-slate-900">Career Projects</h1>
             <p className="text-[11px] text-slate-400 mt-0.5">Ko Hyeyeon · khy33355@gmail.com · github.com/Hyeyeon-Ko</p>
@@ -362,17 +371,88 @@ export default function PrintResume() {
           </div>
         </div>
 
+        {/* Page 2 번호 */}
+        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">2 / 4</div>
+
         {/* ═══════════════════════════════════════════════ */}
-        {/* PAGE 3 — 사이드 / 학교 프로젝트               */}
+        {/* PAGE 3 — Other Projects (1/2, 4개)            */}
         {/* ═══════════════════════════════════════════════ */}
-        <div style={{ breakBefore: "page" }} className="pt-4">
+        <div style={{ breakBefore: "page" }} className="print-page pt-4">
           <header className="border-b-[3px] border-indigo-600 pb-3 mb-5">
             <h1 className="text-xl font-black text-slate-900">Other Projects</h1>
             <p className="text-[11px] text-slate-400 mt-0.5">Ko Hyeyeon · khy33355@gmail.com · github.com/Hyeyeon-Ko</p>
           </header>
 
           <div className="grid grid-cols-2 gap-4">
-            {SIDE_PROJECTS.map((proj) => (
+            {SIDE_PROJECTS.slice(0, 4).map((proj) => (
+              <div
+                key={proj.title}
+                className="border border-slate-200 rounded-xl overflow-hidden flex flex-col"
+                style={{ breakInside: "avoid" }}
+              >
+                {/* 이미지 */}
+                <div className="bg-slate-50 flex gap-1.5 p-2 h-40 items-stretch">
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className={`object-cover rounded ${proj.hasMobile ? "flex-1" : "w-full"}`}
+                  />
+                  {proj.hasMobile && proj.mobileImages && (
+                    <div className="flex gap-1">
+                      {proj.mobileImages.map((img, i) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt=""
+                          className="w-16 h-full object-cover object-top rounded"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* 텍스트 */}
+                <div className="p-3 flex-1">
+                  <div className="flex items-start justify-between gap-1 mb-1">
+                    <h3 className="font-bold text-[12px] text-slate-900 leading-snug break-keep">{proj.title}</h3>
+                    <span className="text-[9px] text-slate-400 shrink-0">{proj.period}</span>
+                  </div>
+                  <p className="text-[10px] text-indigo-500 font-medium mb-1">{proj.role}</p>
+                  {proj.award && (
+                    <p className="text-[10px] text-amber-600 font-semibold mb-1.5">🏆 {proj.award}</p>
+                  )}
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {proj.tags.map((t) => (
+                      <span key={t} className="text-[9px] bg-slate-100 text-slate-600 px-1 py-0.5 rounded">{t}</span>
+                    ))}
+                  </div>
+                  <ul className="space-y-0.5">
+                    {proj.highlights.map((h, i) => (
+                      <li key={i} className="text-[10px] text-slate-600 flex gap-1">
+                        <span className="text-indigo-400 shrink-0">·</span>
+                        <span className="break-keep">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">3 / 4</div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════ */}
+        {/* PAGE 4 — Other Projects (2/2, 2개)            */}
+        {/* ═══════════════════════════════════════════════ */}
+        <div style={{ breakBefore: "page" }} className="print-page pt-4">
+          <header className="print-only hidden border-b-[3px] border-indigo-600 pb-3 mb-5">
+            <h1 className="text-xl font-black text-slate-900">Other Projects</h1>
+            <p className="text-[11px] text-slate-400 mt-0.5">Ko Hyeyeon · khy33355@gmail.com · github.com/Hyeyeon-Ko</p>
+          </header>
+
+          <div className="grid grid-cols-2 gap-4">
+            {SIDE_PROJECTS.slice(4).map((proj) => (
               <div
                 key={proj.title}
                 className="border border-slate-200 rounded-xl overflow-hidden flex flex-col"
@@ -428,8 +508,9 @@ export default function PrintResume() {
           </div>
 
           <p className="text-center text-[10px] text-slate-300 mt-6 no-print">
-            브라우저 인쇄 → "PDF로 저장" / 여백: 없음 / 배경 그래픽 체크
+            브라우저 인쇄 → "PDF로 저장" / 배경 그래픽 체크
           </p>
+          <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">4 / 4</div>
         </div>
 
       </div>
