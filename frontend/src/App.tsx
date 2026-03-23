@@ -12,14 +12,16 @@ import ProjectWrite from "./pages/ProjectWrite";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import AdminLogin from "./pages/AdminLogin";
+import PrintResume from "./pages/PrintResume";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
     <Routes>
-      {/* 관리자 로그인 (레이아웃 없음) */}
+      {/* 레이아웃 없는 단독 페이지 */}
       <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/print" element={<PrintResume />} />
 
       {/* 공통 레이아웃 적용 */}
       <Route element={<MainLayout />}>
