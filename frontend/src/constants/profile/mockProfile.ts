@@ -82,7 +82,7 @@ export const KEY_IMPACTS: ImpactItem[] = [
     subtitle: "Full-stack",
     title: "기획부터 배포까지 전담",
     description:
-      "이 포트폴리오 사이트를 React + Spring Boot + PostgreSQL로 직접 설계·개발·배포. 화면·API·DB·인프라(Vercel + Railway)까지 혼자 담당.",
+      "이 포트폴리오 사이트를 React + Spring Boot + PostgreSQL로 직접 설계·개발. 화면·API·DB를 혼자 담당하고, 배포 환경(Vercel + Railway)은 Claude Code와 협업하여 구성.",
     tone: "dark",
   },
 ];

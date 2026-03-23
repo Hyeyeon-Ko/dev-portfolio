@@ -72,6 +72,20 @@ export default function Profile() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
+      <style>{`
+        @keyframes cv-shine {
+          0% { transform: translateX(-100%) skewX(-15deg); }
+          100% { transform: translateX(350%) skewX(-15deg); }
+        }
+        .cv-btn::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+          transform: translateX(-100%) skewX(-15deg);
+          animation: cv-shine 2.4s ease-in-out infinite;
+        }
+      `}</style>
 
       {/* ── Hero ── */}
       <div className="flex flex-col md:flex-row gap-12 items-start mb-4">
@@ -124,6 +138,29 @@ export default function Profile() {
                 </a>
               )
             )}
+            <div className="relative group/cv">
+              <a
+                href="/print"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cv-btn relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold
+                           text-primary border border-primary/40 bg-primary/10
+                           hover:bg-primary hover:text-white hover:border-primary
+                           transition-all hover:-translate-y-0.5 overflow-hidden"
+              >
+                <span className="material-symbols-outlined text-base">picture_as_pdf</span>
+                Download CV
+              </a>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5
+                              bg-slate-900 dark:bg-slate-700 text-white text-[11px] font-medium
+                              rounded-lg whitespace-nowrap
+                              opacity-0 group-hover/cv:opacity-100
+                              translate-y-1 group-hover/cv:translate-y-0
+                              transition-all duration-200 pointer-events-none z-10">
+                Profile을 PDF로 제공합니다
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-slate-900 dark:border-t-slate-700" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
