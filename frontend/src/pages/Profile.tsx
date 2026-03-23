@@ -138,7 +138,7 @@ export default function Profile() {
                 </a>
               )
             )}
-            <div className="relative group/cv">
+            <div className="relative group/cv hidden md:block">
               <a
                 href="/print"
                 target="_blank"
