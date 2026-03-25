@@ -303,7 +303,7 @@ export default function PrintResume() {
         </div>
 
         {/* Page 1 번호 */}
-        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">1 / 4</div>
+        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">1 / 3</div>
 
         {/* ═══════════════════════════════════════════════ */}
         {/* PAGE 2 — 경력 프로젝트 (상세)                  */}
@@ -372,26 +372,26 @@ export default function PrintResume() {
         </div>
 
         {/* Page 2 번호 */}
-        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">2 / 4</div>
+        <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">2 / 3</div>
 
         {/* ═══════════════════════════════════════════════ */}
-        {/* PAGE 3 — Other Projects (1/2, 4개)            */}
+        {/* PAGE 3 — Other Projects (6개, 2×3)            */}
         {/* ═══════════════════════════════════════════════ */}
         <div style={{ breakBefore: "page" }} className="print-page pt-4">
-          <header className="border-b-[3px] border-indigo-600 pb-3 mb-5">
+          <header className="border-b-[3px] border-indigo-600 pb-3 mb-4">
             <h1 className="text-xl font-black text-slate-900">Other Projects</h1>
             <p className="text-[11px] text-slate-400 mt-0.5">Ko Hyeyeon · khy33355@gmail.com · github.com/Hyeyeon-Ko</p>
           </header>
 
           <div className="grid grid-cols-2 gap-4">
-            {SIDE_PROJECTS.slice(0, 4).map((proj) => (
+            {SIDE_PROJECTS.map((proj) => (
               <div
                 key={proj.title}
                 className="border border-slate-200 rounded-xl overflow-hidden flex flex-col"
                 style={{ breakInside: "avoid" }}
               >
                 {/* 이미지 */}
-                <div className="bg-slate-50 flex gap-1.5 p-2 h-40 items-stretch">
+                <div className="bg-slate-50 flex gap-1 p-1.5 h-36 items-stretch shrink-0">
                   <img
                     src={proj.image}
                     alt={proj.title}
@@ -404,7 +404,7 @@ export default function PrintResume() {
                           key={i}
                           src={img}
                           alt=""
-                          className="w-16 h-full object-cover object-top rounded"
+                          className="w-12 h-full object-cover object-top rounded"
                         />
                       ))}
                     </div>
@@ -412,89 +412,21 @@ export default function PrintResume() {
                 </div>
 
                 {/* 텍스트 */}
-                <div className="p-3 flex-1">
-                  <div className="flex items-start justify-between gap-1 mb-1">
+                <div className="p-3 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between gap-1 mb-0.5">
                     <h3 className="font-bold text-[12px] text-slate-900 leading-snug break-keep">{proj.title}</h3>
-                    <span className="text-[9px] text-slate-400 shrink-0">{proj.period}</span>
+                    <span className="text-[9px] text-slate-400 shrink-0 ml-1">{proj.period}</span>
                   </div>
                   <p className="text-[10px] text-indigo-500 font-medium mb-1">{proj.role}</p>
                   {proj.award && (
-                    <p className="text-[10px] text-amber-600 font-semibold mb-1.5">🏆 {proj.award}</p>
+                    <p className="text-[10px] text-amber-600 font-semibold mb-1">🏆 {proj.award}</p>
                   )}
-                  <div className="flex flex-wrap gap-1 mb-2">
+                  <div className="flex flex-wrap gap-1 mb-1.5">
                     {proj.tags.map((t) => (
                       <span key={t} className="text-[9px] bg-slate-100 text-slate-600 px-1 py-0.5 rounded">{t}</span>
                     ))}
                   </div>
-                  <ul className="space-y-0.5">
-                    {proj.highlights.map((h, i) => (
-                      <li key={i} className="text-[10px] text-slate-600 flex gap-1">
-                        <span className="text-indigo-400 shrink-0">·</span>
-                        <span className="break-keep">{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">3 / 4</div>
-        </div>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* PAGE 4 — Other Projects (2/2, 2개)            */}
-        {/* ═══════════════════════════════════════════════ */}
-        <div style={{ breakBefore: "page" }} className="print-page pt-4">
-          <header className="print-only hidden border-b-[3px] border-indigo-600 pb-3 mb-5">
-            <h1 className="text-xl font-black text-slate-900">Other Projects</h1>
-            <p className="text-[11px] text-slate-400 mt-0.5">Ko Hyeyeon · khy33355@gmail.com · github.com/Hyeyeon-Ko</p>
-          </header>
-
-          <div className="grid grid-cols-2 gap-4">
-            {SIDE_PROJECTS.slice(4).map((proj) => (
-              <div
-                key={proj.title}
-                className="border border-slate-200 rounded-xl overflow-hidden flex flex-col"
-                style={{ breakInside: "avoid" }}
-              >
-                {/* 이미지 */}
-                <div className="bg-slate-50 flex gap-1.5 p-2 h-40 items-stretch">
-                  <img
-                    src={proj.image}
-                    alt={proj.title}
-                    className={`object-cover rounded ${proj.hasMobile ? "flex-1" : "w-full"}`}
-                  />
-                  {proj.hasMobile && proj.mobileImages && (
-                    <div className="flex gap-1">
-                      {proj.mobileImages.map((img, i) => (
-                        <img
-                          key={i}
-                          src={img}
-                          alt=""
-                          className="w-16 h-full object-cover object-top rounded"
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* 텍스트 */}
-                <div className="p-3 flex-1">
-                  <div className="flex items-start justify-between gap-1 mb-1">
-                    <h3 className="font-bold text-[12px] text-slate-900 leading-snug break-keep">{proj.title}</h3>
-                    <span className="text-[9px] text-slate-400 shrink-0">{proj.period}</span>
-                  </div>
-                  <p className="text-[10px] text-indigo-500 font-medium mb-1">{proj.role}</p>
-                  {proj.award && (
-                    <p className="text-[10px] text-amber-600 font-semibold mb-1.5">🏆 {proj.award}</p>
-                  )}
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    {proj.tags.map((t) => (
-                      <span key={t} className="text-[9px] bg-slate-100 text-slate-600 px-1 py-0.5 rounded">{t}</span>
-                    ))}
-                  </div>
-                  <ul className="space-y-0.5">
+                  <ul className="space-y-0.5 flex-1">
                     {proj.highlights.map((h, i) => (
                       <li key={i} className="text-[10px] text-slate-600 flex gap-1">
                         <span className="text-indigo-400 shrink-0">·</span>
@@ -510,7 +442,7 @@ export default function PrintResume() {
           <p className="text-center text-[10px] text-slate-300 mt-6 no-print">
             브라우저 인쇄 → "PDF로 저장" / 배경 그래픽 체크
           </p>
-          <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">4 / 4</div>
+          <div className="page-num hidden justify-end mt-4 text-[10px] text-slate-300">3 / 3</div>
         </div>
 
       </div>

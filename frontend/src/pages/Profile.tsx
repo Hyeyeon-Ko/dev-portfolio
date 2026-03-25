@@ -138,10 +138,11 @@ export default function Profile() {
                 </a>
               )
             )}
-            {/* 모바일 — 정적 PDF 직접 다운로드 */}
+            {/* 모바일 — /print 페이지 열기 */}
             <a
-              href="/Ko_Hyeyeon_CV.pdf"
-              download="Ko_Hyeyeon_CV.pdf"
+              href="/print"
+              target="_blank"
+              rel="noopener noreferrer"
               className="md:hidden flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold
                          text-primary border border-primary/40 bg-primary/10
                          hover:bg-primary hover:text-white hover:border-primary
