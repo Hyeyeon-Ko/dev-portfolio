@@ -64,7 +64,7 @@ export const KEY_IMPACTS: ImpactItem[] = [
   {
     value: "1mo → 1wk",
     subtitle: "리드타임 단축",
-    title: "발주 프로세스 완전 자동화",
+    title: "총무팀 프로세스 완전 자동화",
     description:
       "총무팀 명함·문서·자산 신청부터 발주 완료까지 웹 일원화. 자동 엑셀 생성 및 발주사 이메일 자동 발송으로 처리 기간 약 1개월 → 1주일 이내로 단축.",
     tone: "primary",
@@ -82,7 +82,7 @@ export const KEY_IMPACTS: ImpactItem[] = [
     subtitle: "Full-stack",
     title: "기획부터 배포까지 전담",
     description:
-      "이 포트폴리오 사이트를 React + Spring Boot + PostgreSQL로 직접 설계·개발. 화면·API·DB를 혼자 담당하고, 배포 환경(Vercel + Railway)은 Claude Code와 협업하여 구성.",
+      "이 포트폴리오 사이트를 React + Spring Boot + PostgreSQL로 직접 설계·개발. 화면·API·DB를 혼자 담당하고, 배포 환경(Vercel + Railway)은 AI 도구와 협업하여 구성.",
     tone: "dark",
   },
 ];
@@ -95,10 +95,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     type: "정규직",
     techStack: ["Java", "Spring Boot", "React", "Oracle", "MyBatis"],
     descriptions: [
-      "KMI 수검자 PC·모바일 검진 결과지 서비스(vitaportVIEW) 개발 및 운영 고도화 담당",
-      "단일검진·특수검진 추가, 이미지 결과지, 다국어 결과지, 마이페이지 신규 구축 등 5건 고도화 메인 개발",
-      "신규 앱 Hello 및 관리자(포털) 화면 개발 및 유지보수",
-      "현재 건강성적표 외부결과지 신규 개발 진행 중 — 통계지수 기반 상세 결과지 제공",
+      "단일검진·특수검진·이미지 결과지·다국어 결과지·마이페이지 등 5건 고도화 메인 개발",
+      "JSP·MyBatis 기반 레거시 서비스를 React·JPA 기반으로 점진적 전환하며 변경 영향 범위 축소",
+      "배포 직후 발생한 결과지 조회 장애를 로그와 사용자 시점 재현 테스트로 원인 특정 및 수정 배포",
+      "권한 유형별 체크리스트를 배포 전 검증 기준으로 도입해 동일 유형 오류 재발 방지",
     ],
   },
   {
@@ -108,10 +108,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     type: "현장실습 → 계약직",
     techStack: ["Java", "Spring", "Oracle", "MariaDB", "MyBatis", "SVN", "XPlatform"],
     descriptions: [
-      "요구사항 분석·UX 기획·화면 디자인부터 개발까지 전 프로세스를 동료와 함께 담당",
-      "총무팀 명함·문서수발신·자산관리 신청·승인·발주·공지 전 과정 웹 전환 — 수기 기안 프로세스 완전 디지털화",
-      "발주 자동화: 승인 완료 내역 자동 엑셀 생성 및 발주사 이메일 자동 발송 구현",
-      "업무 처리 리드타임 약 1개월 → 1주일 이내로 단축",
+      "총무 업무의 명함 신청·문서수발신 프로세스를 웹 시스템으로 일원화하여 수기·분산 처리 업무를 디지털화",
+      "기안·승인 단계를 상태값 기반으로 세분화하고, 외부 API 연동으로 결재선을 동적 구성·정규화",
+      "SMTP 기반 이메일 발송까지 신청→승인→발주 흐름을 하나의 일관된 흐름으로 연결",
+      "업무 처리 리드타임 한 달 → 1주일 이내로 단축에 기여",
     ],
   },
 ];
