@@ -23,6 +23,7 @@ const CAREER_PROJECTS = [
     period: "2025.02 — 현재",
     role: "풀스택 개발 메인 담당",
     mainImage: "/images/projects/vitaport-view.png",
+    desktopSubImages: ["/images/projects/vitaport-view-en.png"],
     subImages: ["/images/projects/vitaport-mypage-mobile.png", "/images/projects/vitaport-special-mobile.png"],
     subImagesMobile: true,
     tags: ["Java", "Spring Boot", "React", "Oracle", "MyBatis", "JSP", "Confluence", "Grafana"],
@@ -328,6 +329,9 @@ export default function PrintResume() {
                     alt={proj.title}
                     className="flex-1 h-full object-cover rounded-lg"
                   />
+                  {proj.desktopSubImages?.map((img, i) => (
+                    <img key={i} src={img} alt="" className="flex-1 h-full object-cover rounded-lg" />
+                  ))}
                   {proj.subImages?.map((img, i) => (
                     <img
                       key={i}
